@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+title: "Ganjoor: An Open, Citable Archive of Classical Persian Poetry"
+abstract: >-
+  A schema-documented, MIT/CC-BY-licensed republication of the
+  ganjoor.net Persian poetry corpus, with a reference Progressive
+  Web App reader. The project aims to provide stable, citable
+  infrastructure for any downstream Persian poetry application
+  or scholarly work.
+type: dataset
+authors:
+  - alias: sajad2025
+    affiliation: "Independent"
+repository-code: "https://github.com/sajad2025/ganjoor"
+url: "https://sajad2025.github.io/ganjoor/"
+keywords:
+  - persian poetry
+  - hafez
+  - digital humanities
+  - cultural heritage
+  - open data
+  - rtl
+  - farsi
+  - شعر پارسی
+  - گنجور
+license: MIT
+license-url: "https://opensource.org/licenses/MIT"
+version: "0.1.0"
+date-released: "2026-05-18"
+references:
+  - type: software
+    title: "Ganjoor (source corpus)"
+    authors:
+      - family-names: Hadianfard
+        given-names: Habib
+    url: "https://ganjoor.net"
+    repository-code: "https://github.com/ganjoor/GanjoorService"
+    notes: >-
+      Primary upstream source of the corpus. This project is an
+      independent republication; editorial credit for the underlying
+      texts belongs to ganjoor.net and its contributors.
