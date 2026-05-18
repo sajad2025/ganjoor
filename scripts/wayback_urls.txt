@@ -1,0 +1,26 @@
+# URLs to submit to the Internet Archive Wayback Machine.
+# One URL per line. Lines starting with # are comments.
+# Keep this short for the first run; grow it once auth works end-to-end.
+
+# Ganjoor surfaces
+https://ganjoor.net/
+https://ganjoor.net/about
+https://api.ganjoor.net/
+https://api.ganjoor.net/index.html
+
+# Top poets (Hafez first per v0.1 scope, then the canonical five)
+https://ganjoor.net/hafez
+https://ganjoor.net/saadi
+https://ganjoor.net/moulavi
+https://ganjoor.net/ferdousi
+https://ganjoor.net/khayyam
+https://ganjoor.net/nezami
+
+# Two representative poems from our v0.1 data
+https://ganjoor.net/hafez/ghazal/sh81
+https://ganjoor.net/hafez/ghazal/sh108
+
+# Project pages (ganjoor's own org material)
+https://blog.ganjoor.net/
+https://ava.ganjoor.net/about/
+https://en.ganjoor.net/introduction/

@@ -1,0 +1,131 @@
+name: Emergency Snapshot
+
+# Phone-triggerable: go to repo → Actions tab → "Emergency Snapshot" → Run workflow.
+#
+# What this does, in order:
+#   1. Mirrors the legacy SQLite dumps (SourceForge + ganjoor/desktop release).
+#   2. Walks api.ganjoor.net into one NDJSON file per poet under data/.
+#   3. Triggers Internet Archive Save Page Now against the top URLs.
+#   4. Commits everything back to main and (if it's a release run) uploads a Release.
+#
+# Defaults are conservative so a first run is short. Use the inputs to scale up.
+
+on:
+  workflow_dispatch:
+    inputs:
+      poet_limit:
+        description: "How many poets to fetch (0 = all). Start with 5 to test."
+        required: true
+        default: "5"
+        type: string
+      mirror_legacy:
+        description: "Also mirror the SourceForge + ganjoor-db legacy dumps?"
+        required: true
+        default: true
+        type: boolean
+      save_wayback:
+        description: "Trigger Internet Archive Save Page Now for top URLs?"
+        required: true
+        default: true
+        type: boolean
+      create_release:
+        description: "Tag and publish a Release with the snapshot artifacts?"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write  # needed to commit data back and create releases
+
+concurrency:
+  group: snapshot
+  cancel-in-progress: false  # never cancel a snapshot mid-fetch
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350  # GitHub free-tier max per job is 6h (360 min)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+
+      - name: Mirror legacy dumps (SourceForge + ganjoor-db)
+        if: inputs.mirror_legacy
+        run: bash scripts/mirror_legacy.sh
+
+      - name: Walk api.ganjoor.net into NDJSON
+        run: |
+          python scripts/fetch_ganjoor.py \
+            --out data \
+            --poet-limit "${{ inputs.poet_limit }}" \
+            --rate 3.0 \
+            --user-agent "ganjoor-mirror/0.1 (+https://github.com/${{ github.repository }})"
+
+      - name: Build manifest + checksums
+        run: python scripts/build_manifest.py --root data --legacy legacy
+
+      - name: Trigger Internet Archive Save Page Now
+        if: inputs.save_wayback
+        env:
+          IA_S3_ACCESS_KEY: ${{ secrets.IA_S3_ACCESS_KEY }}
+          IA_S3_SECRET_KEY: ${{ secrets.IA_S3_SECRET_KEY }}
+        run: python scripts/save_to_wayback.py --urls scripts/wayback_urls.txt
+
+      - name: Commit data back to main
+        run: |
+          git config user.name  "ganjoor-mirror-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data legacy MANIFEST.json CHECKSUMS.sha256 || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+            git commit -m "chore(snapshot): emergency snapshot ${STAMP}"
+            git push
+          fi
+
+      - name: Bundle release artifacts
+        if: inputs.create_release
+        run: |
+          mkdir -p release
+          tar --use-compress-program="zstd -19" -cf release/ganjoor-data.tar.zst data
+          if [ -d legacy ]; then
+            tar --use-compress-program="zstd -19" -cf release/ganjoor-legacy.tar.zst legacy
+          fi
+          cp MANIFEST.json CHECKSUMS.sha256 release/ 2>/dev/null || true
+          ls -la release/
+
+      - name: Publish Release
+        if: inputs.create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v2026.1-emergency-${{ github.run_number }}
+          name: "v2026.1 emergency snapshot (run #${{ github.run_number }})"
+          body: |
+            Emergency preservation snapshot of the Ganjoor Persian poetry corpus.
+
+            **Upstream:** ganjoor.net — Hamid Reza Mohammadi (github.com/hrmoh)
+            **License:** code MIT; data CC-BY-4.0; see LICENSE-DATA.
+            **Provenance:** walked api.ganjoor.net at the timestamp embedded in MANIFEST.json.
+
+            Artifacts:
+            - `ganjoor-data.tar.zst` — per-poet NDJSON, one file per poet under `data/`
+            - `ganjoor-legacy.tar.zst` — mirrored legacy SQLite dumps (SourceForge + ganjoor-db)
+            - `MANIFEST.json` — counts, fetch range, source revisions
+            - `CHECKSUMS.sha256` — SHA-256 for every file in the bundle
+
+            See PRESERVATION-ADDENDUM-free-path.md for the rest of the redundancy plan.
+          files: |
+            release/*
+          fail_on_unmatched_files: false
