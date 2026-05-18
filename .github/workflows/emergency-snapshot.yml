@@ -69,7 +69,7 @@ jobs:
           python scripts/fetch_ganjoor.py \
             --out data \
             --poet-limit "${{ inputs.poet_limit }}" \
-            --rate 3.0 \
+            --rate 5.0 \
             --user-agent "ganjoor-mirror/0.1 (+https://github.com/${{ github.repository }})"
 
       - name: Build manifest + checksums
@@ -83,6 +83,7 @@ jobs:
         run: python scripts/save_to_wayback.py --urls scripts/wayback_urls.txt
 
       - name: Commit data back to main
+        if: always()
         run: |
           git config user.name  "ganjoor-mirror-bot"
           git config user.email "actions@users.noreply.github.com"
