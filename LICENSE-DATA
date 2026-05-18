@@ -1,0 +1,66 @@
+CORPUS DATA LICENSE — Creative Commons Attribution 4.0 International
+====================================================================
+
+The textual corpus (Persian poetry text and metadata) republished in this
+repository is licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0).
+
+The underlying poetic works themselves (by Hafez, Saadi, Rumi, Ferdowsi,
+Khayyam, and other classical Persian poets included in this corpus) are
+in the worldwide public domain.
+
+This license applies to the editorial compilation, normalization,
+identifier scheme, and structural metadata produced by republishing the
+ganjoor.net data — not to the underlying public-domain texts, which
+remain free of any restriction.
+
+To view a copy of this license, visit:
+    https://creativecommons.org/licenses/by/4.0/
+
+Or send a letter to:
+    Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+
+REQUIRED ATTRIBUTION
+--------------------
+
+When using, redistributing, or building upon this corpus, you MUST
+include attribution substantially as follows:
+
+    Persian poetry text courtesy of گنجور — ganjoor.net
+    (Habib Hadianfard and contributors),
+    republished under CC-BY-4.0 via sajad2025/ganjoor on GitHub.
+
+For academic citation, use the CITATION.cff file or the Zenodo DOI
+listed in the corresponding Release.
+
+
+SOURCE
+------
+
+Primary source:  https://ganjoor.net
+Maintainer:      Habib Hadianfard <https://github.com/ganjoor>
+Source license:  Public domain (per ganjoor.net "About" page) and
+                 historically released under MIT for ganjoor-db.
+Backend code:    https://github.com/ganjoor/GanjoorService (GPL-3.0)
+
+This project is an independent, respectful republication. It is not
+affiliated with or endorsed by ganjoor.net. All editorial credit for
+the underlying corpus belongs to ganjoor.net and its contributors.
+
+
+SCOPE
+-----
+
+This license (CC BY 4.0) covers ONLY the textual corpus in /data and
+derived release artifacts (SQLite, JSON, NDJSON, Parquet dumps).
+
+- Application code, scripts, schemas: see LICENSE (MIT) and per-file
+  SPDX headers.
+- Audio recitations: NOT covered. They belong to individual reciters.
+  Audio is streamed from ganjoor's CDN and not rehosted by default.
+- Manuscript images linked from museum.ganjoor.net or naskban.ir: NOT
+  covered. They belong to their respective institutions.
+
+
+-- end --
