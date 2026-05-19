@@ -148,3 +148,9 @@ __pycache__/
 *.pyc
 *.pyo
 .pytest_cache/
+
+# Snapshot intermediates — atomic-rename leftovers from prior or aborted runs.
+# These should never be committed; the canonical data is the .ndjson + .progress.json pair.
+data/**/*.tmp
+data/**/*.ndjson.tmp
+data/**/*.err

@@ -1,34 +1,63 @@
 # Scripts — Emergency Preservation Snapshot
 
-This directory holds everything the **Emergency Snapshot** GitHub Action needs to mirror ganjoor.net into this repository.
+This directory holds everything the **Emergency Snapshot** GitHub Actions need to mirror ganjoor.net into this repository.
 
-The whole thing is designed to run on a free GitHub-hosted Ubuntu runner, triggered from your phone via the **Actions** tab. Nothing here requires a laptop.
+The whole thing is designed to run on free GitHub-hosted Ubuntu runners, triggered from your phone via the **Actions** tab. Nothing here requires a laptop.
+
+## Two workflows
+
+| Workflow | When to use |
+|---|---|
+| **Emergency Snapshot** ([emergency-snapshot.yml](../.github/workflows/emergency-snapshot.yml)) | Smoke tests, small slices via `poet_limit`. Single job, ≤6h budget. |
+| **Emergency Snapshot (Matrix)** ([emergency-snapshot-matrix.yml](../.github/workflows/emergency-snapshot-matrix.yml)) | Full-corpus runs. N parallel buckets (default 5), each ~2h. |
+
+Both share `fetch_ganjoor.py` and both are crash-safe: writes append after every poem and flush, a `.progress.json` sidecar marks per-poet completion, and a runner kill at any moment loses at most the in-flight poem. The matrix workflow additionally checkpoints to `main` every 10 minutes (configurable).
 
 ## What gets produced
 
 | Path | Contents |
 |---|---|
 | `data/<poet-slug>.ndjson` | One full-detail poem per line for that poet. |
+| `data/<poet-slug>.progress.json` | Per-poet completion marker (`completed: true/false`, counts, timestamps). Used for resume. |
 | `legacy/sourceforge/` | Mirrored SQLite dumps (2012, 2014) from SourceForge. |
 | `legacy/desktop/` | Latest SQLite shipped with the `ganjoor/desktop` Windows app. |
 | `legacy/ganjoor-db/ganjoor-db.bundle` | Full git bundle of the archived MySQL-dump repo. |
 | `legacy/wayback-jobs.tsv` | Job ids returned by IA's Save Page Now (for later verification). |
-| `MANIFEST.json` | Counts, provenance, timestamps, repo metadata. |
+| `MANIFEST.json` | Counts, provenance, timestamps, repo metadata (produced by the finalize step). |
 | `CHECKSUMS.sha256` | SHA-256 of every file in `data/` and `legacy/`. |
 
 ## First run from your phone
 
-1. Open the repo in the GitHub mobile app → **Actions** tab → **Emergency Snapshot**.
-2. Tap **Run workflow**. Use these inputs for a first smoke test:
-   - `poet_limit`: **5**  (will fetch the 5 lowest-ID poets only — minutes, not hours)
-   - `mirror_legacy`: **true**
-   - `save_wayback`: **true** *(skip for now if you haven't added the IA keys yet — see below)*
-   - `create_release`: **false**
-3. Tap **Run**.
+**Smoke test first.** Open the repo in the GitHub mobile app → **Actions** tab → **Emergency Snapshot** → **Run workflow** with:
+- `poet_limit`: **1**  (one small poet — finishes in seconds)
+- `mirror_legacy`: **false** (skip for the smoke test; it takes ~2 minutes)
+- `save_wayback`: **false** (skip until you have IA keys — see below)
+- `create_release`: **false**
 
-Watch the live log from the Actions tab. The job commits results back to `main` on success.
+Verify the commit lands on `main` with one `.ndjson` and one `.progress.json` under `data/`.
 
-Once the smoke test commits cleanly, re-run with `poet_limit: 0` (= all poets) and `create_release: true` to produce the first proper `v2026.1-emergency` Release.
+**Then the real run.** Switch to **Emergency Snapshot (Matrix)** → **Run workflow** with:
+- `num_buckets`: **5** (default)
+- `mirror_legacy`: **true**
+- `save_wayback`: **true** (or false if no IA keys yet)
+- `create_release`: **true**
+- `checkpoint_seconds`: **600** (default)
+
+This launches 5 parallel jobs of ~46 poets each. Watch the live logs — each bucket commits its data to `main` every 10 minutes and on completion. A final `finalize` job builds `MANIFEST.json` + `CHECKSUMS.sha256`, then tags and publishes the release.
+
+## fetch_ganjoor.py flags
+
+```
+--out PATH                output directory (required)
+--rate FLOAT              max req/sec to api.ganjoor.net (default 3.0; workflows use 5.0)
+--user-agent STR          custom UA string
+--poet-limit N            stop after N poets (0 = all)
+--bucket N                0-indexed bucket id, used with --num-buckets
+--num-buckets M           split poets into M buckets; only this --bucket runs
+--poet-ids "1,2,3"        explicit poet ids to fetch (overrides bucket selection)
+```
+
+The script is **resumable at two layers**: completed poets (via `.progress.json`) are skipped; partially-completed poets (no/false progress marker) read their NDJSON to learn which poems are already on disk and resume from there.
 
 ## Adding the Internet Archive credentials
 
@@ -65,12 +94,20 @@ source .venv/bin/activate
 
 You'll see `(.venv)` prefix in your prompt when it's active. To leave: `deactivate`.
 
-Then a quick smoke test (fetches just one poet, ~2 minutes):
+Then a quick smoke test (fetches one tiny obscure poet, ~3 seconds):
 
 ```bash
-python scripts/fetch_ganjoor.py --out data --poet-limit 1 --rate 3.0 \
+python scripts/fetch_ganjoor.py --out /tmp/smoke --poet-ids 229 --rate 5.0 \
   --user-agent "ganjoor-mirror-dev/0.1"
-python scripts/build_manifest.py
+# 229 = آیتی بیرجندی, 12 poems. The first poets by id are Hafez/Saadi/Rumi —
+# huge. Use --poet-ids with a tail poet for fast smoke tests.
+
+# Verify append-mode + sidecar:
+ls -la /tmp/smoke/
+cat /tmp/smoke/*.progress.json
+wc -l /tmp/smoke/*.ndjson   # should equal completed_count in the progress file
+
+# Verify resume: kill mid-fetch, re-run, confirm completion with zero duplicates.
 ```
 
 The `.venv/` directory is git-ignored (already covered by the Node `.gitignore` template you chose at repo creation — Python `__pycache__` and friends too).

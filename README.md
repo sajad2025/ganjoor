@@ -18,7 +18,7 @@
 
 ## What this is
 
-Persian classical poetry is one of the great literatures of the world, and [ganjoor.net](https://ganjoor.net) — built and maintained by **Habib Hadianfard** and contributors since 2007 — is its most complete free corpus. This project mirrors ganjoor's data into a stable, schema-documented, citable form, and ships a small reference reader (Progressive Web App) on top.
+Persian classical poetry is one of the great literatures of the world, and [ganjoor.net](https://ganjoor.net) — built and maintained by **Hamid Reza Mohammadi** ([github.com/hrmoh](https://github.com/hrmoh)) and contributors since 2007 — is its most complete free corpus. This project mirrors ganjoor's data into a stable, schema-documented, citable form, and ships a small reference reader (Progressive Web App) on top.
 
 **The reader is the demo. The data is the product.** Our goal is the most useful piece of infrastructure for anyone — readers, app developers, scholars — who wants to build with Persian poetry.
 
@@ -114,7 +114,7 @@ Each corpus release ships SQLite + JSON + Parquet + checksums on [Releases](../.
 
 **Required attribution string for derived works:**
 
-> Persian poetry text courtesy of [گنجور — ganjoor.net](https://ganjoor.net) (Habib Hadianfard and contributors), republished under CC-BY-4.0 via [sajad2025/ganjoor](https://github.com/sajad2025/ganjoor).
+> Persian poetry text courtesy of [گنجور — ganjoor.net](https://ganjoor.net) (Hamid Reza Mohammadi and contributors), republished under CC-BY-4.0 via [sajad2025/ganjoor](https://github.com/sajad2025/ganjoor).
 
 ---
 
@@ -126,7 +126,7 @@ See [`CITATION.cff`](./CITATION.cff) — GitHub renders a "Cite this repository"
 
 ## Acknowledgements
 
-- **[ganjoor.net](https://ganjoor.net)** — Habib Hadianfard and the ganjoor community, who built and have maintained the source corpus since 2007. This project would not exist without their two decades of editorial work.
+- **[ganjoor.net](https://ganjoor.net)** — Hamid Reza Mohammadi and the ganjoor community, who built and have maintained the source corpus since 2007. This project would not exist without their two decades of editorial work.
 - **Vazirmatn** — Saber Rastikerdar (OFL).
 - **Hazm**, **DadmaTools**, **persian-tools** — for Persian NLP groundwork.
 
