@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="theme-color" content="#013D11" />
-<title>گنجور | شعر پارسی</title>
+<title>گنجور | شعر کلاسیک پارسی</title>
 <link rel="manifest" href="manifest.json" />
 <link rel="icon" type="image/png" href="favicon.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
@@ -26,6 +26,7 @@
   body { font-family: 'Vazirmatn', system-ui, sans-serif; font-feature-settings: 'ss01' on; }
   html, body, #root { height: 100%; }
   body { overscroll-behavior-y: none; }
+
   /* themes */
   .theme-sepia { background: #faf6ef; color: #2b2620; }
   .theme-sepia .surface { background: #f3ecdc; }
@@ -65,41 +66,54 @@
     .beyt-grid .mesra-1, .beyt-grid .mesra-2 { text-align: center; }
     .beyt-sep { display: none; }
   }
+
+  /* center-flow layout for masnavi / rubaiyat where each hemistich stacks */
+  .verse-flow .single { text-align: center; }
+
   .ornament {
     text-align: center;
     letter-spacing: 0.5em;
     opacity: 0.4;
     user-select: none;
   }
-  /* hide scrollbars on horizontal lists */
+
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
   .fade-in { animation: fadeIn 0.25s ease-out; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
-  /* safe area for iOS */
+  .spinner {
+    width: 1.5rem; height: 1.5rem;
+    border: 2px solid currentColor; border-right-color: transparent;
+    border-radius: 50%; display: inline-block;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
   .pb-safe { padding-bottom: max(env(safe-area-inset-bottom), 0.5rem); }
   .pt-safe { padding-top: max(env(safe-area-inset-top), 0.5rem); }
+
+  /* clickable list rows */
+  .row { transition: background 0.12s ease; }
+  .row:active { background: rgba(0, 0, 0, 0.06); }
+  .theme-dark .row:active { background: rgba(255, 255, 255, 0.06); }
 </style>
 </head>
 <body class="theme-sepia">
 <div id="root"></div>
 
 <script type="text/babel" data-presets="react">
-const { useState, useEffect, useMemo, useRef } = React;
+const { useState, useEffect, useMemo, useRef, useCallback } = React;
 
-/* =========================================================================
-   PERSIAN TEXT NORMALIZATION
-   Two-layer model per the blueprint:
-   - toDisplay: NFC + Arabic→Persian yeh/kaf, strip bidi
-   - toSearch:  aggressive, used both at index time and query time
-   ========================================================================= */
+/* ─────────────────────────────────────────────────────────────────────────
+   PERSIAN TEXT NORMALIZATION (two-layer per the blueprint)
+   ──────────────────────────────────────────────────────────────────────── */
 const FA_DIGITS = '۰۱۲۳۴۵۶۷۸۹';
 const AR_DIGITS = '٠١٢٣٤٥٦٧٨٩';
 const TO_FA = { 'ي': 'ی', 'ك': 'ک', 'ى': 'ی', 'ة': 'ه', 'ہ': 'ه' };
-const DIAC = /[\u064B-\u0652\u0670\u0640\u0654\u0655]/g;
-const BIDI = /[\u200E\u200F\u202A-\u202E\u2066-\u2069]/g;
+const DIAC = /[ً-ْٰـٕٔ]/g;
+const BIDI = /[‎‏‪-‮⁦-⁩]/g;
 
 function toDisplay(s) {
   return (s || '').normalize('NFC')
@@ -110,7 +124,7 @@ function toSearch(s) {
   let x = toDisplay(s).replace(DIAC, '')
     .replace(/[آأإ]/g, 'ا')
     .replace(/[ؤئء]/g, '')
-    .replace(/[\u200C\u200D]/g, ' ');
+    .replace(/[‌‍]/g, ' ');
   for (let i = 0; i < 10; i++) {
     x = x.replace(new RegExp(FA_DIGITS[i], 'g'), String(i));
     x = x.replace(new RegExp(AR_DIGITS[i], 'g'), String(i));
@@ -120,97 +134,86 @@ function toSearch(s) {
 function detectArabicChars(s) {
   return /[يكىةأإؤئ]/.test(s || '');
 }
+function toPersianDigits(n) {
+  return String(n).replace(/[0-9]/g, d => FA_DIGITS[+d]);
+}
 
-/* =========================================================================
-   SEED DATA — real Hafez ghazals fetched from ganjoor.net
-   Schema mirrors the blueprint's per-poem JSON shape.
-   In production these live in data/{poet}/{book}/{section}/{poem-id}.json
-   ========================================================================= */
-const POET = {
-  id: 2,
-  slug: 'hafez',
-  name_fa: 'حافظ',
-  name_full_fa: 'خواجه شمس‌الدّین محمّد حافظ شیرازی',
-  era_fa: 'قرن هشتم',
-  era_en: '14th c.',
-  birth: 1315,
-  death: 1390,
-  city_fa: 'شیراز',
+/* ─────────────────────────────────────────────────────────────────────────
+   DATA LAYER — fetch from data/ with in-memory cache
+   ──────────────────────────────────────────────────────────────────────── */
+const DATA = './data';
+const cache = new Map();
+async function fetchJson(path) {
+  if (cache.has(path)) return cache.get(path);
+  const p = fetch(path, { cache: 'force-cache' })
+    .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status} for ${path}`); return r.json(); });
+  cache.set(path, p);
+  try { return await p; } catch (e) { cache.delete(path); throw e; }
+}
+const loadPoets   = () => fetchJson(`${DATA}/_poets.json`);
+const loadPoet    = (slug) => fetchJson(`${DATA}/${slug}/_index.json`);
+const loadPoem    = (slug, catPath, file) => {
+  const path = catPath.length ? `${slug}/${catPath.join('/')}/${file}` : `${slug}/${file}`;
+  return fetchJson(`${DATA}/${path}.json`);
 };
 
-const POEMS = [
-  {
-    id: 2210,
-    canonical_id: 'hafez/divan/ghazal/81',
-    urn: 'urn:ganjoor:hafez:divan:ghazal:81',
-    ganjoor_url: '/hafez/ghazal/sh81',
-    poet: 'hafez',
-    book_fa: 'دیوان اشعار',
-    category_fa: 'غزلیات',
-    form: 'ghazal',
-    number: 81,
-    title: 'غزل شمارهٔ ۸۱',
-    incipit: 'صبحدم مرغ چمن با گل نوخاسته گفت',
-    meter_fa: 'فعلاتن فعلاتن فعلاتن فعلن (رمل مثمن مخبون محذوف)',
-    rhyme: 'فت',
-    source: 'ganjoor.net',
-    verses: [
-      { vorder: 1, position: 'right', text: 'صبحدم مرغ چمن با گل نوخاسته گفت' },
-      { vorder: 2, position: 'left',  text: 'ناز کم کن که در این باغ بسی چون تو شکفت' },
-      { vorder: 3, position: 'right', text: 'گل بخندید که از راست نرنجیم ولی' },
-      { vorder: 4, position: 'left',  text: 'هیچ عاشق سخن سخت به معشوق نگفت' },
-      { vorder: 5, position: 'right', text: 'گر طمع داری از آن جام مرصع می لعل' },
-      { vorder: 6, position: 'left',  text: 'ای بسا در که به نوک مژه‌ات باید سفت' },
-      { vorder: 7, position: 'right', text: 'تا ابد بوی محبت به مشامش نرسد' },
-      { vorder: 8, position: 'left',  text: 'هر که خاک در میخانه به رخساره نرفت' },
-      { vorder: 9, position: 'right', text: 'در گلستان ارم دوش چو از لطف هوا' },
-      { vorder: 10, position: 'left', text: 'زلف سنبل به نسیم سحری می‌آشفت' },
-      { vorder: 11, position: 'right', text: 'گفتم ای مسند جم جام جهان‌بینت کو' },
-      { vorder: 12, position: 'left', text: 'گفت افسوس که آن دولت بیدار بخفت' },
-      { vorder: 13, position: 'right', text: 'سخن عشق نه آن است که آید به زبان' },
-      { vorder: 14, position: 'left', text: 'ساقیا می ده و کوتاه کن این گفت و شنفت' },
-      { vorder: 15, position: 'right', text: 'اشک حافظ خرد و صبر به دریا انداخت' },
-      { vorder: 16, position: 'left', text: 'چه کند سوز غم عشق نیارست نهفت' },
-    ],
-  },
-  {
-    id: 2237,
-    canonical_id: 'hafez/divan/ghazal/108',
-    urn: 'urn:ganjoor:hafez:divan:ghazal:108',
-    ganjoor_url: '/hafez/ghazal/sh108',
-    poet: 'hafez',
-    book_fa: 'دیوان اشعار',
-    category_fa: 'غزلیات',
-    form: 'ghazal',
-    number: 108,
-    title: 'غزل شمارهٔ ۱۰۸',
-    incipit: 'خسروا گوی فلک در خم چوگان تو باد',
-    meter_fa: 'فعلاتن فعلاتن فعلاتن فعلن (رمل مثمن مخبون محذوف)',
-    rhyme: 'ان تو باد',
-    source: 'ganjoor.net',
-    verses: [
-      { vorder: 1, position: 'right', text: 'خسروا گویِ فلک در خَمِ چوگان تو باد' },
-      { vorder: 2, position: 'left',  text: 'ساحتِ کون و مکان عرصهٔ میدانِ تو باد' },
-      { vorder: 3, position: 'right', text: 'زلفِ خاتونِ ظفر شیفتهٔ پرچم توست' },
-      { vorder: 4, position: 'left',  text: 'دیدهٔ فتحِ ابد عاشقِ جولانِ تو باد' },
-      { vorder: 5, position: 'right', text: 'ای که انشاءِ عطارد صفتِ شوکتِ توست' },
-      { vorder: 6, position: 'left',  text: 'عقل کل چاکرِ طُغراکشِ دیوانِ تو باد' },
-      { vorder: 7, position: 'right', text: 'طِیرهٔ جلوهٔ طوبی قدِ چون سروِ تو شد' },
-      { vorder: 8, position: 'left',  text: 'غیرتِ خُلدِ بَرین ساحتِ بُستانِ تو باد' },
-      { vorder: 9, position: 'right', text: 'نه به تنها حَیَوانات و نَباتات و جَماد' },
-      { vorder: 10, position: 'left', text: 'هر چه در عالمِ امر است به فرمانِ تو باد' },
-    ],
-  },
-];
+/* Look up a category node inside a poet tree given a slug path. */
+function getCatAt(tree, catPath) {
+  let node = tree;
+  for (const slug of catPath) {
+    const next = (node.categories || []).find(c => c.slug === slug);
+    if (!next) return null;
+    node = next;
+  }
+  return node;
+}
+/* Breadcrumb from poet tree + cat slug path */
+function breadcrumbFor(tree, catPath) {
+  const out = [];
+  let node = tree;
+  for (const slug of catPath) {
+    const next = (node.categories || []).find(c => c.slug === slug);
+    if (!next) break;
+    out.push({ slug, title_fa: next.title_fa });
+    node = next;
+  }
+  return out;
+}
 
-/* Catalog stub: full 495-ghazal list shown as numbered placeholders.
-   The 2 we have real data for are flagged hasData. */
-const HAFEZ_GHAZAL_COUNT = 495;
-const POEMS_BY_NUMBER = Object.fromEntries(POEMS.map(p => [p.number, p]));
+/* ─────────────────────────────────────────────────────────────────────────
+   HASH ROUTER
+     #/                            → home
+     #/poets                       → poet picker
+     #/poet/hafez                  → poet view (top cats)
+     #/poet/hafez/ghazal           → category view (poem list)
+     #/poet/saadi/golestan/gbab4   → nested category view
+     #/read/hafez/ghazal/108       → poem reader
+     #/search                      → search
+     #/settings                    → settings
+   ──────────────────────────────────────────────────────────────────────── */
+function parseHash() {
+  const raw = (location.hash || '#/').slice(1);
+  const parts = raw.split('/').filter(Boolean);
+  if (parts.length === 0) return { view: 'home' };
+  const head = parts[0];
+  if (head === 'poets')    return { view: 'poets' };
+  if (head === 'search')   return { view: 'search' };
+  if (head === 'settings') return { view: 'settings' };
+  if (head === 'poet' && parts.length >= 2)
+    return { view: 'poet', poet: parts[1], catPath: parts.slice(2) };
+  if (head === 'read' && parts.length >= 3) {
+    const file = parts[parts.length - 1];
+    return { view: 'read', poet: parts[1], catPath: parts.slice(2, -1), file };
+  }
+  return { view: 'home' };
+}
+function navigate(hash) {
+  if (location.hash !== hash) location.hash = hash;
+}
 
-/* =========================================================================
-   THEMES, FONTS, SETTINGS
-   ========================================================================= */
+/* ─────────────────────────────────────────────────────────────────────────
+   THEME / FONT / SETTINGS
+   ──────────────────────────────────────────────────────────────────────── */
 const THEMES = [
   { id: 'sepia', label: 'کاهی', emoji: '📜' },
   { id: 'light', label: 'روشن', emoji: '☀️' },
@@ -218,449 +221,731 @@ const THEMES = [
 ];
 const FONTS = [
   { id: 'vazir',   label: 'وزیرمتن', stack: "'Vazirmatn', system-ui, sans-serif" },
-  { id: 'estedad', label: 'استعداد',  stack: "'Estedad', 'Vazirmatn', sans-serif" },
+  { id: 'estedad', label: 'استعداد', stack: "'Estedad', 'Vazirmatn', sans-serif" },
 ];
 const FONT_SIZES = [
-  { id: 'xs', label: 'ریز', cls: 'text-base' },
-  { id: 'sm', label: 'کوچک', cls: 'text-lg' },
-  { id: 'md', label: 'متوسط', cls: 'text-xl' },
-  { id: 'lg', label: 'بزرگ', cls: 'text-2xl' },
-  { id: 'xl', label: 'درشت', cls: 'text-3xl' },
+  { id: 'xs', label: 'ریز',     cls: 'text-base' },
+  { id: 'sm', label: 'کوچک',    cls: 'text-lg' },
+  { id: 'md', label: 'متوسط',   cls: 'text-xl' },
+  { id: 'lg', label: 'بزرگ',    cls: 'text-2xl' },
+  { id: 'xl', label: 'درشت',    cls: 'text-3xl' },
 ];
+function useLocalStorage(key, initial) {
+  const [v, setV] = useState(() => {
+    try { const s = localStorage.getItem(key); return s !== null ? JSON.parse(s) : initial; }
+    catch { return initial; }
+  });
+  useEffect(() => { try { localStorage.setItem(key, JSON.stringify(v)); } catch {} }, [key, v]);
+  return [v, setV];
+}
 
-/* =========================================================================
-   COMPONENTS
-   ========================================================================= */
-
+/* ─────────────────────────────────────────────────────────────────────────
+   APP
+   ──────────────────────────────────────────────────────────────────────── */
 function App() {
-  const [theme, setTheme] = useState('sepia');
-  const [font, setFont] = useState('vazir');
-  const [fontSize, setFontSize] = useState('md');
-  const [tab, setTab] = useState('home');      // home | library | search | settings
-  const [openPoem, setOpenPoem] = useState(null);
-  const [favorites, setFavorites] = useState(new Set());
+  const [route, setRoute] = useState(parseHash());
+  const [theme, setTheme] = useLocalStorage('theme', 'sepia');
+  const [font, setFont] = useLocalStorage('font', 'vazir');
+  const [fontSize, setFontSize] = useLocalStorage('fontSize', 'md');
+  const [favorites, setFavorites] = useLocalStorage('favorites', []);
+  const [recents, setRecents] = useLocalStorage('recents', []);
 
+  useEffect(() => {
+    const onHash = () => setRoute(parseHash());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
   useEffect(() => {
     document.body.className = `theme-${theme}`;
     document.body.style.fontFamily = FONTS.find(f => f.id === font).stack;
   }, [theme, font]);
 
-  const toggleFav = (id) => {
-    setFavorites(prev => {
-      const n = new Set(prev);
-      if (n.has(id)) n.delete(id); else n.add(id);
-      return n;
+  const toggleFav = useCallback((key) => {
+    setFavorites(prev => prev.includes(key) ? prev.filter(x => x !== key) : [...prev, key]);
+  }, []);
+  const pushRecent = useCallback((key) => {
+    setRecents(prev => {
+      const next = [key, ...prev.filter(x => x !== key)];
+      return next.slice(0, 20);
     });
-  };
+  }, []);
 
-  const settingsProps = { theme, setTheme, font, setFont, fontSize, setFontSize };
+  const titles = {
+    home: 'گنجور', poets: 'فهرست شاعران', poet: '', search: 'جست‌وجو', settings: 'تنظیمات', read: '',
+  };
+  const showBack = route.view !== 'home';
+  const headerTitle = titles[route.view] || '';
 
   return (
     <div className="min-h-full flex flex-col">
-      <TopBar tab={tab} onSearch={() => setTab('search')} onSettings={() => setTab('settings')} />
+      <TopBar
+        title={headerTitle}
+        showBack={showBack}
+        onBack={() => history.back()}
+        onSearch={() => navigate('#/search')}
+        onSettings={() => navigate('#/settings')}
+      />
       <main className="flex-1 overflow-y-auto pb-24">
-        {openPoem ? (
+        {route.view === 'home' && <Home recents={recents} />}
+        {route.view === 'poets' && <PoetPicker />}
+        {route.view === 'poet' && <PoetView slug={route.poet} catPath={route.catPath || []} />}
+        {route.view === 'read' && (
           <Reader
-            poem={openPoem}
+            slug={route.poet}
+            catPath={route.catPath || []}
+            file={route.file}
             fontSize={fontSize}
-            onClose={() => setOpenPoem(null)}
-            isFav={favorites.has(openPoem.id)}
-            onFav={() => toggleFav(openPoem.id)}
+            favorites={favorites}
+            onToggleFav={toggleFav}
+            onView={pushRecent}
           />
-        ) : tab === 'home' ? (
-          <Home onOpenPoem={setOpenPoem} onTab={setTab} />
-        ) : tab === 'library' ? (
-          <Library onOpenPoem={setOpenPoem} />
-        ) : tab === 'search' ? (
-          <Search onOpenPoem={setOpenPoem} />
-        ) : (
-          <Settings {...settingsProps} favCount={favorites.size} />
+        )}
+        {route.view === 'search' && <SearchView />}
+        {route.view === 'settings' && (
+          <Settings
+            theme={theme} setTheme={setTheme}
+            font={font} setFont={setFont}
+            fontSize={fontSize} setFontSize={setFontSize}
+            favCount={favorites.length}
+          />
         )}
       </main>
-      {!openPoem && <BottomNav tab={tab} setTab={setTab} />}
+      {route.view !== 'read' && <BottomNav route={route} />}
     </div>
   );
 }
 
-function TopBar({ tab, onSearch, onSettings }) {
-  const titles = { home: 'گنجور', library: 'دیوان حافظ', search: 'جست‌وجو', settings: 'تنظیمات' };
+function TopBar({ title, showBack, onBack, onSearch, onSettings }) {
   return (
     <header className="surface border-b border-soft pt-safe">
-      <div className="flex items-center justify-between px-4 py-3">
-        <button onClick={onSettings} className="text-2xl muted active:opacity-50">⚙</button>
-        <h1 className="text-lg font-semibold">{titles[tab]}</h1>
-        <button onClick={onSearch} className="text-2xl muted active:opacity-50">🔍</button>
+      <div className="flex items-center justify-between px-3 py-3 gap-2">
+        {showBack
+          ? <button onClick={onBack} className="text-2xl muted active:opacity-50 w-9 text-center">→</button>
+          : <button onClick={onSettings} className="text-2xl muted active:opacity-50 w-9 text-center">⚙</button>}
+        <h1 className="text-base font-semibold truncate flex-1 text-center">{title || 'گنجور'}</h1>
+        <button onClick={onSearch} className="text-2xl muted active:opacity-50 w-9 text-center">🔍</button>
       </div>
     </header>
   );
 }
 
-function Home({ onOpenPoem, onTab }) {
-  const ghazal = POEMS[0];
-  const faal = () => {
-    const p = POEMS[Math.floor(Math.random() * POEMS.length)];
-    onOpenPoem(p);
+/* ─────────────────────────────────────────────────────────────────────────
+   HOME
+   ──────────────────────────────────────────────────────────────────────── */
+function Home({ recents }) {
+  const [poets, setPoets] = useState(null);
+  const [hafezIndex, setHafezIndex] = useState(null);
+  const [faalLoading, setFaalLoading] = useState(false);
+
+  useEffect(() => { loadPoets().then(d => setPoets(d.poets || [])).catch(() => setPoets([])); }, []);
+  useEffect(() => { loadPoet('hafez').then(setHafezIndex).catch(() => {}); }, []);
+
+  const featuredPoets = useMemo(() => {
+    if (!poets) return [];
+    const want = ['hafez', 'saadi', 'moulavi', 'khayyam', 'ferdousi', 'attar', 'nezami', 'sanaee'];
+    return want.map(s => poets.find(p => p.slug === s)).filter(Boolean);
+  }, [poets]);
+
+  const doFaal = async () => {
+    if (!hafezIndex || faalLoading) return;
+    setFaalLoading(true);
+    try {
+      // Pick a random ghazal from hafez index
+      const ghazalCat = (hafezIndex.tree.categories || []).find(c => c.slug === 'ghazal');
+      if (!ghazalCat || !ghazalCat.poems || !ghazalCat.poems.length) return;
+      const pick = ghazalCat.poems[Math.floor(Math.random() * ghazalCat.poems.length)];
+      navigate(`#/read/hafez/ghazal/${pick.n}`);
+    } finally { setFaalLoading(false); }
   };
+
   return (
     <div className="fade-in">
-      {/* hero */}
-      <section className="px-5 pt-6 pb-4">
-        <p className="muted text-sm">از دیوان</p>
-        <h2 className="text-3xl font-bold mt-1">حافظ شیرازی</h2>
-        <p className="muted text-sm mt-1">{POET.name_full_fa}</p>
+      <section className="px-5 pt-6 pb-2">
+        <p className="muted text-sm">آرشیو متن‌باز شعر کلاسیک پارسی</p>
+        <h2 className="text-3xl font-bold mt-1">گنجور</h2>
+        <p className="muted text-sm mt-1">
+          {poets ? toPersianDigits(poets.length) : '—'} شاعر،
+          {' '}{poets ? toPersianDigits(poets.reduce((s, p) => s + (p.poems_count || 0), 0).toLocaleString('fa-IR')) : '—'} شعر
+        </p>
       </section>
 
-      {/* faal card */}
-      <section className="px-4">
+      <section className="px-4 mt-4">
         <button
-          onClick={faal}
-          className="w-full surface border border-soft rounded-2xl p-5 text-right active:opacity-80 transition"
+          onClick={doFaal}
+          disabled={!hafezIndex || faalLoading}
+          className="w-full surface border border-soft rounded-2xl p-5 text-right active:opacity-80 transition disabled:opacity-60"
         >
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1">
-              <p className="accent text-sm font-semibold mb-1">تفأل</p>
-              <p className="text-base leading-relaxed">از دیوان حافظ غزلی برای شما برگزیده می‌شود</p>
+              <p className="accent text-sm font-semibold mb-1">تفأل به دیوان حافظ</p>
+              <p className="text-base leading-relaxed">
+                {faalLoading ? 'در حال انتخاب…' : 'غزلی برای شما برگزیده می‌شود'}
+              </p>
             </div>
-            <span className="text-4xl">✦</span>
+            <span className="text-4xl">{faalLoading ? <span className="spinner" /> : '✦'}</span>
           </div>
         </button>
       </section>
 
-      {/* featured ghazal preview */}
       <section className="px-4 mt-5">
-        <p className="muted text-xs mb-2 px-1">برگزیدهٔ امروز</p>
-        <button
-          onClick={() => onOpenPoem(ghazal)}
-          className="w-full surface border border-soft rounded-2xl p-5 text-right active:opacity-80 transition"
-        >
-          <p className="muted text-xs mb-2">{ghazal.title}</p>
-          <p className="beyt text-lg mb-1">{ghazal.verses[0].text}</p>
-          <p className="beyt text-lg muted">{ghazal.verses[1].text}</p>
-        </button>
+        <div className="flex items-center justify-between px-1 mb-2">
+          <p className="muted text-xs">شاعران برجسته</p>
+          <button onClick={() => navigate('#/poets')} className="accent text-xs">همه ←</button>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          {featuredPoets.map(p => (
+            <button
+              key={p.slug}
+              onClick={() => navigate(`#/poet/${p.slug}`)}
+              className="surface border border-soft rounded-2xl p-4 text-right active:opacity-80"
+            >
+              <p className="font-bold text-lg">{toDisplay(p.nickname_fa)}</p>
+              <p className="muted text-xs mt-0.5">{toDisplay(p.name_fa)}</p>
+              <p className="muted text-xs mt-1">{toPersianDigits(p.poems_count.toLocaleString('fa-IR'))} شعر</p>
+            </button>
+          ))}
+        </div>
       </section>
 
-      {/* quick links */}
-      <section className="px-4 mt-5 grid grid-cols-2 gap-3">
-        <QuickLink label="کل دیوان" sub="۴۹۵ غزل" emoji="📖" onClick={() => onTab('library')} />
-        <QuickLink label="جست‌وجو" sub="در متن همه" emoji="🔎" onClick={() => onTab('search')} />
-      </section>
+      {recents.length > 0 && (
+        <section className="px-4 mt-6">
+          <p className="muted text-xs mb-2 px-1">اخیراً خوانده شده</p>
+          <div className="space-y-2">
+            {recents.slice(0, 5).map((key, i) => (
+              <RecentRow key={i} k={key} />
+            ))}
+          </div>
+        </section>
+      )}
 
-      {/* about */}
       <section className="px-5 mt-7">
         <h3 className="text-sm font-semibold mb-2">دربارهٔ این پروژه</h3>
         <p className="muted text-sm leading-7">
-          گنجور-جیب یک آرشیو متن‌باز از شعر کلاسیک پارسی است، بر پایهٔ دادهٔ <span className="accent">ganjoor.net</span>،
-          با هدفی روشن: زیرساختی پایدار و قابل ارجاع برای پروژه‌های آینده.
-          کد متن‌باز (MIT)، داده تحت CC-BY-4.0.
+          گنجور-جیب آرشیوی متن‌باز و قابل ارجاع از شعر کلاسیک پارسی است،
+          بر پایهٔ دادهٔ <span className="accent">ganjoor.net</span>.
+          هدف: زیرساختی پایدار برای پروژه‌های آینده. کد تحت MIT، داده تحت CC-BY-4.0.
         </p>
       </section>
 
       <section className="px-5 mt-5 mb-8">
         <p className="muted text-xs">
-          منبع داده: <a className="accent underline" href="https://ganjoor.net">گنجور</a> · حبیب هادیان‌فرد و همکاران
+          منبع داده: <a className="accent underline" href="https://ganjoor.net">گنجور</a> · حمیدرضا محمدی و همکاران
         </p>
       </section>
     </div>
   );
 }
-
-function QuickLink({ label, sub, emoji, onClick }) {
+function RecentRow({ k }) {
+  // k = "slug/cat1/cat2/file"
+  const parts = (k || '').split('/');
+  if (parts.length < 2) return null;
+  const slug = parts[0];
+  const file = parts[parts.length - 1];
+  const cat = parts.slice(1, -1).join(' · ');
   return (
-    <button onClick={onClick} className="surface border border-soft rounded-2xl p-4 text-right active:opacity-80">
-      <div className="text-2xl mb-1">{emoji}</div>
-      <p className="font-semibold text-sm">{label}</p>
-      <p className="muted text-xs mt-0.5">{sub}</p>
+    <button
+      onClick={() => navigate(`#/read/${k}`)}
+      className="row w-full surface border border-soft rounded-xl px-4 py-3 text-right"
+    >
+      <p className="text-sm">{toDisplay(slug)} {cat ? `· ${toDisplay(cat)}` : ''} · {toPersianDigits(file)}</p>
     </button>
   );
 }
 
-function Library({ onOpenPoem }) {
-  const items = Array.from({ length: HAFEZ_GHAZAL_COUNT }, (_, i) => i + 1);
+/* ─────────────────────────────────────────────────────────────────────────
+   POET PICKER
+   ──────────────────────────────────────────────────────────────────────── */
+function PoetPicker() {
+  const [poets, setPoets] = useState(null);
   const [q, setQ] = useState('');
+  useEffect(() => { loadPoets().then(d => setPoets(d.poets || [])).catch(() => setPoets([])); }, []);
+
   const filtered = useMemo(() => {
-    if (!q.trim()) return items;
-    const n = parseInt(toSearch(q), 10);
-    if (Number.isFinite(n)) return items.filter(i => String(i).includes(String(n)));
-    return items;
-  }, [q]);
+    if (!poets) return [];
+    const needle = toSearch(q);
+    if (!needle) return poets;
+    return poets.filter(p =>
+      toSearch(p.nickname_fa || '').includes(needle) ||
+      toSearch(p.name_fa || '').includes(needle) ||
+      (p.slug || '').toLowerCase().includes(needle)
+    );
+  }, [poets, q]);
+
+  if (poets === null) return <Loading label="در حال بارگیری فهرست شاعران…" />;
 
   return (
     <div className="fade-in">
-      <div className="px-4 pt-4 pb-2 sticky top-0 surface/95 backdrop-blur z-10">
+      <div className="px-4 pt-4 sticky top-0 z-10" style={{ backgroundColor: 'inherit' }}>
         <div className="surface-2 rounded-xl px-3 py-2 flex items-center gap-2">
-          <span className="muted">#</span>
+          <span className="muted">🔎</span>
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            inputMode="numeric"
-            placeholder="شمارهٔ غزل…"
+            placeholder="جست‌وجوی نام شاعر…"
             className="bg-transparent outline-none flex-1 text-base"
           />
+          {q && <button onClick={() => setQ('')} className="muted text-xl">×</button>}
         </div>
-      </div>
-      <div className="px-3 pb-4">
-        <div className="grid grid-cols-4 gap-2 mt-2">
-          {filtered.map(n => {
-            const p = POEMS_BY_NUMBER[n];
-            const has = !!p;
-            return (
-              <button
-                key={n}
-                disabled={!has}
-                onClick={() => has && onOpenPoem(p)}
-                className={`aspect-square rounded-xl border border-soft flex flex-col items-center justify-center
-                  ${has ? 'surface active:opacity-70' : 'surface-2 opacity-40'}`}
-              >
-                <span className={`text-xl font-bold ${has ? 'accent' : 'muted'}`}>{toPersianDigits(n)}</span>
-                {has && <span className="muted text-[10px] mt-0.5">●</span>}
-              </button>
-            );
-          })}
-        </div>
-        <p className="muted text-xs text-center mt-4 px-6 leading-6">
-          در این نمونه فقط دو غزل (۸۱ و ۱۰۸) داده دارند.
-          در نسخهٔ کامل، هر ۴۹۵ غزل از طریق نشانی پایدار قابل دسترسی خواهد بود.
+        <p className="muted text-xs mt-2 px-1">
+          {toPersianDigits(filtered.length)} از {toPersianDigits(poets.length)} شاعر
         </p>
+      </div>
+
+      <div className="px-3 py-2 grid grid-cols-1 gap-2">
+        {filtered.map(p => (
+          <button
+            key={p.slug}
+            onClick={() => navigate(`#/poet/${p.slug}`)}
+            className="row surface border border-soft rounded-xl px-4 py-3 text-right"
+          >
+            <div className="flex items-baseline justify-between gap-3">
+              <div className="flex-1 min-w-0">
+                <p className="font-bold truncate">{toDisplay(p.nickname_fa || p.name_fa || p.slug)}</p>
+                {p.name_fa && p.name_fa !== p.nickname_fa && (
+                  <p className="muted text-xs truncate mt-0.5">{toDisplay(p.name_fa)}</p>
+                )}
+              </div>
+              <p className="muted text-xs shrink-0">
+                {toPersianDigits((p.poems_count || 0).toLocaleString('fa-IR'))} شعر
+              </p>
+            </div>
+            {(p.birth_year || p.death_year) && (
+              <p className="muted text-xs mt-1">
+                {p.birth_year ? toPersianDigits(p.birth_year) : '؟'} – {p.death_year ? toPersianDigits(p.death_year) : '؟'} ه.ق
+                {p.birth_place ? ` · ${toDisplay(p.birth_place)}` : ''}
+              </p>
+            )}
+          </button>
+        ))}
       </div>
     </div>
   );
 }
 
-function toPersianDigits(n) {
-  return String(n).replace(/[0-9]/g, d => FA_DIGITS[+d]);
+/* ─────────────────────────────────────────────────────────────────────────
+   POET VIEW — shows top-level cats AND, when navigated into, sub-cats/poems
+   ──────────────────────────────────────────────────────────────────────── */
+function PoetView({ slug, catPath }) {
+  const [data, setData] = useState(null);
+  const [err, setErr] = useState(null);
+  useEffect(() => {
+    setData(null); setErr(null);
+    loadPoet(slug).then(setData).catch(e => setErr(e.message));
+  }, [slug]);
+
+  if (err) return <ErrorBox msg={err} />;
+  if (!data) return <Loading label="در حال بارگیری دیوان…" />;
+
+  const node = getCatAt(data.tree, catPath);
+  if (!node) return <ErrorBox msg="بخش مورد نظر یافت نشد." />;
+
+  const crumbs = breadcrumbFor(data.tree, catPath);
+  const subs = node.categories || [];
+  const poems = node.poems || [];
+
+  return (
+    <div className="fade-in">
+      <PoetHeader poet={data.poet} slug={slug} crumbs={crumbs} />
+      <div className="px-4 mt-4 space-y-2 pb-8">
+        {subs.length > 0 && subs.map(sub => (
+          <button
+            key={sub.slug}
+            onClick={() => navigate(`#/poet/${slug}/${[...catPath, sub.slug].join('/')}`)}
+            className="row w-full surface border border-soft rounded-xl px-4 py-3 text-right"
+          >
+            <div className="flex items-baseline justify-between gap-3">
+              <p className="font-semibold flex-1 min-w-0 truncate">{toDisplay(sub.title_fa || sub.slug)}</p>
+              <p className="muted text-xs shrink-0">
+                {toPersianDigits((sub.poems_count || 0).toLocaleString('fa-IR'))} شعر
+              </p>
+            </div>
+            {sub.book_name && (
+              <p className="muted text-xs mt-0.5">{toDisplay(sub.book_name)}</p>
+            )}
+          </button>
+        ))}
+        {poems.length > 0 && (
+          <PoemList slug={slug} catPath={catPath} poems={poems} />
+        )}
+        {subs.length === 0 && poems.length === 0 && (
+          <p className="muted text-center mt-8">این بخش خالی است.</p>
+        )}
+      </div>
+    </div>
+  );
 }
 
-function Reader({ poem, fontSize, onClose, isFav, onFav }) {
-  const sizeCls = FONT_SIZES.find(s => s.id === fontSize).cls;
-  const beyts = [];
-  for (let i = 0; i < poem.verses.length; i += 2) {
-    beyts.push([poem.verses[i], poem.verses[i + 1]]);
+function PoetHeader({ poet, slug, crumbs }) {
+  return (
+    <section className="px-5 pt-5">
+      <p className="muted text-xs">/{slug}{crumbs.map(c => `/${c.slug}`).join('')}</p>
+      <h2 className="text-2xl font-bold mt-1">
+        {toDisplay(poet.nickname_fa || poet.name_fa || slug)}
+      </h2>
+      {crumbs.length === 0 && poet.name_fa && (
+        <p className="muted text-sm mt-1">{toDisplay(poet.name_fa)}</p>
+      )}
+      {crumbs.length > 0 && (
+        <p className="text-sm mt-1">
+          {crumbs.map((c, i) => (
+            <span key={c.slug}>
+              {i > 0 && <span className="muted"> · </span>}
+              <span>{toDisplay(c.title_fa || c.slug)}</span>
+            </span>
+          ))}
+        </p>
+      )}
+      {crumbs.length === 0 && (poet.birth_year || poet.birth_place) && (
+        <p className="muted text-xs mt-2">
+          {poet.birth_year ? `زادهٔ ${toPersianDigits(poet.birth_year)} ه.ق` : ''}
+          {poet.birth_year && poet.birth_place ? ' · ' : ''}
+          {poet.birth_place ? toDisplay(poet.birth_place) : ''}
+        </p>
+      )}
+    </section>
+  );
+}
+
+function PoemList({ slug, catPath, poems }) {
+  const [q, setQ] = useState('');
+  const [page, setPage] = useState(0);
+  const PAGE = 100;
+
+  const filtered = useMemo(() => {
+    const needle = toSearch(q);
+    if (!needle) return poems;
+    return poems.filter(p =>
+      toSearch(p.title || '').includes(needle) ||
+      toSearch(p.first || '').includes(needle)
+    );
+  }, [poems, q]);
+  const shown = filtered.slice(0, (page + 1) * PAGE);
+  const more = filtered.length > shown.length;
+
+  return (
+    <>
+      {poems.length > 30 && (
+        <div className="surface-2 rounded-xl px-3 py-2 flex items-center gap-2 mb-2">
+          <span className="muted">🔎</span>
+          <input
+            value={q}
+            onChange={(e) => { setQ(e.target.value); setPage(0); }}
+            placeholder="جست‌وجو در این بخش…"
+            className="bg-transparent outline-none flex-1 text-base"
+          />
+          {q && <button onClick={() => setQ('')} className="muted text-xl">×</button>}
+        </div>
+      )}
+      {shown.map(p => (
+        <button
+          key={p.id}
+          onClick={() => navigate(`#/read/${slug}/${[...catPath, p.n].join('/')}`)}
+          className="row w-full surface border border-soft rounded-xl px-4 py-3 text-right"
+        >
+          <div className="flex items-baseline justify-between gap-2">
+            <p className="muted text-xs shrink-0 w-12">{toPersianDigits(p.n)}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium truncate">{toDisplay(p.title || '')}</p>
+              {p.first && (
+                <p className="muted text-xs mt-0.5 truncate">{toDisplay(p.first)}</p>
+              )}
+            </div>
+          </div>
+        </button>
+      ))}
+      {more && (
+        <button
+          onClick={() => setPage(p => p + 1)}
+          className="w-full surface-2 border border-soft rounded-xl py-3 text-sm muted active:opacity-70 mt-2"
+        >
+          نمایش {toPersianDigits(Math.min(PAGE, filtered.length - shown.length))} مورد بیشتر
+          ({toPersianDigits(shown.length)} از {toPersianDigits(filtered.length)})
+        </button>
+      )}
+    </>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   READER
+   ──────────────────────────────────────────────────────────────────────── */
+function Reader({ slug, catPath, file, fontSize, favorites, onToggleFav, onView }) {
+  const [poem, setPoem] = useState(null);
+  const [err, setErr] = useState(null);
+  const [poetIndex, setPoetIndex] = useState(null);
+  const sizeCls = (FONT_SIZES.find(s => s.id === fontSize) || FONT_SIZES[2]).cls;
+  const favKey = `${slug}/${catPath.join('/')}${catPath.length ? '/' : ''}${file}`;
+  const isFav = favorites.includes(favKey);
+
+  useEffect(() => {
+    setPoem(null); setErr(null);
+    loadPoem(slug, catPath, file).then(env => {
+      setPoem(env.poem || env);
+      onView(favKey);
+    }).catch(e => setErr(e.message));
+    loadPoet(slug).then(setPoetIndex).catch(() => {});
+  }, [slug, catPath.join('/'), file]);
+
+  if (err) return <ErrorBox msg={err} />;
+  if (!poem) return <Loading label="در حال بارگیری شعر…" />;
+
+  // Group verses into beyts: pair pos=0 with pos=1; standalone otherwise.
+  const verses = (poem.verses || []).slice().sort((a, b) => (a.vOrder || 0) - (b.vOrder || 0));
+  const groups = [];
+  let i = 0;
+  while (i < verses.length) {
+    const v = verses[i];
+    const next = verses[i + 1];
+    if (v.versePosition === 0 && next && next.versePosition === 1) {
+      groups.push({ type: 'beyt', a: v, b: next });
+      i += 2;
+    } else if (v.versePosition === 2 || v.versePosition === 3) {
+      groups.push({ type: 'centered', a: v });
+      i += 1;
+    } else {
+      groups.push({ type: 'single', a: v });
+      i += 1;
+    }
   }
+
+  const cat = poem.category?.cat?.title || '';
+  const poet = poem.category?.poet?.nickname || '';
+  const fullUrl = `https://ganjoor.net${poem.fullUrl || ''}`;
+  const localUrl = `${location.origin}${location.pathname}#/read/${slug}/${[...catPath, file].join('/')}`;
+  const urn = `urn:ganjoor:${slug}${catPath.length ? ':' + catPath.join(':') : ''}:${file}`;
+
+  // Navigate prev/next via poem.previous / poem.next when available
+  const prev = poem.previous;
+  const next = poem.next;
+  function goSibling(target) {
+    if (!target || !target.fullUrl) return;
+    // target.fullUrl looks like /hafez/ghazal/sh107
+    const parts = target.fullUrl.replace(/^\//, '').split('/');
+    const tslug = parts[0];
+    const tcats = parts.slice(1, -1);
+    const traw = parts[parts.length - 1];
+    const tfile = /^sh(\d+)$/.test(traw) ? RegExp.$1 : traw;
+    navigate(`#/read/${tslug}/${[...tcats, tfile].join('/')}`);
+  }
+
+  const handleShare = async () => {
+    const txt = `${poem.title} — ${poet}\n${(poem.plainText || '').split('\n').slice(0, 2).join('\n')}\n\n${localUrl}`;
+    if (navigator.share) {
+      try { await navigator.share({ title: poem.title, text: txt, url: localUrl }); }
+      catch {}
+    } else {
+      try {
+        await navigator.clipboard.writeText(txt);
+        alert('متن و پیوند در کلیپ‌بورد کپی شد.');
+      } catch {}
+    }
+  };
+  const handleCopyLink = async () => {
+    try { await navigator.clipboard.writeText(localUrl); alert('پیوند کپی شد.'); }
+    catch {}
+  };
+
   return (
     <div className="fade-in pb-12">
-      {/* reader header */}
-      <header className="px-4 py-3 flex items-center justify-between border-b border-soft surface sticky top-0 z-10">
-        <button onClick={onClose} className="text-2xl active:opacity-50">→</button>
-        <div className="text-center flex-1 mx-3 truncate">
-          <p className="text-xs muted">{POET.name_fa} · {poem.category_fa}</p>
-          <p className="text-sm font-semibold">{poem.title}</p>
+      <header className="px-3 py-3 flex items-center gap-2 border-b border-soft surface sticky top-0 z-10 pt-safe">
+        <button onClick={() => history.back()} className="text-2xl active:opacity-50 w-9 text-center">→</button>
+        <div className="flex-1 min-w-0 text-center">
+          <p className="text-[11px] muted truncate">{toDisplay(poet)} · {toDisplay(cat)}</p>
+          <p className="text-sm font-semibold truncate">{toDisplay(poem.title || '')}</p>
         </div>
-        <button onClick={onFav} className="text-2xl active:opacity-50">
+        <button onClick={() => onToggleFav(favKey)} className="text-2xl active:opacity-50 w-9 text-center">
           {isFav ? '★' : '☆'}
         </button>
       </header>
 
-      {/* poem body */}
       <article className="px-4 py-6">
         <div className="ornament my-4">۞</div>
 
-        {beyts.map((pair, idx) => (
-          <div key={idx} className="my-4">
-            <div className="beyt-grid beyt">
-              <p className={`mesra-1 ${sizeCls}`}>{toDisplay(pair[0].text)}</p>
-              <span className="beyt-sep muted text-xs">۞</span>
-              <p className={`mesra-2 ${sizeCls}`}>{pair[1] ? toDisplay(pair[1].text) : ''}</p>
+        {groups.map((g, idx) => {
+          if (g.type === 'beyt') {
+            return (
+              <div key={idx} className="my-4">
+                <div className="beyt-grid beyt">
+                  <p className={`mesra-1 ${sizeCls}`}>{toDisplay(g.a.text)}</p>
+                  <span className="beyt-sep muted text-xs">۞</span>
+                  <p className={`mesra-2 ${sizeCls}`}>{toDisplay(g.b.text)}</p>
+                </div>
+              </div>
+            );
+          }
+          // centered or standalone single hemistich
+          return (
+            <div key={idx} className={`my-3 verse-flow`}>
+              <p className={`single text-center ${sizeCls}`}>{toDisplay(g.a.text)}</p>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         <div className="ornament mt-6 mb-4">۞</div>
 
-        {/* metadata card */}
-        <div className="surface-2 rounded-xl p-4 mt-6 text-sm space-y-2">
-          <Row k="وزن" v={poem.meter_fa} />
-          <Row k="قافیه" v={poem.rhyme} />
-          <Row k="قالب" v="غزل" />
-          <Row k="تعداد ابیات" v={toPersianDigits(beyts.length)} />
-          <Row k="نشانی پایدار" v={poem.urn} mono />
+        <div className="flex gap-2 mt-4">
+          <button onClick={() => goSibling(prev)} disabled={!prev}
+            className="surface border border-soft rounded-xl px-3 py-2 text-sm flex-1 active:opacity-70 disabled:opacity-40">
+            → پیشین
+          </button>
+          <button onClick={() => goSibling(next)} disabled={!next}
+            className="surface border border-soft rounded-xl px-3 py-2 text-sm flex-1 active:opacity-70 disabled:opacity-40">
+            بعدی ←
+          </button>
+        </div>
+
+        <div className="surface-2 rounded-xl p-4 mt-5 text-sm space-y-2">
+          {poem.ganjoorMetre?.rhythm && <Row k="وزن" v={poem.ganjoorMetre.rhythm} />}
+          {poem.rhyme && <Row k="قافیه" v={poem.rhyme} />}
+          {cat && <Row k="بخش" v={cat} />}
+          {typeof poem.coupletsCount === 'number' && (
+            <Row k="تعداد ابیات" v={toPersianDigits(poem.coupletsCount)} />
+          )}
+          <Row k="نشانی پایدار" v={urn} mono />
+          <Row k="در گنجور" v={<a href={fullUrl} target="_blank" rel="noopener" className="accent underline">{fullUrl.replace('https://','')}</a>} />
           <Row k="منبع" v="گنجور · ganjoor.net" />
         </div>
 
-        {/* share actions */}
         <div className="flex gap-2 mt-4">
-          <ActionBtn label="هم‌رسانی" emoji="↗" />
-          <ActionBtn label="کارت تصویر" emoji="🖼" />
-          <ActionBtn label="پیوند" emoji="🔗" />
+          <button onClick={handleShare} className="surface border border-soft rounded-xl px-3 py-2 text-sm flex-1 active:opacity-70">
+            ↗ هم‌رسانی
+          </button>
+          <button onClick={handleCopyLink} className="surface border border-soft rounded-xl px-3 py-2 text-sm flex-1 active:opacity-70">
+            🔗 کپی پیوند
+          </button>
         </div>
       </article>
     </div>
   );
 }
-
 function Row({ k, v, mono }) {
   return (
     <div className="flex items-start justify-between gap-3">
       <span className="muted shrink-0">{k}</span>
-      <span className={`text-end ${mono ? 'font-mono text-xs' : ''}`}>{v}</span>
+      <span className={`text-end break-all ${mono ? 'font-mono text-xs' : ''}`}>{v}</span>
     </div>
   );
 }
 
-function ActionBtn({ label, emoji }) {
-  return (
-    <button className="surface border border-soft rounded-xl px-3 py-2 text-sm flex-1 active:opacity-70">
-      <span className="ml-1">{emoji}</span> {label}
-    </button>
-  );
-}
-
-function Search({ onOpenPoem }) {
+/* ─────────────────────────────────────────────────────────────────────────
+   SEARCH (poet picker + per-poet search prompt)
+   ──────────────────────────────────────────────────────────────────────── */
+function SearchView() {
+  const [poets, setPoets] = useState(null);
   const [q, setQ] = useState('');
+  useEffect(() => { loadPoets().then(d => setPoets(d.poets || [])).catch(() => setPoets([])); }, []);
+
   const hasArabic = detectArabicChars(q);
-
-  // Build a flat verse index from POEMS
-  const index = useMemo(() => {
-    const out = [];
-    POEMS.forEach(p => {
-      for (let i = 0; i < p.verses.length; i += 2) {
-        const m1 = p.verses[i], m2 = p.verses[i + 1];
-        const display = m2 ? `${m1.text} · ${m2.text}` : m1.text;
-        const search = toSearch(`${m1.text} ${m2 ? m2.text : ''}`);
-        out.push({ poem: p, beyt_index: i / 2 + 1, display, search });
-      }
-    });
-    return out;
-  }, []);
-
-  const results = useMemo(() => {
+  const filtered = useMemo(() => {
+    if (!poets) return [];
     const needle = toSearch(q);
-    if (!needle || needle.length < 2) return [];
-    return index.filter(r => r.search.includes(needle)).slice(0, 50);
-  }, [q, index]);
+    if (!needle || needle.length < 1) return [];
+    return poets.filter(p =>
+      toSearch(p.nickname_fa || '').includes(needle) ||
+      toSearch(p.name_fa || '').includes(needle) ||
+      (p.slug || '').toLowerCase().includes(needle)
+    ).slice(0, 30);
+  }, [poets, q]);
 
   return (
-    <div className="fade-in">
-      <div className="px-4 pt-4">
-        <div className="surface-2 rounded-xl px-3 py-3 flex items-center gap-2">
-          <span className="muted">🔎</span>
-          <input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="جست‌وجو در ابیات…"
-            className="bg-transparent outline-none flex-1 text-base"
-            autoFocus
-          />
-          {q && <button onClick={() => setQ('')} className="muted text-xl">×</button>}
+    <div className="fade-in px-4 pt-4">
+      <div className="surface-2 rounded-xl px-3 py-3 flex items-center gap-2">
+        <span className="muted">🔎</span>
+        <input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="نام شاعر…"
+          className="bg-transparent outline-none flex-1 text-base"
+          autoFocus
+        />
+        {q && <button onClick={() => setQ('')} className="muted text-xl">×</button>}
+      </div>
+
+      {hasArabic && (
+        <div className="mt-3 surface-2 border border-soft rounded-xl px-3 py-2 text-xs">
+          <span className="muted">حروف عربی به فارسی نگاشته شد: </span>
+          <span className="accent font-mono">{toDisplay(q)}</span>
         </div>
+      )}
 
-        {hasArabic && (
-          <div className="mt-3 surface-2 border border-soft rounded-xl px-3 py-2 text-xs">
-            <span className="muted">حروف عربی به فارسی نگاشته شد: </span>
-            <span className="accent font-mono">{toDisplay(q)}</span>
-          </div>
-        )}
-
-        {q && !results.length && (
-          <p className="muted text-sm text-center mt-8">
-            موردی یافت نشد. سعی کنید بخشی از یک مصراع را وارد کنید.
+      {!q && poets && (
+        <div className="mt-6 surface-2 border border-soft rounded-xl p-4 text-xs leading-7">
+          <p className="font-semibold mb-1">یادداشت</p>
+          <p className="muted">
+            در حال حاضر، جست‌وجو در سطح شاعر کار می‌کند. ابتدا شاعر را انتخاب کنید،
+            سپس در صفحهٔ هر بخش می‌توانید در عنوان و سطر آغازین شعرها جست‌وجو کنید.
+            جست‌وجوی متن کامل در همهٔ ۱۲۰هزار شعر در نسخهٔ بعدی اضافه خواهد شد.
           </p>
-        )}
+        </div>
+      )}
 
-        {!q && (
-          <div className="mt-6">
-            <p className="muted text-xs mb-2 px-1">جست‌وجوی نمونه</p>
-            <div className="flex flex-wrap gap-2">
-              {['عشق', 'صبحدم', 'گل', 'فلک', 'ساقی'].map(s => (
-                <button
-                  key={s}
-                  onClick={() => setQ(s)}
-                  className="surface border border-soft rounded-full px-3 py-1.5 text-sm active:opacity-70"
-                >{s}</button>
-              ))}
+      <div className="mt-3 space-y-2 pb-6">
+        {filtered.map(p => (
+          <button
+            key={p.slug}
+            onClick={() => navigate(`#/poet/${p.slug}`)}
+            className="row w-full surface border border-soft rounded-xl px-4 py-3 text-right"
+          >
+            <div className="flex items-baseline justify-between gap-3">
+              <div className="flex-1 min-w-0">
+                <p className="font-bold truncate">{toDisplay(p.nickname_fa || p.name_fa || p.slug)}</p>
+                <p className="muted text-xs truncate mt-0.5">{toDisplay(p.name_fa || '')}</p>
+              </div>
+              <p className="muted text-xs shrink-0">{toPersianDigits((p.poems_count || 0).toLocaleString('fa-IR'))}</p>
             </div>
-            <div className="mt-6 surface-2 border border-soft rounded-xl p-4 text-xs leading-7">
-              <p className="font-semibold mb-1">یادداشت</p>
-              <p className="muted">
-                این جست‌وجو با نرمال‌سازی فارسی کار می‌کند: ي/ی، ك/ک، نیم‌فاصله، اعراب و ارقام،
-                همه به‌صورت یکپارچه دیده می‌شوند. در نسخهٔ کامل، فهرستِ SQLite + FTS5
-                از طریق Range request میلیون‌ها بیت را در گوشی جست‌وجو خواهد کرد.
-              </p>
-            </div>
-          </div>
-        )}
-
-        {results.length > 0 && (
-          <div className="mt-4 space-y-2 pb-6">
-            <p className="muted text-xs px-1">{toPersianDigits(results.length)} نتیجه</p>
-            {results.map((r, i) => (
-              <button
-                key={i}
-                onClick={() => onOpenPoem(r.poem)}
-                className="w-full surface border border-soft rounded-xl p-3 text-right active:opacity-70"
-              >
-                <p className="muted text-[11px] mb-1">{r.poem.title} · بیت {toPersianDigits(r.beyt_index)}</p>
-                <p className="text-sm leading-7">
-                  {highlight(r.display, q)}
-                </p>
-              </button>
-            ))}
-          </div>
+          </button>
+        ))}
+        {q && filtered.length === 0 && poets && (
+          <p className="muted text-sm text-center mt-8">شاعری با این نام یافت نشد.</p>
         )}
       </div>
     </div>
   );
 }
 
-function highlight(text, q) {
-  if (!q) return text;
-  const needle = toSearch(q);
-  if (!needle) return text;
-  // naive highlighting: find substrings whose normalized form includes the needle
-  const words = text.split(/(\s+)/);
-  return words.map((w, i) => {
-    if (toSearch(w).includes(needle)) {
-      return <mark key={i} className="accent-bg text-white rounded px-0.5">{w}</mark>;
-    }
-    return <span key={i}>{w}</span>;
-  });
-}
-
+/* ─────────────────────────────────────────────────────────────────────────
+   SETTINGS
+   ──────────────────────────────────────────────────────────────────────── */
 function Settings({ theme, setTheme, font, setFont, fontSize, setFontSize, favCount }) {
   return (
     <div className="fade-in px-4 pt-4 pb-8 space-y-5">
       <Section title="ظاهر">
         <Picker
           options={THEMES.map(t => ({ id: t.id, label: `${t.emoji}  ${t.label}` }))}
-          value={theme}
-          onChange={setTheme}
+          value={theme} onChange={setTheme}
         />
       </Section>
-
       <Section title="قلم">
         <Picker
           options={FONTS.map(f => ({ id: f.id, label: f.label }))}
-          value={font}
-          onChange={setFont}
+          value={font} onChange={setFont}
         />
       </Section>
-
       <Section title="اندازهٔ متن">
         <Picker
           options={FONT_SIZES.map(s => ({ id: s.id, label: s.label }))}
-          value={fontSize}
-          onChange={setFontSize}
+          value={fontSize} onChange={setFontSize}
         />
       </Section>
-
       <Section title="کتابخانهٔ شخصی">
         <p className="muted text-sm">شعرهای نشان‌شده: {toPersianDigits(favCount)}</p>
       </Section>
-
       <Section title="دربارهٔ پروژه">
         <div className="text-sm leading-7 space-y-2">
-          <p>گنجور-جیب · نسخهٔ ۰٫۱</p>
-          <p className="muted">
-            متن‌باز تحت MIT؛ دادهٔ متنی تحت CC-BY-4.0 بر پایهٔ ganjoor.net.
-          </p>
-          <p className="muted">
-            با احترام و سپاس از حبیب هادیان‌فرد و همکاران گنجور.
+          <p>گنجور-جیب · نسخهٔ ۰٫۲</p>
+          <p className="muted">متن‌باز تحت MIT؛ دادهٔ متنی تحت CC-BY-4.0 بر پایهٔ ganjoor.net.</p>
+          <p className="muted">با احترام و سپاس از حمیدرضا محمدی و همکاران گنجور.</p>
+          <p className="muted text-xs mt-2">
+            مخزن:{' '}
+            <a href="https://github.com/sajad2025/ganjoor" target="_blank" rel="noopener" className="accent underline">
+              github.com/sajad2025/ganjoor
+            </a>
           </p>
         </div>
       </Section>
     </div>
   );
 }
-
 function Section({ title, children }) {
   return (
     <div>
@@ -669,7 +954,6 @@ function Section({ title, children }) {
     </div>
   );
 }
-
 function Picker({ options, value, onChange }) {
   return (
     <div className="flex gap-1.5 flex-wrap">
@@ -687,21 +971,25 @@ function Picker({ options, value, onChange }) {
   );
 }
 
-function BottomNav({ tab, setTab }) {
+/* ─────────────────────────────────────────────────────────────────────────
+   COMMON BITS
+   ──────────────────────────────────────────────────────────────────────── */
+function BottomNav({ route }) {
   const items = [
-    { id: 'home',     label: 'خانه',    emoji: '🏠' },
-    { id: 'library',  label: 'دیوان',   emoji: '📖' },
-    { id: 'search',   label: 'جست‌وجو', emoji: '🔍' },
-    { id: 'settings', label: 'تنظیمات', emoji: '⚙' },
+    { id: 'home',     label: 'خانه',     emoji: '🏠', hash: '#/' },
+    { id: 'poets',    label: 'شاعران',   emoji: '📖', hash: '#/poets' },
+    { id: 'search',   label: 'جست‌وجو',  emoji: '🔍', hash: '#/search' },
+    { id: 'settings', label: 'تنظیمات',  emoji: '⚙', hash: '#/settings' },
   ];
+  const active = route.view === 'poet' ? 'poets' : route.view;
   return (
     <nav className="surface border-t border-soft fixed bottom-0 inset-x-0 pb-safe z-20">
       <div className="grid grid-cols-4">
         {items.map(it => (
           <button
             key={it.id}
-            onClick={() => setTab(it.id)}
-            className={`py-3 flex flex-col items-center gap-0.5 text-xs ${tab === it.id ? 'accent' : 'muted'}`}
+            onClick={() => navigate(it.hash)}
+            className={`py-3 flex flex-col items-center gap-0.5 text-xs ${active === it.id ? 'accent' : 'muted'}`}
           >
             <span className="text-xl">{it.emoji}</span>
             <span>{it.label}</span>
@@ -712,8 +1000,34 @@ function BottomNav({ tab, setTab }) {
   );
 }
 
+function Loading({ label }) {
+  return (
+    <div className="fade-in flex flex-col items-center justify-center pt-20 muted gap-3">
+      <span className="spinner accent"></span>
+      <p className="text-sm">{label || '…'}</p>
+    </div>
+  );
+}
+function ErrorBox({ msg }) {
+  return (
+    <div className="fade-in px-6 pt-12 text-center">
+      <p className="text-4xl mb-3">⚠</p>
+      <p className="muted text-sm">{msg || 'خطایی رخ داد.'}</p>
+      <button onClick={() => history.back()} className="mt-4 accent text-sm underline">بازگشت</button>
+    </div>
+  );
+}
+
+/* Bootstrap */
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+
+/* Register a service worker for offline cache (best-effort, optional) */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
