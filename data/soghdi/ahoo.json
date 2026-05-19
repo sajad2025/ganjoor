@@ -1,0 +1,172 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T07:07:10.110915+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/146559",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 146559,
+    "title": "آهوی کوهی",
+    "fullTitle": "ابوحفص سغدی » آهوی کوهی",
+    "urlSlug": "ahoo",
+    "fullUrl": "/soghdi/ahoo",
+    "plainText": "آهوی کوهی در دشت چگونه دودا\r\nچون ندارد یار بی یار چگونه رودا",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>آهوی کوهی در دشت چگونه دَوَدا؟</p></div>\r\n<div class=\"m2\"><p>چون ندارد یار، بی‌یار چگونه رَوَدا؟</p></div></div>",
+    "sourceName": "مجید امام‌وردی",
+    "sourceUrlSlug": "imamverdi",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": true,
+    "language": null,
+    "poemSummary": null,
+    "category": {
+      "poet": {
+        "id": 212,
+        "name": "ابوحفص سغدی",
+        "description": "ابوحَفص حکیم پسر احوص سُغدی موسیقی‌دان و شاعر پارسی‌گوی سغدی پایان سده سوم و آغاز سده چهارم است. او از پیشگامان ادب پس از اسلام و نخستین سرایندگان شعر پارسی بود و اختراعِ سازِ شهرود نیز از او است.ابوحفص را نخستین شاعر پارسی‌گوی دانسته‌اند، ولی با توجه به این که تذکره‌ها و کتاب‌های تاریخ از شاعران دیگری نام برده‌اند، که پیش از او می‌زیسته‌اند، بعید می‌نماید، که او نخستین سرایندهٔ شعر دری باشد.او را سراینده نخسین شعر پارسی در اوزان عرب در حدود سال ۳۰۰ هجری با شعر آهوی کوهی دانسته‌اند.\r\nاشعار او به کوشش آقای مجید امام‌وردی به نقل از کتابهای اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار و همچنین شرح احوال و اشعار شاعران بی‌دیوان در قرن‌های ۳/۴/۵ هجری به تصحیح محمود مدبری در گنجور در دسترس قرار گرفته است.",
+        "fullUrl": "/soghdi",
+        "rootCatId": 3391,
+        "nickname": "ابوحفص سغدی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/soghdi.gif",
+        "birthYearInLHijri": 270,
+        "validBirthDate": false,
+        "deathYearInLHijri": 310,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "فرغانه",
+        "birthPlaceLatitude": 40.386389,
+        "birthPlaceLongitude": 71.786389,
+        "deathPlace": "فرغانه",
+        "deathPlaceLatitude": 40.386389,
+        "deathPlaceLongitude": 71.786389
+      },
+      "cat": {
+        "id": 3391,
+        "title": "ابوحفص سغدی",
+        "urlSlug": "soghdi",
+        "fullUrl": "/soghdi",
+        "tableOfContentsStyle": 1,
+        "catType": 0,
+        "description": "ابوحَفص حکیم پسر احوص سُغدی موسیقی‌دان و شاعر پارسی‌گوی سغدی پایان سده سوم و آغاز سده چهارم است. او از پیشگامان ادب پس از اسلام و نخستین سرایندگان شعر پارسی بود و اختراعِ سازِ شهرود نیز از او است.ابوحفص را نخستین شاعر پارسی‌گوی دانسته‌اند، ولی با توجه به این که تذکره‌ها و کتاب‌های تاریخ از شاعران دیگری نام برده‌اند، که پیش از او می‌زیسته‌اند، بعید می‌نماید، که او نخستین سرایندهٔ شعر دری باشد.او را سراینده نخسین شعر پارسی در اوزان عرب در حدود سال ۳۰۰ هجری با شعر آهوی کوهی دانسته‌اند.\r\nاشعار او به کوشش آقای مجید امام‌وردی به نقل از کتابهای اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار و همچنین شرح احوال و اشعار شاعران بی‌دیوان در قرن‌های ۳/۴/۵ هجری به تصحیح محمود مدبری در گنجور در دسترس قرار گرفته است.",
+        "descriptionHtml": "<p>ابوحَفص حکیم پسر احوص سُغدی موسیقی&zwnj;دان و شاعر پارسی&zwnj;گوی سغدی پایان سده سوم و آغاز سده چهارم است. او از پیشگامان ادب پس از اسلام و نخستین سرایندگان شعر پارسی بود و اختراعِ سازِ شهرود نیز از او است.<br />ابوحفص را نخستین شاعر پارسی&zwnj;گوی دانسته&zwnj;اند، ولی با توجه به این که تذکره&zwnj;ها و کتاب&zwnj;های تاریخ از شاعران دیگری نام برده&zwnj;اند، که پیش از او می&zwnj;زیسته&zwnj;اند، بعید می&zwnj;نماید، که او نخستین سرایندهٔ شعر دری باشد.<br />او را سراینده نخسین شعر پارسی در اوزان عرب در حدود سال ۳۰۰ هجری با شعر آهوی کوهی دانسته&zwnj;اند.</p>\r\n<p>اشعار او به کوشش آقای <strong>مجید امام&zwnj;وردی</strong> به نقل از کتابهای<a href=\"https://naskban.ir/293\"> اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار</a> و همچنین <a href=\"https://naskban.ir/11622\">شرح احوال و اشعار شاعران بی&zwnj;دیوان در قرن&zwnj;های ۳/۴/۵ هجری به تصحیح محمود مدبری</a> در گنجور در دسترس قرار گرفته است.</p>",
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": null,
+    "previous": null,
+    "verses": [
+      {
+        "id": 5300953,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "آهوی کوهی در دشت چگونه دَوَدا؟",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 5300954,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چون ندارد یار، بی‌یار چگونه رَوَدا؟",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "b902b193-67ed-477b-1d90-08de0b2ab1dc",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00011622/00030.jpg",
+        "targetPageUrl": "https://naskban.ir/11622/30",
+        "altText": "شرح احوال و اشعار شاعران بی دیوان - تصویر ۳۰",
+        "isTextOriginalSource": true
+      },
+      {
+        "id": "989641b2-93c7-4024-36b0-08de0c15c9ab",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/296/00205.jpg",
+        "targetPageUrl": "https://naskban.ir/293/205",
+        "altText": "اشعار پراکنده قدیمی ترین شعرای فارسی زبان (از حنظله بادغیسی تا دقیقی «بغیر رودکی») - ژیلبر لازار - تصویر ۲۰۵",
+        "isTextOriginalSource": false
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 134393,
+        "authorName": "همیرضا",
+        "authorUrl": null,
+        "commentDate": "2025-10-15T21:00:46.9810404",
+        "htmlComment": "<p>عنوان شعر &laquo;هزارهٔ دوم آهوی کوهی&raquo; استاد شفیعی کدکنی به این شعر اشاره دارد. <a href=\"https://faryad.blogfa.com/post/178/%D9%87%D8%B2%D8%A7%D8%B1%D9%87-%D8%AF%D9%88%D9%85-%D8%A2%D9%87%D9%88%DB%8C-%DA%A9%D9%88%D9%87%DB%8C-%DA%A9%D8%AF%DA%A9%D9%86%DB%8C-%D8%AA%D8%A7-%DA%A9%D8%AC%D8%A7-%D9%85%DB%8C%D8%A8%D8%B1%D8%AF-%D8%A7%DB%8C%D9%86-%D9%86%D9%82%D8%B4-%D8%A8%D9%87-%D8%AF%DB%8C%D9%88%D8%A7%D8%B1-%D9%85%D8%B1%D8%A7\">اطلاعات بیشتر ...</a></p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": "a9cb3463-e442-455a-12a3-08d72ca64fca",
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 711525,
+        "poemId": 146559,
+        "poem": null,
+        "poetId": 212,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": null,
+        "ganjoorMetre": null,
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "چگونهدودا",
+        "plainText": "آهوی کوهی در دشت چگونه دودا\r\nچون ندارد یار بی یار چگونه رودا",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>آهوی کوهی در دشت چگونه دَوَدا؟</p></div>\r\n<div class=\"m2\"><p>چون ندارد یار، بی‌یار چگونه رَوَدا؟</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

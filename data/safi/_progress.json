@@ -2,7 +2,8 @@
   "poet_id": 187,
   "poet_nickname": "صفی علیشاه",
   "root_cat_id": 3124,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T06:57:14.859891+00:00"
+  "completed": true,
+  "completed_count": 1895,
+  "newly_written_this_run": 1895,
+  "completed_at": "2026-05-19T07:04:10.754655+00:00"
 }
