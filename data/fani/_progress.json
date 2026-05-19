@@ -2,7 +2,8 @@
   "poet_id": 151,
   "poet_nickname": "امیرعلیشیر نوایی",
   "root_cat_id": 2767,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T05:57:03.714796+00:00"
+  "completed": true,
+  "completed_count": 380,
+  "newly_written_this_run": 380,
+  "completed_at": "2026-05-19T05:58:22.143492+00:00"
 }
