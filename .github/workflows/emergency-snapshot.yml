@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       poet_limit:
-        description: "How many poets to fetch (0 = all). Start with 5 to test."
+        description: "How many poets to fetch (0 = all). Start with 1 to smoke-test — poets are sorted by id and the lowest ids are Hafez/Saadi/Rumi/Ferdowsi/Khayyam, each hundreds-to-thousands of poems. For full corpus use the Matrix workflow."
         required: true
-        default: "5"
+        default: "1"
         type: string
       mirror_legacy:
         description: "Also mirror the SourceForge + ganjoor-db legacy dumps?"
@@ -73,10 +73,16 @@ jobs:
             --user-agent "ganjoor-mirror/0.1 (+https://github.com/${{ github.repository }})"
 
       - name: Build manifest + checksums
-        run: python scripts/build_manifest.py --root data --legacy legacy
+        if: always()
+        run: |
+          if [ -d data ] || [ -d legacy ]; then
+            python scripts/build_manifest.py --root data --legacy legacy
+          else
+            echo "No data/ or legacy/ directory; skipping manifest."
+          fi
 
       - name: Trigger Internet Archive Save Page Now
-        if: inputs.save_wayback
+        if: always() && inputs.save_wayback
         env:
           IA_S3_ACCESS_KEY: ${{ secrets.IA_S3_ACCESS_KEY }}
           IA_S3_SECRET_KEY: ${{ secrets.IA_S3_SECRET_KEY }}
@@ -87,20 +93,42 @@ jobs:
         run: |
           git config user.name  "ganjoor-mirror-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data legacy MANIFEST.json CHECKSUMS.sha256 || true
+          git add data legacy MANIFEST.json CHECKSUMS.sha256 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "No changes to commit."
-          else
-            STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-            git commit -m "chore(snapshot): emergency snapshot ${STAMP}"
-            git push
+            exit 0
           fi
+          STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          git commit -m "chore(snapshot): emergency snapshot ${STAMP}"
+          # Push with rebase-and-retry to survive concurrent commits to main.
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed on attempt ${attempt}."
+              exit 0
+            fi
+            echo "Push attempt ${attempt} failed; rebasing onto origin/main and retrying..."
+            git fetch origin main
+            git pull --rebase origin main || {
+              echo "Rebase failed; aborting and exiting non-zero so the run is investigated."
+              git rebase --abort 2>/dev/null || true
+              exit 1
+            }
+            sleep $((RANDOM % 8 + 2))
+          done
+          echo "All push attempts failed." >&2
+          exit 1
 
       - name: Bundle release artifacts
-        if: inputs.create_release
+        if: always() && inputs.create_release
         run: |
+          if [ ! -d data ] && [ ! -d legacy ]; then
+            echo "Nothing to bundle."
+            exit 0
+          fi
           mkdir -p release
-          tar --use-compress-program="zstd -19" -cf release/ganjoor-data.tar.zst data
+          if [ -d data ]; then
+            tar --use-compress-program="zstd -19" -cf release/ganjoor-data.tar.zst data
+          fi
           if [ -d legacy ]; then
             tar --use-compress-program="zstd -19" -cf release/ganjoor-legacy.tar.zst legacy
           fi
@@ -108,7 +136,7 @@ jobs:
           ls -la release/
 
       - name: Publish Release
-        if: inputs.create_release
+        if: always() && inputs.create_release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v2026.1-emergency-${{ github.run_number }}

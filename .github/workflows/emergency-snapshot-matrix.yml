@@ -1,0 +1,282 @@
+name: Emergency Snapshot (Matrix)
+
+# Phone-triggerable parallel snapshot. Splits the 230-poet corpus into N
+# buckets and runs them as parallel jobs, each ~2h instead of ~12h.
+# Each bucket commits its own NDJSON files incrementally so a runner kill
+# at any moment loses at most the in-flight poem (Fix B), and survives
+# concurrent pushes from sibling buckets via pull-rebase-and-retry (Fix C).
+#
+# When all buckets finish, a finalize job builds MANIFEST.json + checksums
+# and (optionally) publishes a tagged Release.
+#
+# Use this for full-corpus runs. For smoke tests and small slices, use
+# the single-job "Emergency Snapshot" workflow instead.
+
+on:
+  workflow_dispatch:
+    inputs:
+      num_buckets:
+        description: "How many parallel buckets to split the corpus into."
+        required: true
+        default: "5"
+        type: string
+      mirror_legacy:
+        description: "Also mirror the SourceForge + ganjoor-db legacy dumps?"
+        required: true
+        default: true
+        type: boolean
+      save_wayback:
+        description: "Trigger Internet Archive Save Page Now for top URLs?"
+        required: true
+        default: true
+        type: boolean
+      create_release:
+        description: "Tag and publish a Release with the snapshot artifacts?"
+        required: true
+        default: true
+        type: boolean
+      checkpoint_seconds:
+        description: "Seconds between mid-walk checkpoint commits per bucket."
+        required: true
+        default: "600"
+        type: string
+
+permissions:
+  contents: write
+
+# Workflow-level concurrency: only one matrix run at a time. Individual
+# buckets within a single run are still parallel.
+concurrency:
+  group: snapshot-matrix
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      buckets: ${{ steps.compute.outputs.buckets }}
+    steps:
+      - name: Compute bucket list
+        id: compute
+        run: |
+          N=${{ inputs.num_buckets }}
+          if ! [[ "${N}" =~ ^[0-9]+$ ]] || [ "${N}" -lt 1 ] || [ "${N}" -gt 20 ]; then
+            echo "num_buckets must be 1..20, got '${N}'" >&2
+            exit 1
+          fi
+          JSON=$(python3 -c "import json; print(json.dumps(list(range(${N}))))")
+          echo "buckets=${JSON}" >> "$GITHUB_OUTPUT"
+          echo "Buckets: ${JSON}"
+
+  fetch:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        bucket: ${{ fromJson(needs.prepare.outputs.buckets) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # full history needed for clean rebases
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+
+      - name: Mirror legacy dumps (bucket 0 only)
+        if: matrix.bucket == 0 && inputs.mirror_legacy
+        run: bash scripts/mirror_legacy.sh
+
+      - name: Configure git for bot commits
+        run: |
+          git config user.name  "ganjoor-mirror-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+      - name: Walk + checkpoint commits
+        env:
+          MATRIX_BUCKET: ${{ matrix.bucket }}
+          NUM_BUCKETS: ${{ inputs.num_buckets }}
+          CHECKPOINT_SECONDS: ${{ inputs.checkpoint_seconds }}
+        run: |
+          set -uo pipefail
+
+          # commit_and_push: stage data/legacy, commit with bucket tag,
+          # then push with rebase-retry to survive concurrent bucket pushes.
+          commit_and_push() {
+            local label="$1"
+            git add data legacy 2>/dev/null || true
+            if git diff --staged --quiet; then
+              echo "[${label}] no changes."
+              return 0
+            fi
+            local stamp
+            stamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+            git commit -m "chore(snapshot): bucket ${MATRIX_BUCKET} ${label} ${stamp}"
+            local attempt
+            for attempt in 1 2 3 4 5 6 7 8; do
+              if git push; then
+                echo "[${label}] pushed on attempt ${attempt}."
+                return 0
+              fi
+              echo "[${label}] push attempt ${attempt} failed; rebasing..."
+              git fetch origin main
+              if ! git pull --rebase origin main; then
+                echo "[${label}] rebase failed, aborting."
+                git rebase --abort 2>/dev/null || true
+                return 1
+              fi
+              sleep $((RANDOM % 10 + 3))
+            done
+            echo "[${label}] gave up after 8 push attempts." >&2
+            return 1
+          }
+
+          # Background checkpoint loop: every CHECKPOINT_SECONDS, snapshot
+          # whatever the walk has produced so far. This is the safety net
+          # that ensures a runner kill at any moment leaves data on main.
+          checkpoint_loop() {
+            while true; do
+              sleep "${CHECKPOINT_SECONDS}"
+              commit_and_push "checkpoint" || true
+            done
+          }
+          checkpoint_loop &
+          CHECKPOINT_PID=$!
+          # Ensure the loop dies even if this script is killed by SIGTERM.
+          trap 'kill ${CHECKPOINT_PID} 2>/dev/null || true' EXIT INT TERM
+
+          # The actual walk. Bucket-selected.
+          python scripts/fetch_ganjoor.py \
+            --out data \
+            --bucket "${MATRIX_BUCKET}" \
+            --num-buckets "${NUM_BUCKETS}" \
+            --rate 5.0 \
+            --user-agent "ganjoor-mirror/0.1 (+https://github.com/${{ github.repository }})"
+          WALK_RC=$?
+
+          # Stop the checkpoint loop and do one final commit.
+          kill ${CHECKPOINT_PID} 2>/dev/null || true
+          wait ${CHECKPOINT_PID} 2>/dev/null || true
+          commit_and_push "final" || true
+
+          exit ${WALK_RC}
+
+      - name: Best-effort final commit on cancellation
+        if: cancelled() || failure()
+        run: |
+          git add data legacy 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+            git commit -m "chore(snapshot): bucket ${{ matrix.bucket }} salvage ${STAMP}" || true
+            for attempt in 1 2 3 4 5; do
+              if git push; then break; fi
+              git fetch origin main
+              git pull --rebase origin main || git rebase --abort 2>/dev/null || true
+              sleep $((RANDOM % 8 + 2))
+            done
+          fi
+
+  finalize:
+    needs: fetch
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout (after buckets pushed their data)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+
+      - name: Build manifest + checksums
+        run: |
+          if [ -d data ] || [ -d legacy ]; then
+            python scripts/build_manifest.py --root data --legacy legacy
+          else
+            echo "No data/ or legacy/ — nothing to manifest." >&2
+            exit 1
+          fi
+
+      - name: Commit manifest + checksums
+        run: |
+          git config user.name  "ganjoor-mirror-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add MANIFEST.json CHECKSUMS.sha256
+          if git diff --staged --quiet; then
+            echo "Manifest unchanged."
+            exit 0
+          fi
+          git commit -m "chore(snapshot): manifest + checksums for run ${{ github.run_number }}"
+          for attempt in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            git fetch origin main
+            git pull --rebase origin main || git rebase --abort 2>/dev/null || true
+            sleep $((RANDOM % 8 + 2))
+          done
+          exit 1
+
+      - name: Trigger Internet Archive Save Page Now
+        if: inputs.save_wayback
+        env:
+          IA_S3_ACCESS_KEY: ${{ secrets.IA_S3_ACCESS_KEY }}
+          IA_S3_SECRET_KEY: ${{ secrets.IA_S3_SECRET_KEY }}
+        run: python scripts/save_to_wayback.py --urls scripts/wayback_urls.txt
+
+      - name: Bundle release artifacts
+        if: inputs.create_release
+        run: |
+          mkdir -p release
+          if [ -d data ]; then
+            tar --use-compress-program="zstd -19" -cf release/ganjoor-data.tar.zst data
+          fi
+          if [ -d legacy ]; then
+            tar --use-compress-program="zstd -19" -cf release/ganjoor-legacy.tar.zst legacy
+          fi
+          cp MANIFEST.json CHECKSUMS.sha256 release/ 2>/dev/null || true
+          ls -la release/
+
+      - name: Publish Release
+        if: inputs.create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v2026.1-emergency-matrix-${{ github.run_number }}
+          name: "v2026.1 emergency snapshot — matrix run #${{ github.run_number }}"
+          body: |
+            Emergency preservation snapshot of the Ganjoor Persian poetry corpus.
+
+            **Upstream:** ganjoor.net — Hamid Reza Mohammadi (github.com/hrmoh)
+            **License:** code MIT; data CC-BY-4.0; see LICENSE-DATA.
+            **Provenance:** walked api.ganjoor.net at the timestamp embedded in MANIFEST.json.
+            **Run shape:** ${{ inputs.num_buckets }} parallel buckets, finalized in one job.
+
+            Artifacts:
+            - `ganjoor-data.tar.zst` — per-poet NDJSON, one file per poet under `data/`
+            - `ganjoor-legacy.tar.zst` — mirrored legacy SQLite dumps
+            - `MANIFEST.json` — counts, fetch range, source revisions
+            - `CHECKSUMS.sha256` — SHA-256 for every file in the bundle
+
+            See PRESERVATION-ADDENDUM-free-path.md for the rest of the redundancy plan.
+          files: |
+            release/*
+          fail_on_unmatched_files: false
