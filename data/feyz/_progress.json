@@ -2,7 +2,8 @@
   "poet_id": 39,
   "poet_nickname": "فیض کاشانی",
   "root_cat_id": 1125,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T05:43:39.810586+00:00"
+  "completed": true,
+  "completed_count": 1188,
+  "newly_written_this_run": 1188,
+  "completed_at": "2026-05-19T05:47:44.029854+00:00"
 }
