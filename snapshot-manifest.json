@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "local-20260519T044744Z",
+  "generated_at": "2026-05-19T04:47:44.628382+00:00",
+  "repository": "",
+  "git_sha": "",
+  "source": {
+    "api": "https://api.ganjoor.net",
+    "site": "https://ganjoor.net",
+    "upstream_maintainer": "Hamid Reza Mohammadi (github.com/hrmoh)"
+  },
+  "license": {
+    "code": "MIT",
+    "data": "CC-BY-4.0",
+    "attribution": "Persian poetry text courtesy of ganjoor.net (Hamid Reza Mohammadi and contributors), republished under CC-BY-4.0."
+  },
+  "layout": {
+    "description": "One JSON file per poem, path mirrors ganjoor.net permalink.",
+    "example": "data/hafez/ghazal/108.json  <->  ganjoor.net/hafez/ghazal/sh108"
+  },
+  "counts": {
+    "poets": 1,
+    "poems": 695,
+    "data_files": 696,
+    "legacy_files": 0
+  },
+  "poets": [
+    {
+      "slug": "hafez",
+      "dir": "data/hafez",
+      "poems": 695,
+      "poet_id": 2,
+      "poet_nickname": "حافظ",
+      "completed": true,
+      "completed_at": "2026-05-19T04:42:56.189011+00:00"
+    }
+  ]
+}
