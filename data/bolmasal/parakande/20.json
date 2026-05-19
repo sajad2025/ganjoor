@@ -1,0 +1,190 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:26:13.172855+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/146586",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 146586,
+    "title": "شمارهٔ ۲۰",
+    "fullTitle": "ابوالمثل بخارایی » ابیات پراکنده » شمارهٔ ۲۰",
+    "urlSlug": "sh20",
+    "fullUrl": "/bolmasal/parakande/sh20",
+    "plainText": "رای ملک خویش کن شاها که نیست\r\nملک را بی تو نکویی و براه",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>رای مُلک خویش کن شاها! که نیست</p></div>\r\n<div class=\"m2\"><p>ملک را بی تو نکویی و براه</p></div></div>",
+    "sourceName": "مجید امام‌وردی",
+    "sourceUrlSlug": "imamverdi",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": true,
+    "language": null,
+    "poemSummary": null,
+    "category": {
+      "poet": {
+        "id": 214,
+        "name": "ابوالمثل بخارایی",
+        "description": "ابوالمَثَل بخاری یا بوالمثل بخارایی شاعر ایرانی روزگار سامانیان است. منوچهری از او در شمار استادان پیشگام شعر فارسی چنین یاد کرده‌است:بوالعلا و بوالعباس و بوسلیک و بوالمثل         وآن‌که آمد از نوایح و آنکه آمد از هریمرگ او پیش از درگذشت ابوطاهر خسروانی (وفات ۳۴۲ قمری) بوده است. آگاهی‌ای از او در دست نیست، تنها در لباب‌الالباب محمد عوفی و مجمع‌الفصحا و چند جای دیگر از شعر او شاهد آورده‌ شده ست و نیز در چهار مقاله نظامی عروضی از او نام برده‌ شده است.\r\nاشعار او به کوشش آقای مجید امام‌وردی به نقل از کتابهای اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار و همچنین شرح احوال و اشعار شاعران بی‌دیوان در قرن‌های ۳/۴/۵ هجری به تصحیح محمود مدبری در گنجور در دسترس قرار گرفته است.",
+        "fullUrl": "/bolmasal",
+        "rootCatId": 3394,
+        "nickname": "ابوالمثل بخارایی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/bolmasal.gif",
+        "birthYearInLHijri": 280,
+        "validBirthDate": false,
+        "deathYearInLHijri": 340,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "بخارا",
+        "birthPlaceLatitude": 39.7681,
+        "birthPlaceLongitude": 64.4556,
+        "deathPlace": "بخارا",
+        "deathPlaceLatitude": 39.7681,
+        "deathPlaceLongitude": 64.4556
+      },
+      "cat": {
+        "id": 3395,
+        "title": "ابیات پراکنده",
+        "urlSlug": "parakande",
+        "fullUrl": "/bolmasal/parakande",
+        "tableOfContentsStyle": 7,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 3394,
+            "title": "ابوالمثل بخارایی",
+            "urlSlug": "bolmasal",
+            "fullUrl": "/bolmasal",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "ابوالمَثَل بخاری یا بوالمثل بخارایی شاعر ایرانی روزگار سامانیان است. منوچهری از او در شمار استادان پیشگام شعر فارسی چنین یاد کرده‌است:بوالعلا و بوالعباس و بوسلیک و بوالمثل         وآن‌که آمد از نوایح و آنکه آمد از هریمرگ او پیش از درگذشت ابوطاهر خسروانی (وفات ۳۴۲ قمری) بوده است. آگاهی‌ای از او در دست نیست، تنها در لباب‌الالباب محمد عوفی و مجمع‌الفصحا و چند جای دیگر از شعر او شاهد آورده‌ شده ست و نیز در چهار مقاله نظامی عروضی از او نام برده‌ شده است.\r\nاشعار او به کوشش آقای مجید امام‌وردی به نقل از کتابهای اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار و همچنین شرح احوال و اشعار شاعران بی‌دیوان در قرن‌های ۳/۴/۵ هجری به تصحیح محمود مدبری در گنجور در دسترس قرار گرفته است.",
+            "descriptionHtml": "<p>ابوالمَثَل بخاری یا بوالمثل بخارایی شاعر ایرانی روزگار سامانیان است. منوچهری از او در شمار استادان پیشگام شعر فارسی چنین یاد <a title=\"کرده&zwnj;است\" href=\"../manoochehri/divanm/ghaside-ghete/sh67#bn9\">کرده&zwnj;است</a>:<br />بوالعلا و بوالعباس و بوسلیک و بوالمثل &nbsp; &nbsp; &nbsp; &nbsp; وآن&zwnj;که آمد از نوایح و آنکه آمد از هری<br />مرگ او پیش از درگذشت ابوطاهر خسروانی (وفات ۳۴۲ قمری) بوده است. آگاهی&zwnj;ای از او در دست نیست، تنها در لباب&zwnj;الالباب محمد عوفی و مجمع&zwnj;الفصحا و چند جای دیگر از شعر او شاهد آورده&zwnj; شده ست و نیز<a href=\"../aroozi/4maghale/sher/sh2\"> در چهار مقاله نظامی عروضی از او نام برده&zwnj; شده است</a>.</p>\r\n<p>اشعار او به کوشش آقای <strong>مجید امام&zwnj;وردی</strong> به نقل از کتابهای<a href=\"https://naskban.ir/293\"> اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار</a> و همچنین <a href=\"https://naskban.ir/11622\">شرح احوال و اشعار شاعران بی&zwnj;دیوان در قرن&zwnj;های ۳/۴/۵ هجری به تصحیح محمود مدبری</a> در گنجور در دسترس قرار گرفته است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 146587,
+      "title": "شمارهٔ ۲۱",
+      "urlSlug": "sh21",
+      "excerpt": "ندانم یک‌تن از جمله خلایق",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 146585,
+      "title": "شمارهٔ ۱۹",
+      "urlSlug": "sh19",
+      "excerpt": "ز نالیدنش کوه شد بی‌سکون",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 5301025,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "رای مُلک خویش کن شاها! که نیست",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 5301026,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "ملک را بی تو نکویی و براه",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "a4ec34b2-c474-4707-1db2-08de0b2ab1dc",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00011622/00080.jpg",
+        "targetPageUrl": "https://naskban.ir/11622/80",
+        "altText": "شرح احوال و اشعار شاعران بی دیوان - تصویر ۸۰",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 711548,
+        "poemId": 146586,
+        "poem": null,
+        "poetId": 214,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 8,
+        "ganjoorMetre": {
+          "id": 8,
+          "urlSlug": null,
+          "rhythm": "فاعلاتن فاعلاتن فاعلاتن فاعلن (رمل مثمن محذوف)",
+          "name": null,
+          "description": null,
+          "verseCount": 141697
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "ملکرابیتونکوییوبراه",
+        "plainText": "رای ملک خویش کن شاها که نیست\r\nملک را بی تو نکویی و براه",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>رای مُلک خویش کن شاها! که نیست</p></div>\r\n<div class=\"m2\"><p>ملک را بی تو نکویی و براه</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

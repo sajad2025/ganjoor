@@ -2,7 +2,8 @@
   "poet_id": 169,
   "poet_nickname": "نظام قاری",
   "root_cat_id": 2965,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T06:19:02.511298+00:00"
+  "completed": true,
+  "completed_count": 312,
+  "newly_written_this_run": 312,
+  "completed_at": "2026-05-19T06:20:07.956883+00:00"
 }
