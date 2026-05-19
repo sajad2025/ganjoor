@@ -801,6 +801,16 @@ function Reader({ slug, catPath, file, favorites, onToggleFav, onView }) {
     try { await navigator.clipboard.writeText(localUrl); alert('پیوند کپی شد.'); }
     catch {}
   };
+  const handleCopyText = async () => {
+    // Plain text only, normalized via toDisplay so Arabic ي/ك/ة become
+    // Persian ی/ک/ه. No URLs, no markdown, no leading whitespace —
+    // maximum compatibility with Telegram, email, plaintext editors.
+    const title = toDisplay(poem.title || '').trim();
+    const body  = toDisplay(poem.plainText || '').trim();
+    const text  = title ? `${title}\n\n${body}` : body;
+    try { await navigator.clipboard.writeText(text); alert('متن کپی شد.'); }
+    catch {}
+  };
 
   return (
     <div className="fade-in pb-12">
@@ -866,6 +876,9 @@ function Reader({ slug, catPath, file, favorites, onToggleFav, onView }) {
         <div className="flex gap-2 mt-4">
           <button onClick={handleShare} className="surface border border-soft rounded-xl px-3 py-2 text-sm flex-1 active:opacity-70">
             ↗ هم‌رسانی
+          </button>
+          <button onClick={handleCopyText} className="surface border border-soft rounded-xl px-3 py-2 text-sm flex-1 active:opacity-70">
+            📝 کپی متن
           </button>
           <button onClick={handleCopyLink} className="surface border border-soft rounded-xl px-3 py-2 text-sm flex-1 active:opacity-70">
             🔗 کپی پیوند
