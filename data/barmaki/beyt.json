@@ -1,0 +1,187 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:08:07.898506+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/146616",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 146616,
+    "title": "بیت",
+    "fullTitle": "احمد برمکی » بیت",
+    "urlSlug": "beyt",
+    "fullUrl": "/barmaki/beyt",
+    "plainText": "ملک از ناخن همی جدا خواهی کرد\r\nدردت کند ای دوست خطا خواهی کرد",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>ملک از ناخن همی جدا خواهی کرد</p></div>\r\n<div class=\"m2\"><p>دردت کند ای دوست خطا خواهی کرد</p></div></div>",
+    "sourceName": "مجید امام‌وردی",
+    "sourceUrlSlug": "imamverdi",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": true,
+    "language": null,
+    "poemSummary": null,
+    "category": {
+      "poet": {
+        "id": 216,
+        "name": "احمد برمکی",
+        "description": "احمد بن جعفر بن ‌یحیی برمکی مورخ و ستاره‌شناس و ادیب بود و به دو ‌فارسی و عربی شعر می‌سرود. اشعار او را ابونصر پور مرزبان جمع کرد و تدوین نمود . عمر طولانی کرد و در سنهٔ ۳۲۴-۲۶ درگذشت. عمرطولانی کرد .از اشعار این شاعر تنها یک بیت باقی مانده است.\r\nاشعار او به کوشش آقای مجید امام‌وردی به نقل از کتابهای اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار و همچنین شرح احوال و اشعار شاعران بی‌دیوان در قرن‌های ۳/۴/۵ هجری به تصحیح محمود مدبری در گنجور در دسترس قرار گرفته است.",
+        "fullUrl": "/barmaki",
+        "rootCatId": 3398,
+        "nickname": "احمد برمکی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/barmaki.gif",
+        "birthYearInLHijri": 280,
+        "validBirthDate": false,
+        "deathYearInLHijri": 326,
+        "validDeathDate": true,
+        "pinOrder": 0,
+        "birthPlace": "",
+        "birthPlaceLatitude": 0,
+        "birthPlaceLongitude": 0,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 3398,
+        "title": "احمد برمکی",
+        "urlSlug": "barmaki",
+        "fullUrl": "/barmaki",
+        "tableOfContentsStyle": 7,
+        "catType": 0,
+        "description": "احمد بن جعفر بن ‌یحیی برمکی مورخ و ستاره‌شناس و ادیب بود و به دو ‌فارسی و عربی شعر می‌سرود. اشعار او را ابونصر پور مرزبان جمع کرد و تدوین نمود . عمر طولانی کرد و در سنهٔ ۳۲۴-۲۶ درگذشت. عمرطولانی کرد .از اشعار این شاعر تنها یک بیت باقی مانده است.\r\nاشعار او به کوشش آقای مجید امام‌وردی به نقل از کتابهای اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار و همچنین شرح احوال و اشعار شاعران بی‌دیوان در قرن‌های ۳/۴/۵ هجری به تصحیح محمود مدبری در گنجور در دسترس قرار گرفته است.",
+        "descriptionHtml": "<p>احمد بن جعفر بن &zwnj;یحیی برمکی مورخ و ستاره&zwnj;شناس و ادیب بود و به دو &zwnj;فارسی و عربی شعر می&zwnj;سرود. اشعار او را ابونصر پور مرزبان جمع کرد و تدوین نمود . عمر طولانی کرد و در سنهٔ ۳۲۴-۲۶ درگذشت. عمرطولانی کرد .از اشعار این شاعر تنها یک بیت باقی مانده است.</p>\r\n<p>اشعار او به کوشش آقای <strong>مجید امام&zwnj;وردی</strong> به نقل از کتابهای<a href=\"https://naskban.ir/293\"> اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار</a> و همچنین <a href=\"https://naskban.ir/11622\">شرح احوال و اشعار شاعران بی&zwnj;دیوان در قرن&zwnj;های ۳/۴/۵ هجری به تصحیح محمود مدبری</a> در گنجور در دسترس قرار گرفته است.</p>",
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": null,
+    "previous": null,
+    "verses": [
+      {
+        "id": 5301083,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "ملک از ناخن همی جدا خواهی کرد",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 5301084,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "دردت کند ای دوست خطا خواهی کرد",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "2f1673bb-251d-4b75-1d9a-08de0b2ab1dc",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00011622/00037.jpg",
+        "targetPageUrl": "https://naskban.ir/11622/37",
+        "altText": "شرح احوال و اشعار شاعران بی دیوان - تصویر ۳۷",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 134769,
+        "authorName": "علی اصغر نظارت",
+        "authorUrl": null,
+        "commentDate": "2025-10-26T02:37:10.9960565",
+        "htmlComment": "<p>سلام دوستان</p>\r\n<p>وزن شعر به چه صورته؟</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": "a11739db-ecf9-4d72-a355-08de1331b765",
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 711575,
+        "poemId": 146616,
+        "poem": null,
+        "poetId": 216,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 24,
+        "ganjoorMetre": {
+          "id": 24,
+          "urlSlug": null,
+          "rhythm": "مفعول مفاعیل مفاعیل فعل (وزن رباعی)",
+          "name": null,
+          "description": null,
+          "verseCount": 50409
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "اخواهیکرد",
+        "plainText": "ملک از ناخن همی جدا خواهی کرد\r\nدردت کند ای دوست خطا خواهی کرد",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>ملک از ناخن همی جدا خواهی کرد</p></div>\r\n<div class=\"m2\"><p>دردت کند ای دوست خطا خواهی کرد</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [
+          {
+            "id": 91776771,
+            "poemId": 146616,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 26,
+            "relationOrder": 1,
+            "poetName": "ابوسعید ابوالخیر",
+            "poetImageUrl": "/api/ganjoor/poet/image/abusaeed.gif",
+            "fullUrl": "/abusaeed/robaee-aa/sh214",
+            "fullTitle": "ابوسعید ابوالخیر » رباعیات نقل شده از ابوسعید از دیگر شاعران » رباعی شمارهٔ ۲۱۴",
+            "htmlExcerpt": "<p>جمعیت خلق را رها خواهی کرد</p>\r\n<p>یعنی ز همه، روی به ما خواهی کرد</p>\r\n<p>پیوند به دیگران ندامت دارد</p>\r\n<p>محکم مکن این رشته که واخواهی کرد</p>",
+            "targetPoemId": 20722,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 0
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:07:57.982183+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/141905",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 141905,
+    "title": "بخش ۳۰ - فرد",
+    "fullTitle": "ابن عماد » روضة المحبین » بخش ۳۰ - فرد",
+    "urlSlug": "sh30",
+    "fullUrl": "/ebneemad/10name/sh30",
+    "plainText": "برمن در وصل خویش بگشای\r\nبر نالۀ زار من ببخشای",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>برمن در وصل خویش بگشای</p></div>\r\n<div class=\"m2\"><p>بر نالۀ زار من ببخشای</p></div></div>",
+    "sourceName": "سید محمدرضا شهیم",
+    "sourceUrlSlug": "smrs",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": true,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این شعر، شاعر از پروردگار می‌خواهد که در ارتباط خود با او را بگشاید و ناله‌ها و فریادهایش را مورد بخشش قرار دهد. به عبارتی، شاعر درخواست قرب و نزدیکی به خدا و همچنین بخشش گناهان خود را دارد.",
+    "category": {
+      "poet": {
+        "id": 196,
+        "name": "محمد بن عمادالدین خراسانی",
+        "description": "اِبْن‌ِ عِمادِ خُراسانى‌، علاءالدين‌ محمد بن‌ عمادالدين‌ (درگذشته به سال ۸۰۰ قمری/ ۱۳۹۸ میلادی)، از شاعران‌ پارسى‌گوی سدهٔ هشتم است.\r\n\r\nاز اشارات کوتاه تذکره‌نویسان چنین برمی آید که اصل ابن عماد از خراسان و زادگاه او نیز آنجا بوده، ولی در شیراز اقامت داشته و اکثر اوقات خود را در این شهر گذرانده است. معلوم نیست که وی به کدام یک از مناطق خراسان تعلق داشته و در چه زمانی آن ناحیه را ترک کرده و به شیراز مهاجرت کرده است، ولی طول اقامت وی در شیراز موجب شده است که برخی او را شیرازی بپندارند.\r\n\r\nابن عماد در بیشتر فنون سخن مهارت داشته و اشعار او مورد توجه سخندانان بوده است، چنانکه دولتشاه سمرقندی شیوایی کلام او را در غزل و قصیده ستوده است.\r\n\r\nابن عماد اشعاری در مدح رسول اکرم(ص) و امامان(ع) سروده است که نشان از تشیع او دارد. اشعار او دارای مضامین عرفانی است و در غزلیات خود «‌ابن عماد‌» تخلص می‌کرده است.\r\n\r\nاز آثار او روضة المحبين‌ يا ده‌ نامه است که به تصحیح استاد سعید نفیسی منتشر شده و به همت آقای سید محمدرضا شهیم در گنجور در دسترس قرار گرفته است.\r\n\r\nاين‌ کتاب‌ مانند «ده‌ نامه‌»های ديگری که‌ از عهد مغول‌ به‌ بعد رايج‌ شد، منظومه‌ای است‌ عاشقانه‌ در بيان‌ حالات‌ عشق‌ و نامه‌هايى‌ که‌ ميان‌ عاشق‌ و معشوق‌ مبادله‌ شده‌ است‌. اين‌ اثر در ۷۹۴ قمری (۱۳۲۹ میلادی) و در ۷۶۰ بيت‌ به‌ شکل‌ مثنوی سروده‌ شده‌ و از زمان‌ تأليف‌ در ميان‌ اهل‌ ادب‌ از اشتهار ويژه‌ای برخوردار بوده‌ است‌.\r\n\r\nدولتشاه‌، از شهرت‌ اين‌ کتاب‌ در زمان‌ خود سخن‌ مى‌گويد و کثرت‌ نسخه‌های خطى‌ آن‌ در کتابخانه‌های جهان‌ اين‌ گفته‌ را تأييد مى‌کند. ",
+        "fullUrl": "/ebneemad",
+        "rootCatId": 3183,
+        "nickname": "ابن عماد",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/ebneemad.gif",
+        "birthYearInLHijri": 745,
+        "validBirthDate": false,
+        "deathYearInLHijri": 800,
+        "validDeathDate": true,
+        "pinOrder": 0,
+        "birthPlace": "مشهد",
+        "birthPlaceLatitude": 36.2605,
+        "birthPlaceLongitude": 59.6168,
+        "deathPlace": "شیراز",
+        "deathPlaceLatitude": 29.5926,
+        "deathPlaceLongitude": 52.5836
+      },
+      "cat": {
+        "id": 3184,
+        "title": "روضة المحبین",
+        "urlSlug": "10name",
+        "fullUrl": "/ebneemad/10name",
+        "tableOfContentsStyle": 2,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 3183,
+            "title": "ابن عماد",
+            "urlSlug": "ebneemad",
+            "fullUrl": "/ebneemad",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "اِبْن‌ِ عِمادِ خُراسانى‌، علاءالدين‌ محمد بن‌ عمادالدين‌ (درگذشته به سال ۸۰۰ قمری/ ۱۳۹۸ میلادی)، از شاعران‌ پارسى‌گوی سدهٔ هشتم است.\r\n\r\nاز اشارات کوتاه تذکره‌نویسان چنین برمی آید که اصل ابن عماد از خراسان و زادگاه او نیز آنجا بوده، ولی در شیراز اقامت داشته و اکثر اوقات خود را در این شهر گذرانده است. معلوم نیست که وی به کدام یک از مناطق خراسان تعلق داشته و در چه زمانی آن ناحیه را ترک کرده و به شیراز مهاجرت کرده است، ولی طول اقامت وی در شیراز موجب شده است که برخی او را شیرازی بپندارند.\r\n\r\nابن عماد در بیشتر فنون سخن مهارت داشته و اشعار او مورد توجه سخندانان بوده است، چنانکه دولتشاه سمرقندی شیوایی کلام او را در غزل و قصیده ستوده است.\r\n\r\nابن عماد اشعاری در مدح رسول اکرم(ص) و امامان(ع) سروده است که نشان از تشیع او دارد. اشعار او دارای مضامین عرفانی است و در غزلیات خود «‌ابن عماد‌» تخلص می‌کرده است.\r\n\r\nاز آثار او روضة المحبين‌ يا ده‌ نامه است که به تصحیح استاد سعید نفیسی منتشر شده و به همت آقای سید محمدرضا شهیم در گنجور در دسترس قرار گرفته است.\r\n\r\nاين‌ کتاب‌ مانند «ده‌ نامه‌»های ديگری که‌ از عهد مغول‌ به‌ بعد رايج‌ شد، منظومه‌ای است‌ عاشقانه‌ در بيان‌ حالات‌ عشق‌ و نامه‌هايى‌ که‌ ميان‌ عاشق‌ و معشوق‌ مبادله‌ شده‌ است‌. اين‌ اثر در ۷۹۴ قمری (۱۳۲۹ میلادی) و در ۷۶۰ بيت‌ به‌ شکل‌ مثنوی سروده‌ شده‌ و از زمان‌ تأليف‌ در ميان‌ اهل‌ ادب‌ از اشتهار ويژه‌ای برخوردار بوده‌ است‌.\r\n\r\nدولتشاه‌، از شهرت‌ اين‌ کتاب‌ در زمان‌ خود سخن‌ مى‌گويد و کثرت‌ نسخه‌های خطى‌ آن‌ در کتابخانه‌های جهان‌ اين‌ گفته‌ را تأييد مى‌کند. ",
+            "descriptionHtml": "<p>اِبْن&zwnj;ِ عِمادِ خُراسانى&zwnj;، علاءالدين&zwnj; محمد بن&zwnj; عمادالدين&zwnj; (درگذشته به سال ۸۰۰ قمری/ ۱۳۹۸ میلادی)، از شاعران&zwnj; پارسى&zwnj;گوی سدهٔ هشتم است.</p>\r\n<p>از اشارات کوتاه تذکره&zwnj;نویسان چنین برمی آید که اصل ابن عماد از خراسان و زادگاه او نیز آنجا بوده، ولی در شیراز اقامت داشته و اکثر اوقات خود را در این شهر گذرانده است. معلوم نیست که وی به کدام یک از مناطق خراسان تعلق داشته و در چه زمانی آن ناحیه را ترک کرده و به شیراز مهاجرت کرده است، ولی طول اقامت وی در شیراز موجب شده است که برخی او را شیرازی بپندارند.</p>\r\n<p>ابن عماد در بیشتر فنون سخن مهارت داشته و اشعار او مورد توجه سخندانان بوده است، چنانکه دولتشاه سمرقندی شیوایی کلام او را در غزل و قصیده ستوده است.</p>\r\n<p>ابن عماد اشعاری در مدح رسول اکرم(ص) و امامان(ع) سروده است که نشان از تشیع او دارد. اشعار او دارای مضامین عرفانی است و در غزلیات خود &laquo;&zwnj;ابن عماد&zwnj;&raquo; تخلص می&zwnj;کرده است.</p>\r\n<p>از آثار او روضة المحبين&zwnj; يا ده&zwnj; نامه است که به تصحیح استاد سعید نفیسی منتشر شده و به همت آقای سید محمدرضا شهیم در گنجور در دسترس قرار گرفته است.</p>\r\n<p>اين&zwnj; کتاب&zwnj; مانند &laquo;ده&zwnj; نامه&zwnj;&raquo;های ديگری که&zwnj; از عهد مغول&zwnj; به&zwnj; بعد رايج&zwnj; شد، منظومه&zwnj;ای است&zwnj; عاشقانه&zwnj; در بيان&zwnj; حالات&zwnj; عشق&zwnj; و نامه&zwnj;هايى&zwnj; که&zwnj; ميان&zwnj; عاشق&zwnj; و معشوق&zwnj; مبادله&zwnj; شده&zwnj; است&zwnj;. اين&zwnj; اثر در ۷۹۴ قمری (۱۳۲۹ میلادی) و در ۷۶۰ بيت&zwnj; به&zwnj; شکل&zwnj; مثنوی سروده&zwnj; شده&zwnj; و از زمان&zwnj; تأليف&zwnj; در ميان&zwnj; اهل&zwnj; ادب&zwnj; از اشتهار ويژه&zwnj;ای برخوردار بوده&zwnj; است&zwnj;.</p>\r\n<p>دولتشاه&zwnj;، <a href=\"https://naskban.ir/26668/327\">از شهرت&zwnj; اين&zwnj; کتاب&zwnj; در زمان&zwnj; خود سخن&zwnj; مى&zwnj;گويد</a> و کثرت&zwnj; نسخه&zwnj;های خطى&zwnj; آن&zwnj; در کتابخانه&zwnj;های جهان&zwnj; اين&zwnj; گفته&zwnj; را تأييد مى&zwnj;کند.&nbsp;</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 141906,
+      "title": "بخش ۳۱ - تمامی سخن",
+      "urlSlug": "sh31",
+      "excerpt": "دردا که دل از غمت بفرسود",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 141904,
+      "title": "بخش ۲۹ - غزل",
+      "urlSlug": "sh29",
+      "excerpt": "در غصه هجر اگر بمیرم",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 5091550,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "برمن در وصل خویش بگشای",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: به من اجازه بده در ارتباط با خودم بیشتر صحبت کنم و از ناراحتی‌هایم بگویم."
+      },
+      {
+        "id": 5091551,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بر نالۀ زار من ببخشای",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "25d984e2-4953-4d63-aa18-08dcaa3cffba",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00025574/00028.jpg",
+        "targetPageUrl": "https://naskban.ir/25574/28",
+        "altText": "روضة المحبین (ده نامه) - ابن عماد شیرازی - تصویر ۲۸",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 616079,
+        "poemId": 141905,
+        "poem": null,
+        "poetId": 196,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 13,
+        "ganjoorMetre": {
+          "id": 13,
+          "urlSlug": null,
+          "rhythm": "مفعول مفاعلن فعولن (هزج مسدس اخرب مقبوض محذوف)",
+          "name": null,
+          "description": null,
+          "verseCount": 40158
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "شای",
+        "plainText": "برمن در وصل خویش بگشای\r\nبر نالۀ زار من ببخشای",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>برمن در وصل خویش بگشای</p></div>\r\n<div class=\"m2\"><p>بر نالۀ زار من ببخشای</p></div></div>",
+        "poemFormat": 3,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [
+          {
+            "id": 79015685,
+            "poemId": 141905,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 24,
+            "relationOrder": 1,
+            "poetName": "جامی",
+            "poetImageUrl": "/api/ganjoor/poet/image/jami.gif",
+            "fullUrl": "/jami/7ourang/7-6-leyli-majnoon/sh12#bn12",
+            "fullTitle": "جامی » هفت اورنگ » لیلی و مجنون » بخش ۱۲ - رفتن مجنون روز دیگر به قبیله لیلی و ملاقات کردن باوی و به جهت ازدحام اغیار مجال سخن نایافتن",
+            "htmlExcerpt": "<p>بر گریه زار من ببخشای</p>\r\n<p>وز طلعت یار پرده بگشای</p>",
+            "targetPoemId": 66177,
+            "targetSectionIndex": 13,
+            "poetMorePoemsLikeThisCount": 2
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}
