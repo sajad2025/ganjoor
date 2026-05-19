@@ -2,7 +2,8 @@
   "poet_id": 79,
   "poet_nickname": "نیر تبریزی",
   "root_cat_id": 2203,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T05:57:27.529068+00:00"
+  "completed": true,
+  "completed_count": 345,
+  "newly_written_this_run": 345,
+  "completed_at": "2026-05-19T05:58:39.077139+00:00"
 }
