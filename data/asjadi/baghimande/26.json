@@ -1,0 +1,232 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:03:08.524060+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/106360",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 106360,
+    "title": "شمارهٔ  ۲۶ - در دور تو",
+    "fullTitle": "عسجدی » اشعار باقیمانده » شمارهٔ  ۲۶ - در دور تو",
+    "urlSlug": "sh26",
+    "fullUrl": "/asjadi/baghimande/sh26",
+    "plainText": "در دور تو عقل کل کنشتی گردد\r\nحسن ابدی شهره بزشتی گردد\r\nخاکستر کشتگانت در دوزخ عشق\r\nپیرایه حوران بهشتی گردد",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>در دور تو عقل کل کنشتی گردد</p></div>\r\n<div class=\"m2\"><p>حسن ابدی شهره بزشتی گردد</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>خاکستر کشتگانت در دوزخ عشق</p></div>\r\n<div class=\"m2\"><p>پیرایه حوران بهشتی گردد</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این ابیات، شاعر به بررسی عشق و تاثیر آن بر انسان‌ها می‌پردازد. او بیان می‌کند که وقتی عقل و خرد در دور عشق قرار می‌گیرند، زیبایی جاودانه به زشتی تبدیل می‌شود. همچنین، خاکستر کشتگان عشق در دوزخ، به زینت حوران بهشتی مبدل می‌شود. به طور کلی، این اشعار به تضادها و تغییرات عمیق ناشی از عشق اشاره دارد.",
+    "category": {
+      "poet": {
+        "id": 125,
+        "name": "عسجدی مروزی",
+        "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+        "fullUrl": "/asjadi",
+        "rootCatId": 2576,
+        "nickname": "عسجدی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/asjadi.gif",
+        "birthYearInLHijri": 380,
+        "validBirthDate": false,
+        "deathYearInLHijri": 432,
+        "validDeathDate": true,
+        "pinOrder": 0,
+        "birthPlace": "مرو",
+        "birthPlaceLatitude": 37.6644,
+        "birthPlaceLongitude": 62.1747,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 2577,
+        "title": "اشعار باقیمانده",
+        "urlSlug": "baghimande",
+        "fullUrl": "/asjadi/baghimande",
+        "tableOfContentsStyle": 2,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 2576,
+            "title": "عسجدی",
+            "urlSlug": "asjadi",
+            "fullUrl": "/asjadi",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+            "descriptionHtml": "<p>عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می&zwnj;زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می&zwnj;شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می&zwnj;کرد.</p>\r\n<p>وی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح &laquo;سومنات&raquo; به دست سلطان محمود، قصیده&zwnj;ای در تهنیت ساخته که آن قصیده در کتاب&zwnj;های تراجم ضبط شده و مشهور است.</p>\r\n<p>وفات او در سال ۴۳۲ ه.ق ذکر نموده&zwnj;اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 106361,
+      "title": "شمارهٔ  ۲۷ - وعده دوست",
+      "urlSlug": "sh27",
+      "excerpt": "دل دوش هزار چاره سازی میکرد",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 106359,
+      "title": "شمارهٔ  ۲۵ - آیینه روی دوست",
+      "urlSlug": "sh25",
+      "excerpt": "بر گل رقمی ز مشک ناگاه زدند",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 4225952,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "در دور تو عقل کل کنشتی گردد",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: در اطراف تو، عقل و دانش به تماشای زیبایی جاودانه‌ات مشغول می‌شود و در مقابل این زیبایی، زشتی‌ها به فراموشی سپرده می‌شوند."
+      },
+      {
+        "id": 4225953,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "حسن ابدی شهره بزشتی گردد",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 4225954,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "خاکستر کشتگانت در دوزخ عشق",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: خاکستر کشته‌شدگان عشق در دوزخ، زینت‌بخش حوریان بهشتی می‌شود."
+      },
+      {
+        "id": 4225955,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "پیرایه حوران بهشتی گردد",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "a3b8a535-548f-4b8a-6ccf-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00004199/00028.jpg",
+        "targetPageUrl": "https://naskban.ir/4199/28",
+        "altText": "دیوان استاد عسجدی مروزی به تصحیح طاهری شهاب - عسجدی مروزی - تصویر ۲۸",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 109315,
+        "authorName": "امیرعلی داودپور",
+        "authorUrl": null,
+        "commentDate": "2023-06-11T21:12:57.5333012",
+        "htmlComment": "<p><a title=\"شرفگرد\" href=\"https://m.facebook.com/story.php?story_fbid=pfbid02GUyvNuUiVdza7W6HhZr3ygguJmtJ4rXnL1TcpxVEyYXr3qv9FBwxwcXonQAbnLCNl&amp;id=100064803366045\">چرخش ودور زمان و مکان (عسجدی): عسجدی از تغییر رویه و هنجار بر گرد مخاطب خویش میسراید براستی اگر کسی منش و شیوه و هنجاری مستحکم از راستی یا دروغ برگزیند بر گرد او دروغ به راستی و راستی به دروغ تبدیل گردد. #امیرعلی_رستم_داودپور #شرفگرد </a></p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": "efac3645-1023-4f63-ba99-08db015c7597",
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 470769,
+        "poemId": 106360,
+        "poem": null,
+        "poetId": 125,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 24,
+        "ganjoorMetre": {
+          "id": 24,
+          "urlSlug": null,
+          "rhythm": "مفعول مفاعیل مفاعیل فعل (وزن رباعی)",
+          "name": null,
+          "description": null,
+          "verseCount": 50409
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "شتیگردد",
+        "plainText": "در دور تو عقل کل کنشتی گردد\r\nحسن ابدی شهره بزشتی گردد\r\nخاکستر کشتگانت در دوزخ عشق\r\nپیرایه حوران بهشتی گردد",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>در دور تو عقل کل کنشتی گردد</p></div>\r\n<div class=\"m2\"><p>حسن ابدی شهره بزشتی گردد</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>خاکستر کشتگانت در دوزخ عشق</p></div>\r\n<div class=\"m2\"><p>پیرایه حوران بهشتی گردد</p></div></div>",
+        "poemFormat": 5,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

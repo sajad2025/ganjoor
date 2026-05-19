@@ -1,0 +1,190 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:03:04.921144+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/106342",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 106342,
+    "title": "شمارهٔ  ۸ - در صفت جود ممدوح",
+    "fullTitle": "عسجدی » اشعار باقیمانده » شمارهٔ  ۸ - در صفت جود ممدوح",
+    "urlSlug": "sh8",
+    "fullUrl": "/asjadi/baghimande/sh8",
+    "plainText": "به بخشش کف او ساعتی وفا نکند\r\nاگر ستاره درم گردد و فلک ضراب",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>به بخشش کف او ساعتی وفا نکند</p></div>\r\n<div class=\"m2\"><p>اگر ستاره درم گردد و فلک ضراب</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: این شعر به مرگ و فناپذیری زندگی اشاره دارد. شاعر می‌گوید که حتی اگر کسی به او بخششی کند، آن وفا پایدار نخواهد بود و همه چیز به زودی از بین می‌رود. به این ترتیب، نشانه‌های زیبایی و امید، مانند ستاره‌ها و آسمان، نیز نمی‌توانند مانع از زوال و نابودی شوند.",
+    "category": {
+      "poet": {
+        "id": 125,
+        "name": "عسجدی مروزی",
+        "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+        "fullUrl": "/asjadi",
+        "rootCatId": 2576,
+        "nickname": "عسجدی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/asjadi.gif",
+        "birthYearInLHijri": 380,
+        "validBirthDate": false,
+        "deathYearInLHijri": 432,
+        "validDeathDate": true,
+        "pinOrder": 0,
+        "birthPlace": "مرو",
+        "birthPlaceLatitude": 37.6644,
+        "birthPlaceLongitude": 62.1747,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 2577,
+        "title": "اشعار باقیمانده",
+        "urlSlug": "baghimande",
+        "fullUrl": "/asjadi/baghimande",
+        "tableOfContentsStyle": 2,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 2576,
+            "title": "عسجدی",
+            "urlSlug": "asjadi",
+            "fullUrl": "/asjadi",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+            "descriptionHtml": "<p>عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می&zwnj;زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می&zwnj;شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می&zwnj;کرد.</p>\r\n<p>وی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح &laquo;سومنات&raquo; به دست سلطان محمود، قصیده&zwnj;ای در تهنیت ساخته که آن قصیده در کتاب&zwnj;های تراجم ضبط شده و مشهور است.</p>\r\n<p>وفات او در سال ۴۳۲ ه.ق ذکر نموده&zwnj;اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 106343,
+      "title": "شمارهٔ  ۹ - وله",
+      "urlSlug": "sh9",
+      "excerpt": "پیش او کی شوند باز سپید",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 106341,
+      "title": "شمارهٔ  ۷ - تعریف شمع",
+      "urlSlug": "sh7",
+      "excerpt": "بر من آمد و آورد و بر فروخته شمع",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 4225868,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "به بخشش کف او ساعتی وفا نکند",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: اگرچه می‌توان به کسی در بخشش اعتماد کرد، اما گمان نکنید که این بخشش همیشه پایدار خواهد بود. حتی اگر ستاره‌ای در دستانم باشد یا آسمان به نفع من باشد، وفاداری در بخشش همیشه وجود ندارد."
+      },
+      {
+        "id": 4225869,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "اگر ستاره درم گردد و فلک ضراب",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "232a5935-4fe0-4404-6cbd-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00004199/00023.jpg",
+        "targetPageUrl": "https://naskban.ir/4199/23",
+        "altText": "دیوان استاد عسجدی مروزی به تصحیح طاهری شهاب - عسجدی مروزی - تصویر ۲۳",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 470751,
+        "poemId": 106342,
+        "poem": null,
+        "poetId": 125,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 3,
+        "ganjoorMetre": {
+          "id": 3,
+          "urlSlug": null,
+          "rhythm": "مفاعلن فعلاتن مفاعلن فعلن (مجتث مثمن مخبون محذوف)",
+          "name": null,
+          "description": null,
+          "verseCount": 136413
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "اگرستارهدرمگرددوفلکضراب",
+        "plainText": "به بخشش کف او ساعتی وفا نکند\r\nاگر ستاره درم گردد و فلک ضراب",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>به بخشش کف او ساعتی وفا نکند</p></div>\r\n<div class=\"m2\"><p>اگر ستاره درم گردد و فلک ضراب</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

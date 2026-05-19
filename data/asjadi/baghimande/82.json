@@ -1,0 +1,190 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:03:19.726958+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/106416",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 106416,
+    "title": "شمارهٔ  ۸۲ - وله",
+    "fullTitle": "عسجدی » اشعار باقیمانده » شمارهٔ  ۸۲ - وله",
+    "urlSlug": "sh82",
+    "fullUrl": "/asjadi/baghimande/sh82",
+    "plainText": "بردار درشتی ز دل خصم بنرمی\r\nکز پیه بنضج آید ای دوست مغنده",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>بردار درشتی ز دل خصم بنرمی</p></div>\r\n<div class=\"m2\"><p>کز پیه بنضج آید، ای دوست مغنده</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: این بیت شاعرانه به این معناست که باید به نرمی و با احتیاط از دل خصم و دشمن، نقطه ضعف‌ها یا درشتی‌های او را بیرون بکشیم، زیرا از آنچه که ظاهراً سخت و سنگین به نظر می‌رسد می‌توان به چیزی لطیف و مفید دست یافت. شاعر بر اهمیت نرم‌خوئی و مهارت در برقراری ارتباط تأکید می‌کند.",
+    "category": {
+      "poet": {
+        "id": 125,
+        "name": "عسجدی مروزی",
+        "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+        "fullUrl": "/asjadi",
+        "rootCatId": 2576,
+        "nickname": "عسجدی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/asjadi.gif",
+        "birthYearInLHijri": 380,
+        "validBirthDate": false,
+        "deathYearInLHijri": 432,
+        "validDeathDate": true,
+        "pinOrder": 0,
+        "birthPlace": "مرو",
+        "birthPlaceLatitude": 37.6644,
+        "birthPlaceLongitude": 62.1747,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 2577,
+        "title": "اشعار باقیمانده",
+        "urlSlug": "baghimande",
+        "fullUrl": "/asjadi/baghimande",
+        "tableOfContentsStyle": 2,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 2576,
+            "title": "عسجدی",
+            "urlSlug": "asjadi",
+            "fullUrl": "/asjadi",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+            "descriptionHtml": "<p>عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می&zwnj;زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می&zwnj;شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می&zwnj;کرد.</p>\r\n<p>وی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح &laquo;سومنات&raquo; به دست سلطان محمود، قصیده&zwnj;ای در تهنیت ساخته که آن قصیده در کتاب&zwnj;های تراجم ضبط شده و مشهور است.</p>\r\n<p>وفات او در سال ۴۳۲ ه.ق ذکر نموده&zwnj;اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 106417,
+      "title": "شمارهٔ  ۸۳ - وله",
+      "urlSlug": "sh83",
+      "excerpt": "تا پای نهند بر سر حران",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 106415,
+      "title": "شمارهٔ  ۸۱ - در طلب استغفار گوید",
+      "urlSlug": "sh81",
+      "excerpt": "از شرب مدام و لاف مشرب توبه",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 4226363,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بردار درشتی ز دل خصم بنرمی",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: این جمله به این معناست که با لحن ملایم و نرم، از دل دشمن خویش خشم و سختی را دور کن، زیرا این کار می‌تواند به نرمی و لطافت منجر شود. در اینجا دوستانه و با مهربانی به تغییر احساسات منفی اشاره شده است."
+      },
+      {
+        "id": 4226364,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "کز پیه بنضج آید، ای دوست مغنده",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "ce713597-d35d-4239-6d07-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00004199/00054.jpg",
+        "targetPageUrl": "https://naskban.ir/4199/54",
+        "altText": "دیوان استاد عسجدی مروزی به تصحیح طاهری شهاب - عسجدی مروزی - تصویر ۵۴",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 470825,
+        "poemId": 106416,
+        "poem": null,
+        "poetId": 125,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 10,
+        "ganjoorMetre": {
+          "id": 10,
+          "urlSlug": null,
+          "rhythm": "مفعول مفاعیل مفاعیل فعولن (هزج مثمن اخرب مکفوف محذوف)",
+          "name": null,
+          "description": null,
+          "verseCount": 53559
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "کزپیهبنضجایدایدوستمغنده",
+        "plainText": "بردار درشتی ز دل خصم بنرمی\r\nکز پیه بنضج آید ای دوست مغنده",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>بردار درشتی ز دل خصم بنرمی</p></div>\r\n<div class=\"m2\"><p>کز پیه بنضج آید، ای دوست مغنده</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

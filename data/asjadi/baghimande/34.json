@@ -1,0 +1,207 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:03:10.124797+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/106368",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 106368,
+    "title": "شمارهٔ  ۳۴ - وله",
+    "fullTitle": "عسجدی » اشعار باقیمانده » شمارهٔ  ۳۴ - وله",
+    "urlSlug": "sh34",
+    "fullUrl": "/asjadi/baghimande/sh34",
+    "plainText": "هر که بر درگه ملوک بود\r\nاز چنین کار با خدوک بود",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>هر که بر درگه ملوک بود</p></div>\r\n<div class=\"m2\"><p>از چنین کار با خدوک بود</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: این بیت به این معناست که هر کسی که در درگاه پادشاهان و ملوک قرار دارد، از چنین کارها و امور کوچک و بی‌اهمیت دور است و به آنها توجهی ندارد. به عبارتی، افراد بزرگ و مهم به امور سطحی و بی‌ارزش نمی‌پردازند.",
+    "category": {
+      "poet": {
+        "id": 125,
+        "name": "عسجدی مروزی",
+        "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+        "fullUrl": "/asjadi",
+        "rootCatId": 2576,
+        "nickname": "عسجدی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/asjadi.gif",
+        "birthYearInLHijri": 380,
+        "validBirthDate": false,
+        "deathYearInLHijri": 432,
+        "validDeathDate": true,
+        "pinOrder": 0,
+        "birthPlace": "مرو",
+        "birthPlaceLatitude": 37.6644,
+        "birthPlaceLongitude": 62.1747,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 2577,
+        "title": "اشعار باقیمانده",
+        "urlSlug": "baghimande",
+        "fullUrl": "/asjadi/baghimande",
+        "tableOfContentsStyle": 2,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 2576,
+            "title": "عسجدی",
+            "urlSlug": "asjadi",
+            "fullUrl": "/asjadi",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+            "descriptionHtml": "<p>عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می&zwnj;زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می&zwnj;شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می&zwnj;کرد.</p>\r\n<p>وی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح &laquo;سومنات&raquo; به دست سلطان محمود، قصیده&zwnj;ای در تهنیت ساخته که آن قصیده در کتاب&zwnj;های تراجم ضبط شده و مشهور است.</p>\r\n<p>وفات او در سال ۴۳۲ ه.ق ذکر نموده&zwnj;اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 106369,
+      "title": "شمارهٔ  ۳۵ - قصیده در شکایت از روزگار و یاد احباب",
+      "urlSlug": "sh35",
+      "excerpt": "فغان ز دست ستمهای گنبد دوار",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 106367,
+      "title": "شمارهٔ  ۳۳ - از قطعه ای",
+      "urlSlug": "sh33",
+      "excerpt": "الا تا زمی از کوه پدید است و ره از سد",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 4225982,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "هر که بر درگه ملوک بود",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: هر کس که در نزد پادشاهان و بزرگان قرار دارد، باید با چنین افکار و رفتارهایی آشنا باشد."
+      },
+      {
+        "id": 4225983,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "از چنین کار با خدوک بود",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "b35c71d0-8da8-4cc9-6cd7-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00004199/00030.jpg",
+        "targetPageUrl": "https://naskban.ir/4199/30",
+        "altText": "دیوان استاد عسجدی مروزی به تصحیح طاهری شهاب - عسجدی مروزی - تصویر ۳۰",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 470777,
+        "poemId": 106368,
+        "poem": null,
+        "poetId": 125,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 9,
+        "ganjoorMetre": {
+          "id": 9,
+          "urlSlug": null,
+          "rhythm": "فعلاتن مفاعلن فعلن (خفیف مسدس مخبون)",
+          "name": null,
+          "description": null,
+          "verseCount": 114753
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "وکبود",
+        "plainText": "هر که بر درگه ملوک بود\r\nاز چنین کار با خدوک بود",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>هر که بر درگه ملوک بود</p></div>\r\n<div class=\"m2\"><p>از چنین کار با خدوک بود</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [
+          {
+            "id": 45696422,
+            "poemId": 106368,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 62,
+            "relationOrder": 1,
+            "poetName": "عنصری",
+            "poetImageUrl": "/api/ganjoor/poet/image/onsori.gif",
+            "fullUrl": "/onsori/omas/okhaf/sh20",
+            "fullTitle": "عنصری » ابیات پراکندهٔ مثنویها » بحر خفیف » شمارهٔ ۲۰",
+            "htmlExcerpt": "<p>هر که بر درگه ملوک بود</p>\r\n<p>از چنین کار با خدوک بود</p>",
+            "targetPoemId": 69191,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 0
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

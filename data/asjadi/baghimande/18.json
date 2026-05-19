@@ -1,0 +1,190 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:03:06.917766+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/106352",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 106352,
+    "title": "شمارهٔ  ۱۸ - وله",
+    "fullTitle": "عسجدی » اشعار باقیمانده » شمارهٔ  ۱۸ - وله",
+    "urlSlug": "sh18",
+    "fullUrl": "/asjadi/baghimande/sh18",
+    "plainText": "حلقوم جوالقی چو ساق موزه است\r\nو آن معده کافرش چو خم غوزه است",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>حلقوم جوالقی چو ساق موزه است</p></div>\r\n<div class=\"m2\"><p>و آن معده کافرش چو خم غوزه است</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این ابیات، شاعر به توصیف حلقوم و معده یک شخص کافر پرداخته است. حلقوم او را به شکل ساق موزه و معده‌اش را به شکل خم غوزه تشبیه کرده است، که نشان‌دهنده ظاهری خاص و ویژگی‌هایی منحصر به فرد است. این تشبیهات به نوعی بیانگر تضاد و ناپسندیدگی هستند.",
+    "category": {
+      "poet": {
+        "id": 125,
+        "name": "عسجدی مروزی",
+        "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+        "fullUrl": "/asjadi",
+        "rootCatId": 2576,
+        "nickname": "عسجدی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/asjadi.gif",
+        "birthYearInLHijri": 380,
+        "validBirthDate": false,
+        "deathYearInLHijri": 432,
+        "validDeathDate": true,
+        "pinOrder": 0,
+        "birthPlace": "مرو",
+        "birthPlaceLatitude": 37.6644,
+        "birthPlaceLongitude": 62.1747,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 2577,
+        "title": "اشعار باقیمانده",
+        "urlSlug": "baghimande",
+        "fullUrl": "/asjadi/baghimande",
+        "tableOfContentsStyle": 2,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 2576,
+            "title": "عسجدی",
+            "urlSlug": "asjadi",
+            "fullUrl": "/asjadi",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+            "descriptionHtml": "<p>عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می&zwnj;زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می&zwnj;شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می&zwnj;کرد.</p>\r\n<p>وی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح &laquo;سومنات&raquo; به دست سلطان محمود، قصیده&zwnj;ای در تهنیت ساخته که آن قصیده در کتاب&zwnj;های تراجم ضبط شده و مشهور است.</p>\r\n<p>وفات او در سال ۴۳۲ ه.ق ذکر نموده&zwnj;اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 106353,
+      "title": "شمارهٔ  ۱۹ - از قطعات",
+      "urlSlug": "sh19",
+      "excerpt": "جوان شد حکیم ما، جوانمرد و دل فراخ",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 106351,
+      "title": "شمارهٔ  ۱۷ - از تغزلات",
+      "urlSlug": "sh17",
+      "excerpt": "همچون رطب اندام و چو روغنش سرین",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 4225910,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "حلقوم جوالقی چو ساق موزه است",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: در اینجا به وضعیتی اشاره شده که دست و پای کسی به قدری نازک و ضعیف است که مانند لوله‌های باریک می‌ماند و در عوض، حالت داخلی او از نظر روحی به شکلی است که قابل تحمل نیست و مشکلات زیادی دارد. به نوعی می‌خواهد بگوید که ظاهری زیبا و نازک دارد، اما در باطن دچار مشکلات و نارسایی‌هایی است."
+      },
+      {
+        "id": 4225911,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "و آن معده کافرش چو خم غوزه است",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "e5723516-bc3c-41f9-6cc7-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00004199/00026.jpg",
+        "targetPageUrl": "https://naskban.ir/4199/26",
+        "altText": "دیوان استاد عسجدی مروزی به تصحیح طاهری شهاب - عسجدی مروزی - تصویر ۲۶",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 470761,
+        "poemId": 106352,
+        "poem": null,
+        "poetId": 125,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 24,
+        "ganjoorMetre": {
+          "id": 24,
+          "urlSlug": null,
+          "rhythm": "مفعول مفاعیل مفاعیل فعل (وزن رباعی)",
+          "name": null,
+          "description": null,
+          "verseCount": 50409
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "وزهاست",
+        "plainText": "حلقوم جوالقی چو ساق موزه است\r\nو آن معده کافرش چو خم غوزه است",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>حلقوم جوالقی چو ساق موزه است</p></div>\r\n<div class=\"m2\"><p>و آن معده کافرش چو خم غوزه است</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

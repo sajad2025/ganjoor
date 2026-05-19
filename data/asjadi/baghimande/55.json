@@ -1,0 +1,207 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:03:14.342161+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/106389",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 106389,
+    "title": "شمارهٔ  ۵۵ - وله",
+    "fullTitle": "عسجدی » اشعار باقیمانده » شمارهٔ  ۵۵ - وله",
+    "urlSlug": "sh55",
+    "fullUrl": "/asjadi/baghimande/sh55",
+    "plainText": "چو مشک بویا لیکنش نافه بوده ز غژب\r\nچو شیر صافی پستانش بوده از پاشنگ",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>چو مشک بویا لیکنش نافه بوده ز غژب</p></div>\r\n<div class=\"m2\"><p>چو شیر صافی، پستانش بوده از پاشنگ</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: این دو بیت از شاعری کهنه کار نشان دهنده‌ی تضاد میان دو حالت است. در بیت اول، به عطری خوشبو اشاره شده که به وسیله‌ی نافه (نوعی گلابی) به وجود آمده است و در بیت دوم، به شیر خالصی اشاره می‌شود که از پستان فروردین می‌آید. در کل، این ابیات نشان‌دهنده‌ی زیبایی و خلوص در حالی هستند که به منابع و ریشه‌هایشان اشاره دارند.",
+    "category": {
+      "poet": {
+        "id": 125,
+        "name": "عسجدی مروزی",
+        "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+        "fullUrl": "/asjadi",
+        "rootCatId": 2576,
+        "nickname": "عسجدی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/asjadi.gif",
+        "birthYearInLHijri": 380,
+        "validBirthDate": false,
+        "deathYearInLHijri": 432,
+        "validDeathDate": true,
+        "pinOrder": 0,
+        "birthPlace": "مرو",
+        "birthPlaceLatitude": 37.6644,
+        "birthPlaceLongitude": 62.1747,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 2577,
+        "title": "اشعار باقیمانده",
+        "urlSlug": "baghimande",
+        "fullUrl": "/asjadi/baghimande",
+        "tableOfContentsStyle": 2,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 2576,
+            "title": "عسجدی",
+            "urlSlug": "asjadi",
+            "fullUrl": "/asjadi",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می‌زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می‌شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می‌کرد.\r\nوی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح «سومنات» به دست سلطان محمود، قصیده‌ای در تهنیت ساخته که آن قصیده در کتاب‌های تراجم ضبط شده و مشهور است.\r\nوفات او در سال ۴۳۲ ه.ق ذکر نموده‌اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.",
+            "descriptionHtml": "<p>عبدالعزیز پسر منصور مشهور به عَسجَدی مروزی شاعر ایرانی است که در اواخر سدهٔ چهارم و اوایل سدهٔ پنجم هجری می&zwnj;زیست. وی از شاعران دربار سلطان محمود غزنوی بود. گمان برده می&zwnj;شود که وی پس از مرگ سلطان محمود در دربار پسر وی سلطان مسعود غزنوی و همچنین پس از وی در دبار سلطان مودود غزنوی پسر سلطان مسعود نیز شاعری می&zwnj;کرد.</p>\r\n<p>وی در اشعار خود آنان را مدح نموده است. عسجدی از شاعرانی است که در فتح &laquo;سومنات&raquo; به دست سلطان محمود، قصیده&zwnj;ای در تهنیت ساخته که آن قصیده در کتاب&zwnj;های تراجم ضبط شده و مشهور است.</p>\r\n<p>وفات او در سال ۴۳۲ ه.ق ذکر نموده&zwnj;اند. از اشعار او جز چند قصیده و مقداری اشعار پراکنده چیزی باقی نمانده است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 106390,
+      "title": "شمارهٔ  ۵۶ - قطعه",
+      "urlSlug": "sh56",
+      "excerpt": "یاسمن آمد بمجلس، با بنفشه دست سود",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 106388,
+      "title": "شمارهٔ  ۵۴ - وله",
+      "urlSlug": "sh54",
+      "excerpt": "تا یکی خم بشکند ریزه شود سیصد سبو",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 4226229,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چو مشک بویا لیکنش نافه بوده ز غژب",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: مانند مشک خوشبوست، اما به دلیل غژب اندکی بوی بدی دارد. مانند شیر خالصی است که پستانش از دوشیدن به خوبی به دست آمده است."
+      },
+      {
+        "id": 4226230,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چو شیر صافی، پستانش بوده از پاشنگ",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "a77fa761-033c-44a8-6cec-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00004199/00046.jpg",
+        "targetPageUrl": "https://naskban.ir/4199/46",
+        "altText": "دیوان استاد عسجدی مروزی به تصحیح طاهری شهاب - عسجدی مروزی - تصویر ۴۶",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 470798,
+        "poemId": 106389,
+        "poem": null,
+        "poetId": 125,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 3,
+        "ganjoorMetre": {
+          "id": 3,
+          "urlSlug": null,
+          "rhythm": "مفاعلن فعلاتن مفاعلن فعلن (مجتث مثمن مخبون محذوف)",
+          "name": null,
+          "description": null,
+          "verseCount": 136413
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "گ",
+        "plainText": "چو مشک بویا لیکنش نافه بوده ز غژب\r\nچو شیر صافی پستانش بوده از پاشنگ",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>چو مشک بویا لیکنش نافه بوده ز غژب</p></div>\r\n<div class=\"m2\"><p>چو شیر صافی، پستانش بوده از پاشنگ</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [
+          {
+            "id": 66430789,
+            "poemId": 106389,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 74,
+            "relationOrder": 1,
+            "poetName": "صامت بروجردی",
+            "poetImageUrl": "/api/ganjoor/poet/image/samet.gif",
+            "fullUrl": "/samet/revayat-val-masaeb/sh34#bn2",
+            "fullTitle": "صامت بروجردی » کتاب الروایات و المصائب » شمارهٔ ۳۴ - رحلت فاطمه زهرا (س)",
+            "htmlExcerpt": "<p>بدان مخدره دوران گرفت چندان تنک</p>\r\n<p>که کوفت شیشه صبر و قرار وی بر سنگ</p>",
+            "targetPoemId": 76738,
+            "targetSectionIndex": 3,
+            "poetMorePoemsLikeThisCount": 0
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

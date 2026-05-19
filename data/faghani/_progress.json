@@ -2,7 +2,8 @@
   "poet_id": 115,
   "poet_nickname": "بابافغانی",
   "root_cat_id": 2481,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T05:56:52.604806+00:00"
+  "completed": true,
+  "completed_count": 696,
+  "newly_written_this_run": 696,
+  "completed_at": "2026-05-19T05:59:15.124944+00:00"
 }
