@@ -2,7 +2,8 @@
   "poet_id": 17,
   "poet_nickname": "مسعود سعد سلمان",
   "root_cat_id": 237,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T05:04:58.476875+00:00"
+  "completed": true,
+  "completed_count": 1053,
+  "newly_written_this_run": 1053,
+  "completed_at": "2026-05-19T05:08:45.651898+00:00"
 }
