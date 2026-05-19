@@ -1,0 +1,138 @@
+name: Cut Release
+
+# Bundles current data/ + legacy/ on main into compressed tarballs and
+# publishes a tagged GitHub Release. Phone-triggerable from the Actions tab.
+#
+# Does NOT fetch new data. Use Emergency Snapshot (Matrix) for that. This
+# workflow is purely for promoting whatever is already on main into a
+# citable release artifact set.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag name (e.g. v2026.1, v2026.2)"
+        required: true
+        default: "v2026.1"
+      name:
+        description: "Release title"
+        required: true
+        default: "v2026.1 — complete corpus snapshot"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cut-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      # Defensive: regenerate indexes + manifest against current main, so the
+      # release bundle is internally consistent even if main is mid-edit.
+      - name: Regenerate indexes
+        if: hashFiles('data/**') != ''
+        run: python scripts/build_indexes.py --data data
+
+      - name: Regenerate manifest + checksums
+        run: |
+          if [ -d data ] || [ -d legacy ]; then
+            python scripts/build_manifest.py --root data --legacy legacy
+          else
+            echo "No data/ or legacy/ to release." >&2
+            exit 1
+          fi
+
+      - name: Commit regenerated artifacts (if any drift)
+        run: |
+          git config user.name  "ganjoor-mirror-bot"
+          git config user.email "actions@users.noreply.github.com"
+          for p in data snapshot-manifest.json CHECKSUMS.sha256; do
+            [ -e "$p" ] && git add "$p" || true
+          done
+          if git diff --staged --quiet; then
+            echo "Indexes and manifest already current."
+            exit 0
+          fi
+          git commit -m "chore(release): regenerate indexes + manifest for ${{ inputs.tag }}"
+          for attempt in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            git fetch origin main
+            git pull --rebase origin main || git rebase --abort 2>/dev/null || true
+            sleep $((RANDOM % 8 + 2))
+          done
+          exit 1
+
+      - name: Bundle release artifacts
+        run: |
+          mkdir -p release
+          if [ -d data ]; then
+            echo "→ bundling data/ ..."
+            tar --use-compress-program="zstd -19 -T0" -cf release/ganjoor-data.tar.zst data
+          fi
+          if [ -d legacy ]; then
+            echo "→ bundling legacy/ ..."
+            tar --use-compress-program="zstd -19 -T0" -cf release/ganjoor-legacy.tar.zst legacy
+          fi
+          cp snapshot-manifest.json CHECKSUMS.sha256 release/ 2>/dev/null || true
+          (cd release && sha256sum * > SHA256SUMS && cat SHA256SUMS)
+          ls -lah release/
+
+      - name: Read counts for release body
+        id: counts
+        run: |
+          POEMS=$(python -c "import json; print(json.load(open('snapshot-manifest.json'))['counts']['poems'])")
+          POETS=$(python -c "import json; print(json.load(open('snapshot-manifest.json'))['counts']['poets'])")
+          echo "poems=${POEMS}" >> "$GITHUB_OUTPUT"
+          echo "poets=${POETS}" >> "$GITHUB_OUTPUT"
+          echo "Counts: ${POETS} poets / ${POEMS} poems"
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag }}
+          name: ${{ inputs.name }}
+          body: |
+            **Complete corpus snapshot of the Ganjoor Persian poetry archive.**
+
+            **Counts:** ${{ steps.counts.outputs.poets }} poets · ${{ steps.counts.outputs.poems }} poems
+
+            **Upstream:** [ganjoor.net](https://ganjoor.net) — Hamid Reza Mohammadi ([@hrmoh](https://github.com/hrmoh)) and contributors, since 2007.
+            **License:** code MIT; data CC-BY-4.0. See [LICENSE-DATA](https://github.com/${{ github.repository }}/blob/main/LICENSE-DATA).
+            **Provenance:** walked `api.ganjoor.net`; per-poem fetch timestamps embedded in each JSON envelope and aggregated in `snapshot-manifest.json`.
+
+            **On-disk layout** (also browsable via the live PWA):
+            ```
+            data/<poet>/<category>/<...>/<num>.json   ↔   ganjoor.net/<poet>/<category>/sh<num>
+            ```
+
+            **Artifacts:**
+            - `ganjoor-data.tar.zst` — per-poem JSON files for all poets, plus `_poets.json` and per-poet `_index.json` for PWA navigation
+            - `ganjoor-legacy.tar.zst` — mirrored legacy dumps (SourceForge SQLite + ganjoor-db archive)
+            - `snapshot-manifest.json` — counts, provenance, per-poet completion status
+            - `CHECKSUMS.sha256` — per-file SHA-256
+            - `SHA256SUMS` — SHA-256 of each release asset above (for verifying downloads)
+
+            **Required attribution string for derived works:**
+
+            > Persian poetry text courtesy of [گنجور — ganjoor.net](https://ganjoor.net) (Hamid Reza Mohammadi and contributors), republished under CC-BY-4.0 via [sajad2025/ganjoor](https://github.com/sajad2025/ganjoor).
+
+            See [PRESERVATION-ADDENDUM-free-path.md](https://github.com/${{ github.repository }}/blob/main/PRESERVATION-ADDENDUM-free-path.md) for the rest of the redundancy plan (Zenodo DOI, Internet Archive, Software Heritage, Filecoin Plus).
+          files: |
+            release/*
+          fail_on_unmatched_files: false
