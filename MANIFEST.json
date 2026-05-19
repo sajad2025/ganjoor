@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "26075505907",
+  "generated_at": "2026-05-19T04:07:51.147810+00:00",
+  "repository": "sajad2025/ganjoor",
+  "git_sha": "cbad3327f0bf98e19540e21ee650da3a088cb3b1",
+  "source": {
+    "api": "https://api.ganjoor.net",
+    "site": "https://ganjoor.net",
+    "upstream_maintainer": "Hamid Reza Mohammadi (github.com/hrmoh)"
+  },
+  "license": {
+    "code": "MIT",
+    "data": "CC-BY-4.0",
+    "attribution": "Persian poetry text courtesy of ganjoor.net (Hamid Reza Mohammadi and contributors), republished under CC-BY-4.0."
+  },
+  "counts": {
+    "poets": 1,
+    "poems": 695,
+    "data_files": 2,
+    "legacy_files": 0
+  },
+  "poets": [
+    {
+      "slug": "حافظ",
+      "file": "data/حافظ.ndjson",
+      "poems": 695
+    }
+  ]
+}
