@@ -2,7 +2,8 @@
   "poet_id": 32,
   "poet_nickname": "فروغی بسطامی",
   "root_cat_id": 339,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T05:46:29.646912+00:00"
+  "completed": true,
+  "completed_count": 551,
+  "newly_written_this_run": 54,
+  "completed_at": "2026-05-19T14:22:21.374812+00:00"
 }

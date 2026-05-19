@@ -2,7 +2,8 @@
   "poet_id": 73,
   "poet_nickname": "کمال خجندی",
   "root_cat_id": 2091,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T05:22:25.120856+00:00"
+  "completed": true,
+  "completed_count": 1252,
+  "newly_written_this_run": 35,
+  "completed_at": "2026-05-19T14:34:45.468548+00:00"
 }

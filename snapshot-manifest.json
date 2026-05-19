@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_id": "local-20260519T114239Z",
-  "generated_at": "2026-05-19T11:42:39.177948+00:00",
+  "snapshot_id": "local-20260519T144919Z",
+  "generated_at": "2026-05-19T14:49:19.416027+00:00",
   "repository": "",
   "git_sha": "",
   "source": {
@@ -19,9 +19,9 @@
     "example": "data/hafez/ghazal/108.json  <->  ganjoor.net/hafez/ghazal/sh108"
   },
   "counts": {
-    "poets": 209,
-    "poems": 121900,
-    "data_files": 122319,
+    "poets": 230,
+    "poems": 129465,
+    "data_files": 129926,
     "legacy_files": 3
   },
   "poets": [
@@ -87,6 +87,15 @@
       "poet_nickname": "ابواسحاق جویباری",
       "completed": true,
       "completed_at": "2026-05-19T06:02:54.189216+00:00"
+    },
+    {
+      "slug": "abusaeed",
+      "dir": "data/abusaeed",
+      "poems": 786,
+      "poet_id": 26,
+      "poet_nickname": "ابوسعید ابوالخیر",
+      "completed": true,
+      "completed_at": "2026-05-19T14:19:37.298088+00:00"
     },
     {
       "slug": "adib",
@@ -186,6 +195,15 @@
       "poet_nickname": "فخرالدین اسعد گرگانی",
       "completed": true,
       "completed_at": "2026-05-19T05:09:02.853253+00:00"
+    },
+    {
+      "slug": "asadi",
+      "dir": "data/asadi",
+      "poems": 144,
+      "poet_id": 52,
+      "poet_nickname": "اسدی توسی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:31:55.568129+00:00"
     },
     {
       "slug": "ashofte",
@@ -422,6 +440,15 @@
       "completed_at": "2026-05-19T06:08:04.468058+00:00"
     },
     {
+      "slug": "ebnehesam",
+      "dir": "data/ebnehesam",
+      "poems": 285,
+      "poet_id": 57,
+      "poet_nickname": "ابن حسام خوسفی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:32:57.011858+00:00"
+    },
+    {
       "slug": "ebneyamin",
       "dir": "data/ebneyamin",
       "poems": 2139,
@@ -451,11 +478,11 @@
     {
       "slug": "eraghi",
       "dir": "data/eraghi",
-      "poems": 527,
+      "poems": 613,
       "poet_id": 21,
       "poet_nickname": "عراقی",
-      "completed": false,
-      "completed_at": null
+      "completed": true,
+      "completed_at": "2026-05-19T14:16:55.845483+00:00"
     },
     {
       "slug": "eshghi",
@@ -595,11 +622,11 @@
     {
       "slug": "forooghi",
       "dir": "data/forooghi",
-      "poems": 497,
+      "poems": 551,
       "poet_id": 32,
       "poet_nickname": "فروغی بسطامی",
-      "completed": false,
-      "completed_at": null
+      "completed": true,
+      "completed_at": "2026-05-19T14:22:21.374812+00:00"
     },
     {
       "slug": "fosooli",
@@ -627,6 +654,24 @@
       "poet_nickname": "قاآنی",
       "completed": true,
       "completed_at": "2026-05-19T05:49:52.051278+00:00"
+    },
+    {
+      "slug": "ghaemmagham",
+      "dir": "data/ghaemmagham",
+      "poems": 257,
+      "poet_id": 98,
+      "poet_nickname": "قائم مقام فراهانی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:39:05.206258+00:00"
+    },
+    {
+      "slug": "ghaleb",
+      "dir": "data/ghaleb",
+      "poems": 446,
+      "poet_id": 123,
+      "poet_nickname": "غالب دهلوی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:44:12.815857+00:00"
     },
     {
       "slug": "ghani",
@@ -881,6 +926,24 @@
       "completed_at": "2026-05-19T06:00:39.948452+00:00"
     },
     {
+      "slug": "iqbal",
+      "dir": "data/iqbal",
+      "poems": 972,
+      "poet_id": 42,
+      "poet_nickname": "اقبال لاهوری",
+      "completed": true,
+      "completed_at": "2026-05-19T14:27:45.642260+00:00"
+    },
+    {
+      "slug": "iraj",
+      "dir": "data/iraj",
+      "poems": 226,
+      "poet_id": 88,
+      "poet_nickname": "ایرج میرزا",
+      "completed": true,
+      "completed_at": "2026-05-19T14:36:55.673982+00:00"
+    },
+    {
       "slug": "iranshan",
       "dir": "data/iranshan",
       "poems": 474,
@@ -888,6 +951,15 @@
       "poet_nickname": "ایرانشان",
       "completed": true,
       "completed_at": "2026-05-19T06:28:41.491356+00:00"
+    },
+    {
+      "slug": "jabali",
+      "dir": "data/jabali",
+      "poems": 7,
+      "poet_id": 37,
+      "poet_nickname": "عبدالواسع جبلی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:22:29.584145+00:00"
     },
     {
       "slug": "jahan",
@@ -1079,13 +1151,22 @@
       "completed_at": "2026-05-19T04:57:20.254550+00:00"
     },
     {
+      "slug": "khiali",
+      "dir": "data/khiali",
+      "poems": 399,
+      "poet_id": 118,
+      "poet_nickname": "خیالی بخارایی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:42:40.667736+00:00"
+    },
+    {
       "slug": "khojandi",
       "dir": "data/khojandi",
-      "poems": 1217,
+      "poems": 1252,
       "poet_id": 73,
       "poet_nickname": "کمال خجندی",
-      "completed": false,
-      "completed_at": null
+      "completed": true,
+      "completed_at": "2026-05-19T14:34:45.468548+00:00"
     },
     {
       "slug": "khosro",
@@ -1122,6 +1203,15 @@
       "poet_nickname": "لبیبی",
       "completed": true,
       "completed_at": "2026-05-19T06:19:21.282841+00:00"
+    },
+    {
+      "slug": "maghrebi",
+      "dir": "data/maghrebi",
+      "poems": 263,
+      "poet_id": 78,
+      "poet_nickname": "شمس مغربی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:35:41.041509+00:00"
     },
     {
       "slug": "mahabadi",
@@ -1221,6 +1311,15 @@
       "poet_nickname": "غروی اصفهانی",
       "completed": true,
       "completed_at": "2026-05-19T06:06:25.270499+00:00"
+    },
+    {
+      "slug": "mohit",
+      "dir": "data/mohit",
+      "poems": 139,
+      "poet_id": 113,
+      "poet_nickname": "محیط قمی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:41:12.631833+00:00"
     },
     {
       "slug": "mohtasham",
@@ -1430,6 +1529,24 @@
       "completed_at": "2026-05-19T05:52:22.421395+00:00"
     },
     {
+      "slug": "onsori",
+      "dir": "data/onsori",
+      "poems": 480,
+      "poet_id": 62,
+      "poet_nickname": "عنصری",
+      "completed": true,
+      "completed_at": "2026-05-19T14:34:36.692651+00:00"
+    },
+    {
+      "slug": "orfi",
+      "dir": "data/orfi",
+      "poems": 829,
+      "poet_id": 46,
+      "poet_nickname": "عرفی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:30:36.995033+00:00"
+    },
+    {
       "slug": "osmani",
       "dir": "data/osmani",
       "poems": 190,
@@ -1482,6 +1599,42 @@
       "poet_nickname": "رفیق اصفهانی",
       "completed": true,
       "completed_at": "2026-05-19T06:49:18.624608+00:00"
+    },
+    {
+      "slug": "rahi",
+      "dir": "data/rahi",
+      "poems": 249,
+      "poet_id": 41,
+      "poet_nickname": "رهی معیری",
+      "completed": true,
+      "completed_at": "2026-05-19T14:23:22.781990+00:00"
+    },
+    {
+      "slug": "rashhe",
+      "dir": "data/rashhe",
+      "poems": 29,
+      "poet_id": 36,
+      "poet_nickname": "رشحه",
+      "completed": true,
+      "completed_at": "2026-05-19T14:22:27.544946+00:00"
+    },
+    {
+      "slug": "razi",
+      "dir": "data/razi",
+      "poems": 233,
+      "poet_id": 47,
+      "poet_nickname": "رضی‌الدین آرتیمانی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:31:25.714868+00:00"
+    },
+    {
+      "slug": "rhedayat",
+      "dir": "data/rhedayat",
+      "poems": 351,
+      "poet_id": 93,
+      "poet_nickname": "رضاقلی خان هدایت",
+      "completed": true,
+      "completed_at": "2026-05-19T14:38:09.710430+00:00"
     },
     {
       "slug": "roodaki",
@@ -1545,6 +1698,15 @@
       "poet_nickname": "سعیدا",
       "completed": true,
       "completed_at": "2026-05-19T05:39:06.548840+00:00"
+    },
+    {
+      "slug": "safa",
+      "dir": "data/safa",
+      "poems": 217,
+      "poet_id": 108,
+      "poet_nickname": "صفای اصفهانی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:40:43.013567+00:00"
     },
     {
       "slug": "safayee",
@@ -1646,6 +1808,15 @@
       "completed_at": "2026-05-19T07:07:11.342230+00:00"
     },
     {
+      "slug": "seyf",
+      "dir": "data/seyf",
+      "poems": 736,
+      "poet_id": 31,
+      "poet_nickname": "سیف فرغانی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:22:08.952630+00:00"
+    },
+    {
       "slug": "shabestari",
       "dir": "data/shabestari",
       "poems": 248,
@@ -1653,6 +1824,24 @@
       "poet_nickname": "شیخ محمود شبستری",
       "completed": true,
       "completed_at": "2026-05-19T05:06:20.998953+00:00"
+    },
+    {
+      "slug": "shahedi",
+      "dir": "data/shahedi",
+      "poems": 123,
+      "poet_id": 83,
+      "poet_nickname": "شاهدی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:36:07.118921+00:00"
+    },
+    {
+      "slug": "shahi",
+      "dir": "data/shahi",
+      "poems": 219,
+      "poet_id": 103,
+      "poet_nickname": "امیر شاهی",
+      "completed": true,
+      "completed_at": "2026-05-19T14:39:53.556466+00:00"
     },
     {
       "slug": "shahid",
