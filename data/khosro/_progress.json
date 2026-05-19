@@ -2,7 +2,8 @@
   "poet_id": 34,
   "poet_nickname": "امیرخسرو دهلوی",
   "root_cat_id": 354,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T05:36:11.584835+00:00"
+  "completed": true,
+  "completed_count": 2198,
+  "newly_written_this_run": 2198,
+  "completed_at": "2026-05-19T05:43:39.810042+00:00"
 }
