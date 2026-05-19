@@ -1,0 +1,185 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:24:11.117065+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/146683",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 146683,
+    "title": "شمارهٔ ۲",
+    "fullTitle": "مرادی » شمارهٔ ۲",
+    "urlSlug": "sh2",
+    "fullUrl": "/moradi/sh2",
+    "plainText": "از حشم و گنج چه فریاد و سود\r\nکه مرگ کند بر سر تو تاختن",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>از حشم و گنج چه فریاد و سود</p></div>\r\n<div class=\"m2\"><p>که مرگ کند بر سر تو تاختن</p></div></div>",
+    "sourceName": "مجید امام‌وردی",
+    "sourceUrlSlug": "imamverdi",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": true,
+    "language": null,
+    "poemSummary": null,
+    "category": {
+      "poet": {
+        "id": 225,
+        "name": "مرادی",
+        "description": "ابوالحسن محمد بن محمد مُرادی از شاعران فاضل نیمهٔ اول قرن چهارم هجری است.\r\nرودکی در مرثیه و قطعه شعری از او یاد کرده که مطلع آن چنین است:\r\nمرد مُرادی، نَه همانا که مرد\r\nمرگ چنین خواجه نه کاریست خُرد ...\r\nاشاره‌ای که منوچهری در قصیدهٔ مشهور خود به سه ابوالحسن و پنج شاعر از بخارا دارد، مسلّماً یکی از آنها دربارهٔ اوست.\r\nنیز ثعالبی در یتیمة‌الدهر از وی یاد کرده و آورده است که در شعر عربی نیز دستی قوی داشته است.\r\nاز اشعار عربی او، کمال‌الدین اسماعیل ـ شاعر بزرگ قرن هفتم ـ بیتی را تضمین کرده و گفته است:\r\nدرین معنی که افتادست ما را\r\nدو بیت آمد بخاطر در مرادی\r\nواخوان حسبتهم دروعا\r\nفکانوها و لکن للاعادی\r\nو خلتهم سهاماً صایبات\r\nفکانوها و لکن فی فؤادی\r\nاز این شاعر بزرگ، متأسفانه جز دو بیت مفرد چیزی باقی نمانده است.\r\nاشعار او به کوشش آقای مجید امام‌وردی به نقل از کتابهای اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار و همچنین شرح احوال و اشعار شاعران بی‌دیوان در قرن‌های ۳/۴/۵ هجری به تصحیح محمود مدبری در گنجور در دسترس قرار گرفته است.",
+        "fullUrl": "/moradi",
+        "rootCatId": 3413,
+        "nickname": "مرادی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/moradi.gif",
+        "birthYearInLHijri": 280,
+        "validBirthDate": false,
+        "deathYearInLHijri": 320,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "",
+        "birthPlaceLatitude": 0,
+        "birthPlaceLongitude": 0,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 3413,
+        "title": "مرادی",
+        "urlSlug": "moradi",
+        "fullUrl": "/moradi",
+        "tableOfContentsStyle": 7,
+        "catType": 0,
+        "description": "ابوالحسن محمد بن محمد مُرادی از شاعران فاضل نیمهٔ اول قرن چهارم هجری است.\r\nرودکی در مرثیه و قطعه شعری از او یاد کرده که مطلع آن چنین است:\r\nمرد مُرادی، نَه همانا که مرد\r\nمرگ چنین خواجه نه کاریست خُرد ...\r\nاشاره‌ای که منوچهری در قصیدهٔ مشهور خود به سه ابوالحسن و پنج شاعر از بخارا دارد، مسلّماً یکی از آنها دربارهٔ اوست.\r\nنیز ثعالبی در یتیمة‌الدهر از وی یاد کرده و آورده است که در شعر عربی نیز دستی قوی داشته است.\r\nاز اشعار عربی او، کمال‌الدین اسماعیل ـ شاعر بزرگ قرن هفتم ـ بیتی را تضمین کرده و گفته است:\r\nدرین معنی که افتادست ما را\r\nدو بیت آمد بخاطر در مرادی\r\nواخوان حسبتهم دروعا\r\nفکانوها و لکن للاعادی\r\nو خلتهم سهاماً صایبات\r\nفکانوها و لکن فی فؤادی\r\nاز این شاعر بزرگ، متأسفانه جز دو بیت مفرد چیزی باقی نمانده است.\r\nاشعار او به کوشش آقای مجید امام‌وردی به نقل از کتابهای اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار و همچنین شرح احوال و اشعار شاعران بی‌دیوان در قرن‌های ۳/۴/۵ هجری به تصحیح محمود مدبری در گنجور در دسترس قرار گرفته است.",
+        "descriptionHtml": "<p>ابوالحسن محمد بن محمد مُرادی از شاعران فاضل نیمهٔ اول قرن چهارم هجری است.</p>\r\n<p>رودکی در<a href=\"../roodaki/baghimande/sh32\"> مرثیه و قطعه شعری</a> از او یاد کرده که مطلع آن چنین است:</p>\r\n<p>مرد مُرادی، نَه همانا که مرد</p>\r\n<p>مرگ چنین خواجه نه کاریست خُرد ...</p>\r\n<p>اشاره&zwnj;ای که منوچهری در قصیدهٔ مشهور خود به سه ابوالحسن و پنج شاعر از بخارا دارد، مسلّماً یکی از آنها دربارهٔ اوست.</p>\r\n<p>نیز ثعالبی در یتیمة&zwnj;الدهر از وی یاد کرده و آورده است که در شعر عربی نیز دستی قوی داشته است.</p>\r\n<p>از اشعار عربی او، کمال&zwnj;الدین اسماعیل ـ شاعر بزرگ قرن هفتم ـ بیتی را <a href=\"../kamal/ghetek/sh317\">تضمین کرده و گفته است</a>:</p>\r\n<p>درین معنی که افتادست ما را</p>\r\n<p>دو بیت آمد بخاطر در مرادی</p>\r\n<p>واخوان حسبتهم دروعا</p>\r\n<p>فکانوها و لکن للاعادی</p>\r\n<p>و خلتهم سهاماً صایبات</p>\r\n<p>فکانوها و لکن فی فؤادی</p>\r\n<p>از این شاعر بزرگ، متأسفانه جز دو بیت مفرد چیزی باقی نمانده است.</p>\r\n<p>اشعار او به کوشش آقای <strong>مجید امام&zwnj;وردی</strong> به نقل از کتابهای<a href=\"https://naskban.ir/293\"> اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار</a> و همچنین <a href=\"https://naskban.ir/11622\">شرح احوال و اشعار شاعران بی&zwnj;دیوان در قرن&zwnj;های ۳/۴/۵ هجری به تصحیح محمود مدبری</a> در گنجور در دسترس قرار گرفته است.</p>",
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": null,
+    "previous": {
+      "id": 146682,
+      "title": "شمارهٔ ۱",
+      "urlSlug": "sh1",
+      "excerpt": " آن سرخ عمامه بر سر او",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 5301219,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "از حشم و گنج چه فریاد و سود",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 5301220,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "که مرگ کند بر سر تو تاختن",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "e298948a-8d8f-4625-1d5c-08de0b2ab1dc",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00011622/00066.jpg",
+        "targetPageUrl": "https://naskban.ir/11622/66",
+        "altText": "شرح احوال و اشعار شاعران بی دیوان - تصویر ۶۶",
+        "isTextOriginalSource": true
+      },
+      {
+        "id": "4aca04b1-542c-49f9-be4b-08de0b4f4792",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/296/00054.jpg",
+        "targetPageUrl": "https://naskban.ir/293/54",
+        "altText": "اشعار پراکنده قدیمی ترین شعرای فارسی زبان (از حنظله بادغیسی تا دقیقی «بغیر رودکی») - ژیلبر لازار - تصویر ۵۴",
+        "isTextOriginalSource": false
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 136923,
+        "authorName": "برمک",
+        "authorUrl": null,
+        "commentDate": "2025-12-30T09:08:17.7450342",
+        "htmlComment": "<p>زانجا که وزن راست ناید و همچنین از واژه کنذ پیداست اینگونه بوده<br /><br />از حشم و گنج چه فریاد و سوذ<br />چو مرگ بر سرت کنذ تاختن<br /><br /><br /><br />فریاد در این&nbsp; سروده به چم&nbsp; راستینش&nbsp; فریادرسی&nbsp; امده&nbsp;</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": "2f25949b-821c-4573-5a05-08d920e92d10",
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 711629,
+        "poemId": 146683,
+        "poem": null,
+        "poetId": 225,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 19,
+        "ganjoorMetre": {
+          "id": 19,
+          "urlSlug": null,
+          "rhythm": "مفتعلن مفتعلن فاعلن (سریع مطوی مکشوف)",
+          "name": null,
+          "description": null,
+          "verseCount": 19851
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "کهمرگکندبرسرتوتاختن",
+        "plainText": "از حشم و گنج چه فریاد و سود\r\nکه مرگ کند بر سر تو تاختن",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>از حشم و گنج چه فریاد و سود</p></div>\r\n<div class=\"m2\"><p>که مرگ کند بر سر تو تاختن</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

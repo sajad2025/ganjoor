@@ -1,0 +1,183 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:24:00.093323+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/146600",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 146600,
+    "title": "شمارهٔ ۶",
+    "fullTitle": "ابوالمؤید بلخی » اشعار پراکنده » شمارهٔ ۶",
+    "urlSlug": "sh6",
+    "fullUrl": "/abolmoayyed/parakende/sh6",
+    "plainText": "سدکیس بر آمد و جهان شد روشن\r\nز آن پس همه ز غیر تو پردختند",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>سدکیس بر آمد و جهان شد روشن</p></div>\r\n<div class=\"m2\"><p>ز آن پس همه ز غیر تو پردختند</p></div></div>",
+    "sourceName": "مجید امام‌وردی",
+    "sourceUrlSlug": "imamverdi",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": true,
+    "language": null,
+    "poemSummary": null,
+    "category": {
+      "poet": {
+        "id": 215,
+        "name": "ابوالمؤید بلخی",
+        "description": "ابوالمؤید بلخی شاعر و نویسنده ایرانی سدهٔ ۴ ق در بلخ و دوران سامانیان است. اثر اصلی او شاهنامه بزرگ مؤیدی است (به نثر) که شاهنامهٔ بزرگ، شاهنامهٔ مؤیدی و شاهنامهٔ بوالمؤید نیز خوانده می‌شود. تقریباً تمام آثار وی از میان رفته‌است و اطلاع چندانی پیرامون زندگی وی در دست نیست. تاریخ سیستان اثری به نام کتاب گرشاسپ (گرشاسپنامه) از وی نام می‌برد که احتمالاً جزئی از شاهنامهٔ او بوده‌است. همچنین است اخبار نریمان.\r\nوی نخستین کسی است که داستان یوسف و زلیخا را به نظم کشید. اگرچه از اشعار این منظومهٔ او چیزی باقی نمانده، در مقدمه آن چنین آمده‌است:دو شاعر که این قصه را گفته‌اند        به هر جای معروف و ننهفته‌اندیکی بوالمؤید که از بلخ بود        به دانش همی خویشتن را ستودنخست او بدین در سخن بافته‌ست        بگفته‌ست چون بانگ دریافته‌ست\r\nشاهنامهٔ وی کتابی در شرح تاریخ و داستان‌های ایران تاریخی (که بسیار فراتر از مرزهای امروزی ایران است) و شامل بسیاری از روایات و داستان‌های ایرانیان از پهلوانان و پادشاهان است که بعداً در دیگر آثار حماسی، از جمله شاهنامه فردوسی، از آنان سخن گفته شد. قدیم‌ترین کتابی که از این اثر نام برده تاریخ بلعمی است که خود به تاریخ ۳۵۲ ق نوشته شده‌است.\r\nعجائب‌البلدان اثر دیگر اوست که در قرن چهارم و اوایل قرن پنجم مشهور بوده و در تاریخ سیستان نیز چند بار از آن یاد شده‌است. \r\nاشعار او به کوشش آقای مجید امام‌وردی به نقل از کتابهای اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار و همچنین شرح احوال و اشعار شاعران بی‌دیوان در قرن‌های ۳/۴/۵ هجری به تصحیح محمود مدبری در گنجور در دسترس قرار گرفته است.",
+        "fullUrl": "/abolmoayyed",
+        "rootCatId": 3396,
+        "nickname": "ابوالمؤید بلخی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/abolmoayyed.gif",
+        "birthYearInLHijri": 300,
+        "validBirthDate": false,
+        "deathYearInLHijri": 360,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "بلخ",
+        "birthPlaceLatitude": 36.7551,
+        "birthPlaceLongitude": 66.8975,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 3397,
+        "title": "اشعار پراکنده",
+        "urlSlug": "parakende",
+        "fullUrl": "/abolmoayyed/parakende",
+        "tableOfContentsStyle": 7,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 3396,
+            "title": "ابوالمؤید بلخی",
+            "urlSlug": "abolmoayyed",
+            "fullUrl": "/abolmoayyed",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "ابوالمؤید بلخی شاعر و نویسنده ایرانی سدهٔ ۴ ق در بلخ و دوران سامانیان است. اثر اصلی او شاهنامه بزرگ مؤیدی است (به نثر) که شاهنامهٔ بزرگ، شاهنامهٔ مؤیدی و شاهنامهٔ بوالمؤید نیز خوانده می‌شود. تقریباً تمام آثار وی از میان رفته‌است و اطلاع چندانی پیرامون زندگی وی در دست نیست. تاریخ سیستان اثری به نام کتاب گرشاسپ (گرشاسپنامه) از وی نام می‌برد که احتمالاً جزئی از شاهنامهٔ او بوده‌است. همچنین است اخبار نریمان.\r\nوی نخستین کسی است که داستان یوسف و زلیخا را به نظم کشید. اگرچه از اشعار این منظومهٔ او چیزی باقی نمانده، در مقدمه آن چنین آمده‌است:دو شاعر که این قصه را گفته‌اند        به هر جای معروف و ننهفته‌اندیکی بوالمؤید که از بلخ بود        به دانش همی خویشتن را ستودنخست او بدین در سخن بافته‌ست        بگفته‌ست چون بانگ دریافته‌ست\r\nشاهنامهٔ وی کتابی در شرح تاریخ و داستان‌های ایران تاریخی (که بسیار فراتر از مرزهای امروزی ایران است) و شامل بسیاری از روایات و داستان‌های ایرانیان از پهلوانان و پادشاهان است که بعداً در دیگر آثار حماسی، از جمله شاهنامه فردوسی، از آنان سخن گفته شد. قدیم‌ترین کتابی که از این اثر نام برده تاریخ بلعمی است که خود به تاریخ ۳۵۲ ق نوشته شده‌است.\r\nعجائب‌البلدان اثر دیگر اوست که در قرن چهارم و اوایل قرن پنجم مشهور بوده و در تاریخ سیستان نیز چند بار از آن یاد شده‌است. \r\nاشعار او به کوشش آقای مجید امام‌وردی به نقل از کتابهای اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار و همچنین شرح احوال و اشعار شاعران بی‌دیوان در قرن‌های ۳/۴/۵ هجری به تصحیح محمود مدبری در گنجور در دسترس قرار گرفته است.",
+            "descriptionHtml": "<p>ابوالمؤید بلخی شاعر و نویسنده ایرانی سدهٔ ۴ ق در بلخ و دوران سامانیان است. اثر اصلی او شاهنامه بزرگ مؤیدی است (به نثر) که شاهنامهٔ بزرگ، شاهنامهٔ مؤیدی و شاهنامهٔ بوالمؤید نیز خوانده می&zwnj;شود. تقریباً تمام آثار وی از میان رفته&zwnj;است و اطلاع چندانی پیرامون زندگی وی در دست نیست. تاریخ سیستان اثری به نام کتاب گرشاسپ (گرشاسپنامه) از وی نام می&zwnj;برد که احتمالاً جزئی از شاهنامهٔ او بوده&zwnj;است. همچنین است اخبار نریمان.</p>\r\n<p>وی نخستین کسی است که داستان یوسف و زلیخا را به نظم کشید. اگرچه از اشعار این منظومهٔ او چیزی باقی نمانده، در مقدمه آن چنین آمده&zwnj;است:<br />دو شاعر که این قصه را گفته&zwnj;اند &nbsp; &nbsp; &nbsp; &nbsp;به هر جای معروف و ننهفته&zwnj;اند<br />یکی بوالمؤید که از بلخ بود &nbsp; &nbsp; &nbsp; &nbsp;به دانش همی خویشتن را ستود<br />نخست او بدین در سخن بافته&zwnj;ست &nbsp; &nbsp; &nbsp; &nbsp;بگفته&zwnj;ست چون بانگ دریافته&zwnj;ست</p>\r\n<p>شاهنامهٔ وی کتابی در شرح تاریخ و داستان&zwnj;های ایران تاریخی (که بسیار فراتر از مرزهای امروزی ایران است) و شامل بسیاری از روایات و داستان&zwnj;های ایرانیان از پهلوانان و پادشاهان است که بعداً در دیگر آثار حماسی، از جمله شاهنامه فردوسی، از آنان سخن گفته شد. قدیم&zwnj;ترین کتابی که از این اثر نام برده تاریخ بلعمی است که خود به تاریخ ۳۵۲ ق نوشته شده&zwnj;است.</p>\r\n<p>عجائب&zwnj;البلدان اثر دیگر اوست که در قرن چهارم و اوایل قرن پنجم مشهور بوده و در تاریخ سیستان نیز چند بار از آن یاد شده&zwnj;است.&nbsp;</p>\r\n<p>اشعار او به کوشش آقای <strong>مجید امام&zwnj;وردی</strong> به نقل از کتابهای<a href=\"https://naskban.ir/293\"> اشعار پراکندهٔ شعرای فارسی زبان به کوشش ژیلبر لازار</a> و همچنین <a href=\"https://naskban.ir/11622\">شرح احوال و اشعار شاعران بی&zwnj;دیوان در قرن&zwnj;های ۳/۴/۵ هجری به تصحیح محمود مدبری</a> در گنجور در دسترس قرار گرفته است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 146601,
+      "title": "شمارهٔ ۷",
+      "urlSlug": "sh7",
+      "excerpt": "میغ مانندهٔ پنبه است و ورا باد نداف",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 146599,
+      "title": "شمارهٔ ۵",
+      "urlSlug": "sh5",
+      "excerpt": "دل تا داشت پر ز خون باشد",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 5301053,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "سدکیس بر آمد و جهان شد روشن",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 5301054,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "ز آن پس همه ز غیر تو پردختند",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "f77e39e7-e4da-4e07-1d6a-08de0b2ab1dc",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00011622/00070.jpg",
+        "targetPageUrl": "https://naskban.ir/11622/70",
+        "altText": "شرح احوال و اشعار شاعران بی دیوان - تصویر ۷۰",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 711560,
+        "poemId": 146600,
+        "poem": null,
+        "poetId": 215,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": null,
+        "ganjoorMetre": null,
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "زانپسهمهزغیرتوپردختند",
+        "plainText": "سدکیس بر آمد و جهان شد روشن\r\nز آن پس همه ز غیر تو پردختند",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>سدکیس بر آمد و جهان شد روشن</p></div>\r\n<div class=\"m2\"><p>ز آن پس همه ز غیر تو پردختند</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}
