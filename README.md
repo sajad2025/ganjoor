@@ -91,6 +91,16 @@ Once minted, a canonical_id **is never reused or repointed**. Deprecated entries
 
 Full schema: [`schema/v1.json`](./schema/v1.json). Frozen — breaking changes require schema v2.
 
+**On-disk layout.** Every poem is one file, path mirrors the ganjoor.net permalink:
+
+```
+data/hafez/ghazal/108.json       ↔  ganjoor.net/hafez/ghazal/sh108
+data/hafez/robaee2/12.json       ↔  ganjoor.net/hafez/robaee2/sh12
+data/saadi/boostan/sb1/3.json    ↔  ganjoor.net/saadi/boostan/sb1/sh3
+```
+
+This means downstream apps can fetch any single poem with a single HTTP call against `raw.githubusercontent.com` — no NDJSON parsing, no index, no API. The repo is itself a per-poem CDN.
+
 ---
 
 ## Versioning

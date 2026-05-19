@@ -6,7 +6,7 @@ name: Emergency Snapshot (Matrix)
 # at any moment loses at most the in-flight poem (Fix B), and survives
 # concurrent pushes from sibling buckets via pull-rebase-and-retry (Fix C).
 #
-# When all buckets finish, a finalize job builds MANIFEST.json + checksums
+# When all buckets finish, a finalize job builds snapshot-manifest.json + checksums
 # and (optionally) publishes a tagged Release.
 #
 # Use this for full-corpus runs. For smoke tests and small slices, use
@@ -231,7 +231,7 @@ jobs:
         run: |
           git config user.name  "ganjoor-mirror-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add MANIFEST.json CHECKSUMS.sha256
+          git add snapshot-manifest.json CHECKSUMS.sha256
           if git diff --staged --quiet; then
             echo "Manifest unchanged."
             exit 0
@@ -262,7 +262,7 @@ jobs:
           if [ -d legacy ]; then
             tar --use-compress-program="zstd -19" -cf release/ganjoor-legacy.tar.zst legacy
           fi
-          cp MANIFEST.json CHECKSUMS.sha256 release/ 2>/dev/null || true
+          cp snapshot-manifest.json CHECKSUMS.sha256 release/ 2>/dev/null || true
           ls -la release/
 
       - name: Publish Release
@@ -276,13 +276,13 @@ jobs:
 
             **Upstream:** ganjoor.net — Hamid Reza Mohammadi (github.com/hrmoh)
             **License:** code MIT; data CC-BY-4.0; see LICENSE-DATA.
-            **Provenance:** walked api.ganjoor.net at the timestamp embedded in MANIFEST.json.
+            **Provenance:** walked api.ganjoor.net at the timestamp embedded in snapshot-manifest.json.
             **Run shape:** ${{ inputs.num_buckets }} parallel buckets, finalized in one job.
 
             Artifacts:
             - `ganjoor-data.tar.zst` — per-poet NDJSON, one file per poet under `data/`
             - `ganjoor-legacy.tar.zst` — mirrored legacy SQLite dumps
-            - `MANIFEST.json` — counts, fetch range, source revisions
+            - `snapshot-manifest.json` — counts, fetch range, source revisions
             - `CHECKSUMS.sha256` — SHA-256 for every file in the bundle
 
             See PRESERVATION-ADDENDUM-free-path.md for the rest of the redundancy plan.

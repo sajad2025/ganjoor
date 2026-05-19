@@ -2,51 +2,53 @@
 """
 fetch_ganjoor.py
 
-Walks api.ganjoor.net and produces one NDJSON file per poet at
-  <out>/<poet_slug>.ndjson
+Walks api.ganjoor.net and produces one JSON file per poem at
+  <out>/<poet>/<cat>/<...>/<num>.json
 
-with a per-poet progress sidecar at
-  <out>/<poet_slug>.progress.json
+mirroring ganjoor.net's permalink hierarchy. Each file is a single poem
+envelope:
 
-Each NDJSON line is one fully-detailed poem object, fetched with verseDetails=true
-and the metadata sub-resources we care about for preservation.
+  {
+    "_meta": { "fetched_at": ..., "source": ..., "source_flags": ... },
+    "poem":  { ... full api.ganjoor.net poem object ... }
+  }
+
+Per-poet completion is tracked at
+  <out>/<poet>/_progress.json
+
+Each poet directory at <out>/<poet>/ corresponds to ganjoor.net's
+/<poet> URL space. Subdirectories mirror the category tree:
+
+  /hafez/ghazal/sh108        ↔ data/hafez/ghazal/108.json
+  /saadi/boostan/sb1/sh3     ↔ data/saadi/boostan/sb1/3.json
+
+Filename rule: the poem's urlSlug is normally "sh<N>" (ganjoor's poem
+URL convention). We strip the "sh" prefix so the file is "<N>.json",
+matching the canonical_id form documented in README. Non-standard
+slugs are preserved verbatim (with non-filesystem-safe characters
+sanitized).
 
 Designed for:
 - GitHub-hosted Actions runners (6h max per job, 7 GB free disk).
-- **Crash-safe persistence:** each poem is appended to the poet's NDJSON
-  and flushed before the next request is issued. A runner kill loses at
-  most the in-flight poem, not the whole poet.
-- **Resumability at two layers:**
-    (1) Whole poets: a completed `.progress.json` marker means skip.
-    (2) Mid-poet: existing `<slug>.ndjson` is scanned at start-of-poet
-        to derive the set of already-written poem ids; the walk skips them
-        and appends only new poems. A truncated trailing line from a
-        prior SIGKILL is detected and trimmed.
-- **Sharding for parallel matrix runs:** `--bucket N --num-buckets M`
-  selects only poets whose stable-sorted index satisfies `index % M == N`.
-- **Targeted re-runs:** `--poet-ids A,B,C` overrides selection to fetch
-  exactly the given poet ids (useful for filling gaps).
-- **Politeness:** configurable rate limit, exponential backoff, custom UA.
-
-Walk strategy (unchanged from v0.1):
-  1. GET /api/ganjoor/poets  -> list of poets, each with root cat id.
-  2. For each poet, recursively walk categories starting from root cat:
-     GET /api/ganjoor/cat/<cat_id>?poems=true
-  3. For every poem id encountered, fetch the full poem:
-     GET /api/ganjoor/poem/<poem_id>
-        ?verseDetails=true&catInfo=true&rhymes=true
-        &recitations=true&images=true&songs=true&navigation=true
-     (Comments deferred to a separate, slower job.)
-  4. Append the JSON to <poet_slug>.ndjson and flush.
-
-Output schema per line is a faithful pass-through of api.ganjoor.net's poem
-object plus a small "_meta" envelope with fetch timestamp and source URL.
+- **Crash-safe persistence:** each poem is written atomically (write a
+  temp file, then rename). A runner kill at any moment loses at most
+  the in-flight poem, never a previously-completed one.
+- **Resumability:** existing .json files in a poet directory are
+  treated as done. A poet with a completed _progress.json sidecar is
+  skipped entirely.
+- **No file-size cliff:** every file is one poem (tens of KB at most),
+  so we never hit GitHub's 100 MB-per-file hard limit even for Rumi
+  or Ferdowsi.
+- **Sharding:** --bucket N --num-buckets M selects only poets whose
+  stable-sorted index satisfies index % M == N.
+- **Targeted re-runs:** --poet-ids 1,2,3 overrides selection.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from dataclasses import dataclass, field
@@ -67,17 +69,18 @@ POEM_FLAGS = (
     "verseDetails=true&catInfo=true&rhymes=true"
     "&recitations=true&images=true&songs=true&navigation=true"
 )
+PROGRESS_NAME = "_progress.json"
 
 
 @dataclass
 class Config:
     out: Path
-    rate: float            # max requests per second
+    rate: float
     user_agent: str
-    poet_limit: int        # 0 = all
-    bucket: int            # 0-indexed bucket selector (ignored if num_buckets == 0)
-    num_buckets: int       # 0 = no bucketing
-    poet_ids: set[int] = field(default_factory=set)   # explicit override
+    poet_limit: int
+    bucket: int
+    num_buckets: int
+    poet_ids: set[int] = field(default_factory=set)
     request_timeout: int = 30
 
 
@@ -103,10 +106,7 @@ class GanjoorClient:
         self.cfg = cfg
         self.session = requests.Session()
         self.session.headers.update(
-            {
-                "User-Agent": cfg.user_agent,
-                "Accept": "application/json",
-            }
+            {"User-Agent": cfg.user_agent, "Accept": "application/json"}
         )
         self.throttle = Throttle(cfg.rate)
 
@@ -124,17 +124,13 @@ class GanjoorClient:
         resp = self.session.get(url, timeout=self.cfg.request_timeout)
         if resp.status_code == 404:
             return None
-        # Treat 429/5xx as retryable
         if resp.status_code >= 500 or resp.status_code == 429:
             resp.raise_for_status()
         resp.raise_for_status()
         return resp.json()
 
-    # --- typed endpoints ---------------------------------------------------
-
     def poets(self) -> list[dict]:
         data = self._get("/api/ganjoor/poets")
-        # Endpoint historically returned a list, but defensively unwrap.
         if isinstance(data, dict) and "poets" in data:
             data = data["poets"]
         return data or []
@@ -150,17 +146,13 @@ class GanjoorClient:
 # --- walking -----------------------------------------------------------------
 
 
-def walk_cat_for_poem_ids(client: GanjoorClient, cat_id: int) -> Iterable[int]:
+def walk_cat_for_poems(
+    client: GanjoorClient, cat_id: int
+) -> Iterable[tuple[int, str | None, str | None]]:
     """
-    Recursively walk a category tree, yielding every poem id we encounter.
-
-    The api.ganjoor.net cat response shape (observed):
-      {
-        "cat": { "id": ..., "title": ..., "urlSlug": ..., ... },
-        "poems":    [ { "id": ..., "title": ..., ... }, ... ],
-        "children": [ { "id": ..., ... }, ... ]
-      }
-    Some categories nest poems only on their leaves; some have both.
+    BFS the category tree. Yield (poem_id, poem_url_slug, cat_full_url).
+    cat_full_url is the absolute permalink path of the cat containing
+    this poem, e.g. '/hafez/ghazal'.
     """
     queue: list[int] = [cat_id]
     seen_cats: set[int] = set()
@@ -175,18 +167,93 @@ def walk_cat_for_poem_ids(client: GanjoorClient, cat_id: int) -> Iterable[int]:
         if not cat:
             continue
 
-        # poems may be top-level or nested inside "cat" depending on schema rev
-        poems = cat.get("poems") or cat.get("cat", {}).get("poems") or []
+        cat_obj = cat.get("cat") or {}
+        cat_full_url = cat_obj.get("fullUrl") or ""
+
+        poems = cat.get("poems") or cat_obj.get("poems") or []
         for p in poems:
             pid = p.get("id")
             if isinstance(pid, int):
-                yield pid
+                yield pid, p.get("urlSlug"), cat_full_url
 
-        children = cat.get("children") or cat.get("cat", {}).get("children") or []
+        children = cat.get("children") or cat_obj.get("children") or []
         for ch in children:
             cid_child = ch.get("id")
             if isinstance(cid_child, int):
                 queue.append(cid_child)
+
+
+# --- path derivation ---------------------------------------------------------
+
+
+_SH_NUM_RE = re.compile(r"sh(\d+)")
+_PATH_SAFE_RE = re.compile(r"[^A-Za-z0-9._-]+")
+
+
+def _sanitize_segment(s: str) -> str:
+    """Filesystem-safe path segment. Collapse runs of unsafe chars to '_'."""
+    safe = _PATH_SAFE_RE.sub("_", s).strip("._-")
+    return safe or "x"
+
+
+def derive_poem_filename(url_slug: str | None, poem_id: int) -> str:
+    """
+    Build a clean filename for a poem.
+      sh108  -> 108.json   (the common ganjoor case)
+      sh1    -> 1.json
+      m1     -> m1.json    (preserved when it's not the sh<N> form)
+      None   -> p<id>.json
+    """
+    if url_slug:
+        m = _SH_NUM_RE.fullmatch(url_slug)
+        if m:
+            return f"{m.group(1)}.json"
+        safe = _sanitize_segment(url_slug)
+        return f"{safe}.json"
+    return f"p{poem_id}.json"
+
+
+def derive_poem_path(
+    out_root: Path,
+    cat_full_url: str | None,
+    poem_full_url: str | None,
+    poem_url_slug: str | None,
+    poem_id: int,
+) -> Path:
+    """
+    Compute the on-disk path for a poem. Prefer poem_full_url (authoritative,
+    only available after fetching). Fall back to cat_full_url + filename.
+    """
+    if poem_full_url:
+        parts = [_sanitize_segment(p) for p in poem_full_url.strip("/").split("/") if p]
+        if parts:
+            # Last segment is the poem slug; strip the sh-prefix for the file.
+            last = parts[-1]
+            m = _SH_NUM_RE.fullmatch(last)
+            filename = f"{m.group(1)}.json" if m else f"{_sanitize_segment(last)}.json"
+            return out_root.joinpath(*parts[:-1], filename)
+
+    # Fallback: synthesise from cat_full_url + poem's urlSlug
+    cat_parts = [
+        _sanitize_segment(p)
+        for p in (cat_full_url or "").strip("/").split("/")
+        if p
+    ]
+    if not cat_parts:
+        cat_parts = ["uncategorized"]
+    filename = derive_poem_filename(poem_url_slug, poem_id)
+    return out_root.joinpath(*cat_parts, filename)
+
+
+def poet_slug_of(poet: dict) -> str:
+    """ASCII slug for a poet, used as the top-level dir under data/."""
+    full = (poet.get("fullUrl") or "").strip("/")
+    if full:
+        # poet.fullUrl is like '/hafez' — single segment expected.
+        return _sanitize_segment(full.split("/")[0])
+    # Fallbacks: try nickname/name (likely Persian — sanitize to Latin-friendly)
+    nick = poet.get("nickname") or poet.get("name") or f"poet-{poet.get('id')}"
+    return _sanitize_segment(nick)
 
 
 # --- persistence -------------------------------------------------------------
@@ -203,76 +270,42 @@ def load_progress(progress_path: Path) -> dict | None:
 
 def save_progress(progress_path: Path, payload: dict) -> None:
     """Atomic write: temp + rename."""
+    progress_path.parent.mkdir(parents=True, exist_ok=True)
     tmp = progress_path.with_suffix(progress_path.suffix + ".tmp")
     tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     tmp.replace(progress_path)
 
 
-def read_done_poem_ids(ndjson_path: Path) -> tuple[set[int], bool]:
+def scan_done_poem_ids(poet_dir: Path) -> set[int]:
     """
-    Return (set of poem ids already written, was_trailing_line_truncated).
-    Tolerates a truncated final line from a SIGKILL mid-write.
+    Walk an existing poet directory and collect every poem.id present.
+    Used for mid-poet resume: skip ids we've already fetched.
     """
     ids: set[int] = set()
-    truncated = False
-    if not ndjson_path.exists():
-        return ids, truncated
-    with ndjson_path.open("r", encoding="utf-8") as f:
-        lines = f.readlines()
-    for i, raw in enumerate(lines):
-        line = raw.rstrip("\n")
-        if not line.strip():
+    if not poet_dir.exists():
+        return ids
+    for p in poet_dir.rglob("*.json"):
+        if p.name == PROGRESS_NAME:
             continue
         try:
-            envelope = json.loads(line)
-        except json.JSONDecodeError:
-            if i == len(lines) - 1:
-                # Likely a kill mid-write. We'll trim it before appending.
-                truncated = True
-                continue
-            # Mid-file corruption — preserve, surface via warning.
-            print(
-                f"  ! warning: malformed mid-file line {i} in {ndjson_path}, kept",
-                file=sys.stderr,
-                flush=True,
-            )
+            payload = json.loads(p.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
             continue
-        poem = envelope.get("poem") or {}
+        poem = payload.get("poem") or {}
         pid = poem.get("id")
         if isinstance(pid, int):
             ids.add(pid)
-    return ids, truncated
+    return ids
 
 
-def trim_truncated_trailing_line(ndjson_path: Path) -> None:
-    """Drop the last line if it doesn't parse as JSON (kill-mid-write recovery)."""
-    if not ndjson_path.exists():
-        return
-    raw = ndjson_path.read_bytes()
-    if not raw:
-        return
-    has_trailing_newline = raw.endswith(b"\n")
-    lines = raw.split(b"\n")
-    if has_trailing_newline and lines and lines[-1] == b"":
-        lines.pop()
-    if not lines:
-        return
-    last = lines[-1]
-    if not last.strip():
-        return
-    try:
-        json.loads(last.decode("utf-8"))
-        return  # last line parses; nothing to trim
-    except (json.JSONDecodeError, UnicodeDecodeError):
-        lines.pop()
-        new_bytes = b"\n".join(lines)
-        if new_bytes:
-            new_bytes += b"\n"
-        ndjson_path.write_bytes(new_bytes)
-        print(
-            f"  recovered: trimmed truncated trailing line from {ndjson_path.name}",
-            flush=True,
-        )
+def write_poem_atomically(out_path: Path, envelope: dict) -> None:
+    """Write JSON to disk via temp + rename so a kill mid-write is harmless."""
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = out_path.with_suffix(out_path.suffix + ".tmp")
+    tmp.write_text(
+        json.dumps(envelope, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    tmp.replace(out_path)
 
 
 # --- fetch -------------------------------------------------------------------
@@ -281,11 +314,12 @@ def trim_truncated_trailing_line(ndjson_path: Path) -> None:
 def fetch_poet(
     client: GanjoorClient,
     poet: dict,
-    out_path: Path,
+    poet_dir: Path,
     progress_path: Path,
+    out_root: Path,
 ) -> tuple[int, int]:
     """
-    Fetch all poems for one poet using crash-safe append-mode writes.
+    Fetch all poems for one poet, writing one JSON file per poem.
     Returns (newly_written, total_on_disk).
     """
     root_cat = (
@@ -297,10 +331,8 @@ def fetch_poet(
         print(f"  ! no root cat for poet {poet.get('id')}: skipping", flush=True)
         return 0, 0
 
-    # Recover from any prior kill-mid-write before we read the file.
-    trim_truncated_trailing_line(out_path)
-
-    already_done, _ = read_done_poem_ids(out_path)
+    poet_dir.mkdir(parents=True, exist_ok=True)
+    already_done = scan_done_poem_ids(poet_dir)
     if already_done:
         print(f"  resume: {len(already_done)} poems already on disk", flush=True)
 
@@ -316,34 +348,40 @@ def fetch_poet(
     newly_written = 0
     seen_poems: set[int] = set(already_done)
 
-    with out_path.open("a", encoding="utf-8") as f:
-        for poem_id in walk_cat_for_poem_ids(client, int(root_cat)):
-            if poem_id in seen_poems:
-                continue
-            seen_poems.add(poem_id)
+    for poem_id, poem_url_slug, cat_full_url in walk_cat_for_poems(client, int(root_cat)):
+        if poem_id in seen_poems:
+            continue
+        seen_poems.add(poem_id)
 
-            poem = client.poem(poem_id)
-            if not poem:
-                continue
+        poem = client.poem(poem_id)
+        if not poem:
+            continue
 
-            envelope = {
-                "_meta": {
-                    "fetched_at": datetime.now(timezone.utc).isoformat(),
-                    "source": f"{BASE}/api/ganjoor/poem/{poem_id}",
-                    "source_flags": POEM_FLAGS,
-                },
-                "poem": poem,
-            }
-            f.write(json.dumps(envelope, ensure_ascii=False) + "\n")
-            f.flush()  # push to OS pagecache so SIGKILL doesn't lose this line
-            newly_written += 1
+        out_path = derive_poem_path(
+            out_root,
+            cat_full_url=cat_full_url,
+            poem_full_url=poem.get("fullUrl"),
+            poem_url_slug=poem_url_slug,
+            poem_id=poem_id,
+        )
 
-            if newly_written % 25 == 0:
-                print(
-                    f"  - {newly_written} new poems written "
-                    f"(total on disk: {len(seen_poems)})",
-                    flush=True,
-                )
+        envelope = {
+            "_meta": {
+                "fetched_at": datetime.now(timezone.utc).isoformat(),
+                "source": f"{BASE}/api/ganjoor/poem/{poem_id}",
+                "source_flags": POEM_FLAGS,
+            },
+            "poem": poem,
+        }
+        write_poem_atomically(out_path, envelope)
+        newly_written += 1
+
+        if newly_written % 25 == 0:
+            print(
+                f"  - {newly_written} new poems written "
+                f"(total on disk: {len(seen_poems)})",
+                flush=True,
+            )
 
     save_progress(progress_path, {
         "poet_id": poet.get("id"),
@@ -373,12 +411,6 @@ def parse_poet_ids(spec: str | None) -> set[int]:
     return out
 
 
-def slugify(poet: dict) -> str:
-    raw = poet.get("nickname") or poet.get("name") or f"poet-{poet.get('id')}"
-    safe = "".join(c if c.isalnum() or c in "-_" else "_" for c in raw.lower())
-    return safe or f"poet-{poet.get('id')}"
-
-
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", type=Path, required=True, help="output directory")
@@ -387,30 +419,10 @@ def main() -> int:
         "--user-agent",
         default="ganjoor-mirror/0.1 (+https://github.com/sajad2025/ganjoor)",
     )
-    ap.add_argument(
-        "--poet-limit",
-        type=int,
-        default=0,
-        help="stop after N poets (0 = all). Useful for first-run smoke tests.",
-    )
-    ap.add_argument(
-        "--bucket",
-        type=int,
-        default=0,
-        help="0-indexed bucket id (used with --num-buckets > 0 for matrix runs)",
-    )
-    ap.add_argument(
-        "--num-buckets",
-        type=int,
-        default=0,
-        help="how many buckets to split poets into. 0 = no bucketing.",
-    )
-    ap.add_argument(
-        "--poet-ids",
-        type=str,
-        default=None,
-        help="comma-separated explicit poet ids to fetch (overrides selection).",
-    )
+    ap.add_argument("--poet-limit", type=int, default=0)
+    ap.add_argument("--bucket", type=int, default=0)
+    ap.add_argument("--num-buckets", type=int, default=0)
+    ap.add_argument("--poet-ids", type=str, default=None)
     args = ap.parse_args()
 
     args.out.mkdir(parents=True, exist_ok=True)
@@ -442,7 +454,6 @@ def main() -> int:
         return 2
     print(f"Found {len(poets)} poets.", flush=True)
 
-    # Stable ordering: by id, smallest first. Bucket selection depends on this.
     poets.sort(key=lambda p: p.get("id", 1 << 30))
 
     if cfg.poet_ids:
@@ -467,16 +478,16 @@ def main() -> int:
     total_known = 0
     skipped = 0
     for i, poet in enumerate(poets, 1):
-        slug = slugify(poet)
-        out_path = args.out / f"{slug}.ndjson"
-        progress_path = args.out / f"{slug}.progress.json"
+        slug = poet_slug_of(poet)
+        poet_dir = args.out / slug
+        progress_path = poet_dir / PROGRESS_NAME
 
         progress = load_progress(progress_path)
         if (
             progress
             and progress.get("completed")
-            and out_path.exists()
-            and out_path.stat().st_size > 0
+            and poet_dir.exists()
+            and any(poet_dir.rglob("*.json"))
         ):
             print(
                 f"[{i}/{len(poets)}] {slug}: previously completed "
@@ -492,14 +503,17 @@ def main() -> int:
             flush=True,
         )
         try:
-            new, on_disk = fetch_poet(client, poet, out_path, progress_path)
-            print(f"  done: {new} new this run, {on_disk} total -> {out_path}", flush=True)
+            new, on_disk = fetch_poet(client, poet, poet_dir, progress_path, args.out)
+            print(
+                f"  done: {new} new this run, {on_disk} total -> {poet_dir}",
+                flush=True,
+            )
             total_new += new
             total_known += on_disk
         except KeyboardInterrupt:
             print("Interrupted by user. Partial progress preserved on disk.", flush=True)
             return 130
-        except Exception as e:  # noqa: BLE001  – we want the loop to continue
+        except Exception as e:  # noqa: BLE001
             print(f"  ! poet {slug} failed: {e}", file=sys.stderr, flush=True)
             (args.out / f"{slug}.err").write_text(str(e), encoding="utf-8")
 

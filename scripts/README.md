@@ -17,14 +17,25 @@ Both share `fetch_ganjoor.py` and both are crash-safe: writes append after every
 
 | Path | Contents |
 |---|---|
-| `data/<poet-slug>.ndjson` | One full-detail poem per line for that poet. |
-| `data/<poet-slug>.progress.json` | Per-poet completion marker (`completed: true/false`, counts, timestamps). Used for resume. |
+| `data/<poet>/<category>/<...>/<num>.json` | One full-detail poem envelope per file. Path mirrors ganjoor.net's permalink (e.g. `data/hafez/ghazal/108.json` ↔ `ganjoor.net/hafez/ghazal/sh108`). |
+| `data/<poet>/_progress.json` | Per-poet completion marker (`completed: true/false`, counts, timestamps). Used to skip already-fetched poets on re-run. |
 | `legacy/sourceforge/` | Mirrored SQLite dumps (2012, 2014) from SourceForge. |
 | `legacy/desktop/` | Latest SQLite shipped with the `ganjoor/desktop` Windows app. |
 | `legacy/ganjoor-db/ganjoor-db.bundle` | Full git bundle of the archived MySQL-dump repo. |
 | `legacy/wayback-jobs.tsv` | Job ids returned by IA's Save Page Now (for later verification). |
-| `MANIFEST.json` | Counts, provenance, timestamps, repo metadata (produced by the finalize step). |
+| `snapshot-manifest.json` | Counts, provenance, timestamps, repo metadata (produced by the finalize step). |
 | `CHECKSUMS.sha256` | SHA-256 of every file in `data/` and `legacy/`. |
+
+Each poem file is the full upstream API response wrapped in a `_meta` envelope:
+
+```json
+{
+  "_meta": { "fetched_at": "...", "source": "https://api.ganjoor.net/api/ganjoor/poem/2237", "source_flags": "..." },
+  "poem": { "id": 2237, "fullUrl": "/hafez/ghazal/sh108", "title": "...", "verses": [...], ... }
+}
+```
+
+The per-poem-file layout keeps every file tens of KB, so we never hit GitHub's 100 MB per-file hard limit even for the biggest poets (Rumi's Masnavi, Ferdowsi's Shahnameh).
 
 ## First run from your phone
 
@@ -43,7 +54,7 @@ Verify the commit lands on `main` with one `.ndjson` and one `.progress.json` un
 - `create_release`: **true**
 - `checkpoint_seconds`: **600** (default)
 
-This launches 5 parallel jobs of ~46 poets each. Watch the live logs — each bucket commits its data to `main` every 10 minutes and on completion. A final `finalize` job builds `MANIFEST.json` + `CHECKSUMS.sha256`, then tags and publishes the release.
+This launches 5 parallel jobs of ~46 poets each. Watch the live logs — each bucket commits its data to `main` every 10 minutes and on completion. A final `finalize` job builds `snapshot-manifest.json` + `CHECKSUMS.sha256`, then tags and publishes the release.
 
 ## fetch_ganjoor.py flags
 
@@ -57,7 +68,7 @@ This launches 5 parallel jobs of ~46 poets each. Watch the live logs — each bu
 --poet-ids "1,2,3"        explicit poet ids to fetch (overrides bucket selection)
 ```
 
-The script is **resumable at two layers**: completed poets (via `.progress.json`) are skipped; partially-completed poets (no/false progress marker) read their NDJSON to learn which poems are already on disk and resume from there.
+The script is **resumable at two layers**: completed poets (via `<poet>/_progress.json`) are skipped; partially-completed poets scan their existing `*.json` files at start of run, build a set of poem ids already on disk, and resume from there. A SIGKILL mid-write leaves at most one partially-written file (`*.json.tmp`), which is replaced on the next run.
 
 ## Adding the Internet Archive credentials
 
@@ -123,5 +134,5 @@ The `.venv/` directory is git-ignored (already covered by the Node `.gitignore` 
 - **Phone-triggerable** — `workflow_dispatch` with simple inputs.
 - **Resumable** — poets already mirrored are skipped on re-run.
 - **Polite** — 3 req/sec by default, exponential backoff on errors, custom User-Agent that links back to this repo.
-- **Auditable** — every snapshot ends with `MANIFEST.json` + `CHECKSUMS.sha256`. The Action commit message includes a UTC timestamp.
+- **Auditable** — every snapshot ends with `snapshot-manifest.json` + `CHECKSUMS.sha256`. The Action commit message includes a UTC timestamp.
 - **Independent** — three legacy mirrors plus IA Save Page Now mean we have a copy of the corpus even if `api.ganjoor.net` is unreachable during a run.
