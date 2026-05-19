@@ -225,12 +225,15 @@ const FONTS = [
   { id: 'vazir',   label: 'وزیرمتن', stack: "'Vazirmatn', system-ui, sans-serif" },
   { id: 'estedad', label: 'استعداد', stack: "'Estedad', 'Vazirmatn', sans-serif" },
 ];
+/* Font size sets the root font-size on <html>, which scales every rem-based
+   length (Tailwind defaults). Set once globally; verses use text-2xl which
+   becomes 1.5 * rootPx. */
 const FONT_SIZES = [
-  { id: 'xs', label: 'ریز',     cls: 'text-base' },
-  { id: 'sm', label: 'کوچک',    cls: 'text-lg' },
-  { id: 'md', label: 'متوسط',   cls: 'text-xl' },
-  { id: 'lg', label: 'بزرگ',    cls: 'text-2xl' },
-  { id: 'xl', label: 'درشت',    cls: 'text-3xl' },
+  { id: 'xs', label: 'ریز',   rootPx: 13 },
+  { id: 'sm', label: 'کوچک',  rootPx: 14 },
+  { id: 'md', label: 'متوسط', rootPx: 16 },
+  { id: 'lg', label: 'بزرگ',  rootPx: 18 },
+  { id: 'xl', label: 'درشت',  rootPx: 22 },
 ];
 function useLocalStorage(key, initial) {
   const [v, setV] = useState(() => {
@@ -261,6 +264,10 @@ function App() {
     document.body.className = `theme-${theme}`;
     document.body.style.fontFamily = FONTS.find(f => f.id === font).stack;
   }, [theme, font]);
+  useEffect(() => {
+    const cfg = FONT_SIZES.find(s => s.id === fontSize);
+    document.documentElement.style.fontSize = cfg ? `${cfg.rootPx}px` : '';
+  }, [fontSize]);
 
   const toggleFav = useCallback((key) => {
     setFavorites(prev => prev.includes(key) ? prev.filter(x => x !== key) : [...prev, key]);
@@ -288,7 +295,7 @@ function App() {
         onSettings={() => navigate('#/settings')}
       />
       <main className="flex-1 overflow-y-auto pb-24">
-        {route.view === 'home' && <Home recents={recents} />}
+        {route.view === 'home' && <Home recents={recents} favorites={favorites} />}
         {route.view === 'poets' && <PoetPicker />}
         {route.view === 'poet' && <PoetView slug={route.poet} catPath={route.catPath || []} />}
         {route.view === 'read' && (
@@ -296,7 +303,6 @@ function App() {
             slug={route.poet}
             catPath={route.catPath || []}
             file={route.file}
-            fontSize={fontSize}
             favorites={favorites}
             onToggleFav={toggleFav}
             onView={pushRecent}
@@ -334,13 +340,20 @@ function TopBar({ title, showBack, onBack, onSearch, onSettings }) {
 /* ─────────────────────────────────────────────────────────────────────────
    HOME
    ──────────────────────────────────────────────────────────────────────── */
-function Home({ recents }) {
+function Home({ recents, favorites }) {
   const [poets, setPoets] = useState(null);
   const [hafezIndex, setHafezIndex] = useState(null);
   const [faalLoading, setFaalLoading] = useState(false);
 
   useEffect(() => { loadPoets().then(d => setPoets(d.poets || [])).catch(() => setPoets([])); }, []);
   useEffect(() => { loadPoet('hafez').then(setHafezIndex).catch(() => {}); }, []);
+
+  // Quick poet-slug → nickname lookup for favorites/recents card labels
+  const poetsBySlug = useMemo(() => {
+    const m = new Map();
+    (poets || []).forEach(p => m.set(p.slug, p));
+    return m;
+  }, [poets]);
 
   const featuredPoets = useMemo(() => {
     if (!poets) return [];
@@ -409,12 +422,23 @@ function Home({ recents }) {
         </div>
       </section>
 
+      {favorites.length > 0 && (
+        <section className="mt-6">
+          <p className="muted text-xs mb-2 px-5">نشان‌شده‌ها</p>
+          <div className="flex gap-2 overflow-x-auto no-scrollbar px-4 pb-1">
+            {favorites.slice().reverse().map((key, i) => (
+              <FavCard key={i} k={key} poetsBySlug={poetsBySlug} />
+            ))}
+          </div>
+        </section>
+      )}
+
       {recents.length > 0 && (
         <section className="px-4 mt-6">
           <p className="muted text-xs mb-2 px-1">اخیراً خوانده شده</p>
           <div className="space-y-2">
             {recents.slice(0, 5).map((key, i) => (
-              <RecentRow key={i} k={key} />
+              <RecentRow key={i} k={key} poetsBySlug={poetsBySlug} />
             ))}
           </div>
         </section>
@@ -437,19 +461,51 @@ function Home({ recents }) {
     </div>
   );
 }
-function RecentRow({ k }) {
-  // k = "slug/cat1/cat2/file"
-  const parts = (k || '').split('/');
+function parseKey(k) {
+  const parts = (k || '').split('/').filter(Boolean);
   if (parts.length < 2) return null;
-  const slug = parts[0];
-  const file = parts[parts.length - 1];
-  const cat = parts.slice(1, -1).join(' · ');
+  return {
+    slug: parts[0],
+    cats: parts.slice(1, -1),
+    file: parts[parts.length - 1],
+  };
+}
+function labelFor(slug, poetsBySlug) {
+  const p = poetsBySlug.get(slug);
+  return toDisplay(p?.nickname_fa || p?.name_fa || slug);
+}
+
+function FavCard({ k, poetsBySlug }) {
+  const parsed = parseKey(k);
+  if (!parsed) return null;
+  const catText = parsed.cats.join(' · ');
+  return (
+    <button
+      onClick={() => navigate(`#/read/${k}`)}
+      className="shrink-0 w-44 surface border border-soft rounded-xl px-3 py-2.5 text-start active:opacity-70"
+    >
+      <span className="accent text-[11px] block">★ {labelFor(parsed.slug, poetsBySlug)}</span>
+      <span className="block text-sm font-semibold mt-1 truncate">
+        {catText ? toDisplay(catText) + ' · ' : ''}{toPersianDigits(parsed.file)}
+      </span>
+    </button>
+  );
+}
+
+function RecentRow({ k, poetsBySlug }) {
+  const parsed = parseKey(k);
+  if (!parsed) return null;
+  const catText = parsed.cats.join(' · ');
   return (
     <button
       onClick={() => navigate(`#/read/${k}`)}
       className="row w-full surface border border-soft rounded-xl px-4 py-3 text-right"
     >
-      <p className="text-sm">{toDisplay(slug)} {cat ? `· ${toDisplay(cat)}` : ''} · {toPersianDigits(file)}</p>
+      <p className="text-sm">
+        <span className="muted">{labelFor(parsed.slug, poetsBySlug)}</span>
+        {catText && <span> · {toDisplay(catText)}</span>}
+        {' · '}{toPersianDigits(parsed.file)}
+      </p>
     </button>
   );
 }
@@ -671,11 +727,10 @@ function PoemList({ slug, catPath, poems }) {
 /* ─────────────────────────────────────────────────────────────────────────
    READER
    ──────────────────────────────────────────────────────────────────────── */
-function Reader({ slug, catPath, file, fontSize, favorites, onToggleFav, onView }) {
+function Reader({ slug, catPath, file, favorites, onToggleFav, onView }) {
   const [poem, setPoem] = useState(null);
   const [err, setErr] = useState(null);
   const [poetIndex, setPoetIndex] = useState(null);
-  const sizeCls = (FONT_SIZES.find(s => s.id === fontSize) || FONT_SIZES[2]).cls;
   const favKey = `${slug}/${catPath.join('/')}${catPath.length ? '/' : ''}${file}`;
   const isFav = favorites.includes(favKey);
 
@@ -768,17 +823,17 @@ function Reader({ slug, catPath, file, fontSize, favorites, onToggleFav, onView 
             return (
               <div key={idx} className="my-4">
                 <div className="beyt-grid beyt">
-                  <p className={`mesra-1 ${sizeCls}`}>{toDisplay(g.a.text)}</p>
+                  <p className="mesra-1 text-2xl">{toDisplay(g.a.text)}</p>
                   <span className="beyt-sep muted text-xs">۞</span>
-                  <p className={`mesra-2 ${sizeCls}`}>{toDisplay(g.b.text)}</p>
+                  <p className="mesra-2 text-2xl">{toDisplay(g.b.text)}</p>
                 </div>
               </div>
             );
           }
           // centered or standalone single hemistich
           return (
-            <div key={idx} className={`my-3 verse-flow`}>
-              <p className={`single text-center ${sizeCls}`}>{toDisplay(g.a.text)}</p>
+            <div key={idx} className="my-3 verse-flow">
+              <p className="single text-center text-2xl">{toDisplay(g.a.text)}</p>
             </div>
           );
         })}
