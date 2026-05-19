@@ -2,7 +2,8 @@
   "poet_id": 9,
   "poet_nickname": "عطار",
   "root_cat_id": 151,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T04:58:29.000235+00:00"
+  "completed": true,
+  "completed_count": 5015,
+  "newly_written_this_run": 5015,
+  "completed_at": "2026-05-19T05:16:11.638422+00:00"
 }
