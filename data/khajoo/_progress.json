@@ -2,7 +2,8 @@
   "poet_id": 20,
   "poet_nickname": "خواجوی کرمانی",
   "root_cat_id": 257,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T05:24:22.410712+00:00"
+  "completed": true,
+  "completed_count": 1828,
+  "newly_written_this_run": 1828,
+  "completed_at": "2026-05-19T05:30:40.166797+00:00"
 }
