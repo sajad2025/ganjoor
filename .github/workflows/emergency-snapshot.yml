@@ -93,7 +93,18 @@ jobs:
         run: |
           git config user.name  "ganjoor-mirror-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data legacy MANIFEST.json CHECKSUMS.sha256 2>/dev/null || true
+          # Stage each pathspec independently: `git add a b c` aborts the entire
+          # staging operation if ANY pathspec is missing (e.g. legacy/ when
+          # mirror_legacy=false), leaving nothing staged and the step exiting
+          # cleanly with "No changes to commit". That was the silent Run-#2
+          # smoking gun. Per-path adds isolate each failure.
+          for p in data legacy MANIFEST.json CHECKSUMS.sha256; do
+            if [ -e "$p" ]; then
+              git add "$p" || echo "  ! git add ${p} returned non-zero, continuing"
+            else
+              echo "  (no $p, skipping)"
+            fi
+          done
           if git diff --staged --quiet; then
             echo "No changes to commit."
             exit 0

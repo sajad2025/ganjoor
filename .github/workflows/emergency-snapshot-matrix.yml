@@ -114,7 +114,14 @@ jobs:
           # then push with rebase-retry to survive concurrent bucket pushes.
           commit_and_push() {
             local label="$1"
-            git add data legacy 2>/dev/null || true
+            # Stage each pathspec independently — `git add data legacy` aborts
+            # the whole add if legacy/ doesn't exist (true for buckets >0),
+            # leaving the index clean and falsely reporting "no changes."
+            for p in data legacy; do
+              if [ -e "$p" ]; then
+                git add "$p" || echo "[${label}] git add ${p} non-zero, continuing"
+              fi
+            done
             if git diff --staged --quiet; then
               echo "[${label}] no changes."
               return 0
@@ -174,7 +181,9 @@ jobs:
       - name: Best-effort final commit on cancellation
         if: cancelled() || failure()
         run: |
-          git add data legacy 2>/dev/null || true
+          for p in data legacy; do
+            [ -e "$p" ] && git add "$p" 2>/dev/null || true
+          done
           if ! git diff --staged --quiet; then
             STAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
             git commit -m "chore(snapshot): bucket ${{ matrix.bucket }} salvage ${STAMP}" || true
