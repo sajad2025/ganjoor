@@ -24,6 +24,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 PROGRESS_NAME = "_progress.json"
+INDEX_NAME = "_index.json"
+POETS_INDEX = "_poets.json"
+NON_POEM_NAMES = {PROGRESS_NAME, INDEX_NAME, POETS_INDEX}
 
 
 def sha256_file(p: Path) -> str:
@@ -44,7 +47,7 @@ def count_poet(poet_dir: Path) -> tuple[int, list[str]]:
     """Return (poem_count, sorted_relpath_list) for one poet directory."""
     poems: list[Path] = []
     for p in poet_dir.rglob("*.json"):
-        if p.name == PROGRESS_NAME:
+        if p.name in NON_POEM_NAMES:
             continue
         poems.append(p)
     return len(poems), sorted(str(p.relative_to(poet_dir.parent)) for p in poems)

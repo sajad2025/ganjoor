@@ -218,6 +218,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r scripts/requirements.txt
 
+      - name: Build PWA indexes (data/_poets.json + per-poet _index.json)
+        if: hashFiles('data/**') != ''
+        run: python scripts/build_indexes.py --data data
+
       - name: Build manifest + checksums
         run: |
           if [ -d data ] || [ -d legacy ]; then
@@ -227,16 +231,18 @@ jobs:
             exit 1
           fi
 
-      - name: Commit manifest + checksums
+      - name: Commit indexes + manifest + checksums
         run: |
           git config user.name  "ganjoor-mirror-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add snapshot-manifest.json CHECKSUMS.sha256
+          for p in data snapshot-manifest.json CHECKSUMS.sha256; do
+            [ -e "$p" ] && git add "$p" || true
+          done
           if git diff --staged --quiet; then
-            echo "Manifest unchanged."
+            echo "No index/manifest changes."
             exit 0
           fi
-          git commit -m "chore(snapshot): manifest + checksums for run ${{ github.run_number }}"
+          git commit -m "chore(snapshot): indexes + manifest + checksums for run ${{ github.run_number }}"
           for attempt in 1 2 3 4 5; do
             if git push; then exit 0; fi
             git fetch origin main
