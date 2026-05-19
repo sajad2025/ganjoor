@@ -2,7 +2,8 @@
   "poet_id": 140,
   "poet_nickname": "مجیرالدین بیلقانی",
   "root_cat_id": 2661,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T06:08:49.412542+00:00"
+  "completed": true,
+  "completed_count": 506,
+  "newly_written_this_run": 506,
+  "completed_at": "2026-05-19T06:10:32.776256+00:00"
 }
