@@ -2,7 +2,8 @@
   "poet_id": 65,
   "poet_nickname": "حکیم نزاری",
   "root_cat_id": 2045,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T05:43:42.654179+00:00"
+  "completed": true,
+  "completed_count": 1642,
+  "newly_written_this_run": 1642,
+  "completed_at": "2026-05-19T05:49:22.617893+00:00"
 }

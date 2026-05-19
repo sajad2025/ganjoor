@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:53:27.292931+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/88685",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 88685,
+    "title": "بخش ۴ - باب در فضل صوفی",
+    "fullTitle": "عبادی مروزی » مناقب الصوفیه » بخش ۴ - باب در فضل صوفی",
+    "urlSlug": "sh4",
+    "fullUrl": "/abbadi/managheb-o-sufieh/sh4",
+    "plainText": "بدان که فضل صوفی بر دیگر آدمیان از سه وجه تواند بود از کتاب و از سنت و از عقل و این هر سه در سه فصل یاد کنیم",
+    "htmlText": "<div class=\"n\" id=\"bn1\"><p>بدان که فضل صوفی بر دیگر آدمیان از سه وجه تواند بود: از کتاب، و از سنت، و از عقل. و این هر سه در سه فصل یاد کنیم.</p></div>",
+    "sourceName": "کتابخانهٔ تصوف",
+    "sourceUrlSlug": "sufi",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: فضل و برتری صوفی بر دیگر انسان‌ها از سه جنبه است: کتاب، سنت و عقل. هر یک از این جنبه‌ها را در سه فصل جداگانه بررسی خواهیم کرد.",
+    "category": {
+      "poet": {
+        "id": 95,
+        "name": "عبادی مروزی",
+        "description": "قطب الدّین ابو منصور مظفر بن اردشیر سنجی عبادی مروزی (زاده به سال ۴۹۱ هجری قمری در روستای سنج عباد از قراء مرو، درگذشته به سال ۵۴۷ هجری قمری در عسکر خوزستان) ملقب به امیر و معروف به امیر قطب‌الدین یا قطب عبادى، واعظ، فقیه و محدث قرن ششم هجری است.\r\nوى از نصرالله خشنامى و عبدالغفار شیروى و عده‌اى دیگر حدیث شنید. او از طرف سلطان سنجر به بغداد رفت و مدت سه سال در جامع قصر و در دارالسلطنه به وعظ پرداخت و مردم بر گردش ازدحام مى‌نمودند. او در جامع قصر املاى حدیث مى‌کرد. ابن اخضر و حمزه بن قبیطى و محمد بن مکرم از وى حدیث روایت کرده‌اند. نیکویى و حسن وعظ وى ضرب‌المثل بود. ابن جوزى گوید: که او زیباکلام بود و از مواعظ او مجلداتى گردآورى کرده‌اند. ابوسعد سمعانى گوید: که از او رساله‌اى در «شرب الخمر» دیده است.\r\nکتاب مناقب الصوفیهٔ عبادی مروزی از روی نسخهٔ آماده شده به همت خانم اکرم شفایی قابل دریافت از وبگاه تصوف ایرانی در گنجور در دسترس قرار گرفته است.\r\n",
+        "fullUrl": "/abbadi",
+        "rootCatId": 2310,
+        "nickname": "عبادی مروزی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/abbadi.gif",
+        "birthYearInLHijri": 491,
+        "validBirthDate": false,
+        "deathYearInLHijri": 547,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "مرو",
+        "birthPlaceLatitude": 37.6644,
+        "birthPlaceLongitude": 62.1747,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 2311,
+        "title": "مناقب الصوفیه",
+        "urlSlug": "managheb-o-sufieh",
+        "fullUrl": "/abbadi/managheb-o-sufieh",
+        "tableOfContentsStyle": 2,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 2310,
+            "title": "عبادی مروزی",
+            "urlSlug": "abbadi",
+            "fullUrl": "/abbadi",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "قطب الدّین ابو منصور مظفر بن اردشیر سنجی عبادی مروزی (زاده به سال ۴۹۱ هجری قمری در روستای سنج عباد از قراء مرو، درگذشته به سال ۵۴۷ هجری قمری در عسکر خوزستان) ملقب به امیر و معروف به امیر قطب‌الدین یا قطب عبادى، واعظ، فقیه و محدث قرن ششم هجری است.\r\nوى از نصرالله خشنامى و عبدالغفار شیروى و عده‌اى دیگر حدیث شنید. او از طرف سلطان سنجر به بغداد رفت و مدت سه سال در جامع قصر و در دارالسلطنه به وعظ پرداخت و مردم بر گردش ازدحام مى‌نمودند. او در جامع قصر املاى حدیث مى‌کرد. ابن اخضر و حمزه بن قبیطى و محمد بن مکرم از وى حدیث روایت کرده‌اند. نیکویى و حسن وعظ وى ضرب‌المثل بود. ابن جوزى گوید: که او زیباکلام بود و از مواعظ او مجلداتى گردآورى کرده‌اند. ابوسعد سمعانى گوید: که از او رساله‌اى در «شرب الخمر» دیده است.\r\nکتاب مناقب الصوفیهٔ عبادی مروزی از روی نسخهٔ آماده شده به همت خانم اکرم شفایی قابل دریافت از وبگاه تصوف ایرانی در گنجور در دسترس قرار گرفته است.\r\n",
+            "descriptionHtml": "<p>قطب الدّین ابومنصور مظفر بن اردشیر سنجی عَبّادی مروزی (زاده به سال ۴۹۱ هجری قمری در روستای سنج عَبّاد از قراء مرو، درگذشته به سال ۵۴۷ هجری قمری در عسکر خوزستان) ملقب به امیر و معروف به امیر قطب&zwnj;الدین یا قطب عبادى، واعظ، فقیه و محدث قرن ششم هجری است.</p>\r\n<p>وى از نصرالله خشنامى و عبدالغفار شیروى و عده&zwnj;اى دیگر حدیث شنید. او از طرف سلطان سنجر به بغداد رفت و مدت سه سال در جامع قصر و در دارالسلطنه به وعظ پرداخت و مردم بر گردش ازدحام مى&zwnj;نمودند. او در جامع قصر املاى حدیث مى&zwnj;کرد. ابن اخضر و حمزه بن قبیطى و محمد بن مکرم از وى حدیث روایت کرده&zwnj;اند. نیکویى و حسن وعظ وى ضرب&zwnj;المثل بود. ابن جوزى گوید: که او زیباکلام بود و از مواعظ او مجلداتى گردآورى کرده&zwnj;اند. ابوسعید سمعانی گوید: وی در دین خود موثق نبود، و رساله ای به خط او در مباح بودن شراب دیدم.</p>\r\n<p>کتاب مناقب الصوفیهٔ عبادی مروزی از روی <a href=\"http://www.sufi.ir/MysticalBooks(96).php\">نسخهٔ آماده شده به همت خانم اکرم شفایی قابل دریافت از وبگاه تصوف ایرانی</a> در گنجور در دسترس قرار گرفته است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 88686,
+      "title": "بخش ۵ - فصل اول: از روی کتاب",
+      "urlSlug": "sh5",
+      "excerpt": "بدان که ابتدای احوال این جماعت از عهد رسول ظاهر شده است که در روزگار او جماعتی بوده‌اند از متصوفه که همهٔ معانی تصوف دریشان جمع بود. این طریق از آن عهد ممهد شد، و همچنین خواهد بود الی یوم القیامة.",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 88684,
+      "title": "بخش ۳ - فصل: در بیان تصوف",
+      "urlSlug": "sh3",
+      "excerpt": "مشایخ عصر را کلمات متفاوت است در معنی تصوف و درماهیت او. بر یک حقیقت متفق نشده‌اند. از آنکه اتفاق در ماهیت چیزی بعد از اطلاع تواند بود بر حقیقت او که محمود بود یا موصوف.",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3882036,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": -1,
+        "sectionIndex1": null,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بدان که فضل صوفی بر دیگر آدمیان از سه وجه تواند بود: از کتاب، و از سنت، و از عقل. و این هر سه در سه فصل یاد کنیم.",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: فضل و برتری صوفی نسبت به دیگر انسان‌ها می‌تواند از سه جنبه باشد: از طریق کتاب، سنت و عقل. هر یک از این جنبه‌ها را در سه بخش جداگانه بررسی خواهیم کرد."
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "ca77a361-aa43-43c2-3dbf-08dc5b18fb13",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00001696/00019.jpg",
+        "targetPageUrl": "https://naskban.ir/1696/19",
+        "altText": "مناقب الصوفیه به کوشش محمدتقی دانش‌پژوه و ایرج افشار - قطب الدین ابوالمظفر منصور بن اردشیر سنجی عبادی مروزی - تصویر ۱۹",
+        "isTextOriginalSource": true
+      },
+      {
+        "id": "a5ca4b6d-b39c-4489-1d60-08dc5b6c9a41",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00022330/00017.jpg",
+        "targetPageUrl": "https://naskban.ir/22330/17",
+        "altText": "مناقب الصوفیه به کوشش نجیب مایل هروی - قطب الدین ابوالمظفر منصور بن اردشیر العبادی المرزوی - تصویر ۱۷",
+        "isTextOriginalSource": false
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}
