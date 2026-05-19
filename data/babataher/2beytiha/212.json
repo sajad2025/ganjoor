@@ -1,0 +1,232 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:04.814461+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21520",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21520,
+    "title": "دوبیتی شمارهٔ ۲۱۲",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۲۱۲",
+    "urlSlug": "sh212",
+    "fullUrl": "/babataher/2beytiha/sh212",
+    "plainText": "بی ته هر شو سرم بر بالش آیو\r\nچو نی از استخوانم نالش آیو\r\nشب هجران به جای اشک چشمم\r\nز مژگان پاره های آتش آیو",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>بی ته هر شو سرم بر بالش آیو</p></div>\r\n<div class=\"m2\"><p>چو نی از استخوانم نالش آیو</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>شب هجران به جای اشک چشمم</p></div>\r\n<div class=\"m2\"><p>ز مژگان پاره‌های آتش آیو</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: شاعر در این ابیات از احساسات عمیق خود در شب‌های تنهایی و دوری صحبت می‌کند. او بر روی بالش خود دراز کشیده و همچون نیی در حال ناله است. به جای اشک، از چشمانش شعله‌های آتش درمی‌آید که نشان‌دهنده‌ی شدت درد و فقدان اوست.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21521,
+      "title": "دوبیتی شمارهٔ ۲۱۳",
+      "urlSlug": "sh213",
+      "excerpt": "نسیمی کز بن آن کاکل آیو",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21519,
+      "title": "دوبیتی شمارهٔ ۲۱۱",
+      "urlSlug": "sh211",
+      "excerpt": "غم عشق تو کی بر هر سر آیو؟",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3055522,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بی ته هر شو سرم بر بالش آیو",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: بدون هیچ گونه حاشیه‌ای، سرم را بر روی بالش می‌گذارم و مانند نی که از استخوانش ناله می‌کند، به آرامی صدا می‌زنم."
+      },
+      {
+        "id": 3055523,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چو نی از استخوانم نالش آیو",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3055524,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "شب هجران به جای اشک چشمم",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: در شب جدایی، به جای اشک‌هایی که از چشمانم بریزد، شعله‌های آتش از مژگانم سرازیر می‌شود."
+      },
+      {
+        "id": 3055526,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "ز مژگان پاره‌های آتش آیو",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "18ff27b0-5dca-497e-5f70-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00085.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/85",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۸۵",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 14101,
+        "authorName": "محدثه",
+        "authorUrl": "http://maheman66.blogsky.com/",
+        "commentDate": "2016-12-14T20:22:43",
+        "htmlComment": "<p>استاد عبدالوهاب شهیدی این قطعه رو در اواز دشتی گلهای رنگارنگ 264 خوانده اند</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": null,
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 131677,
+        "poemId": 21520,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "شایو",
+        "plainText": "بی ته هر شو سرم بر بالش آیو\r\nچو نی از استخوانم نالش آیو\r\nشب هجران به جای اشک چشمم\r\nز مژگان پاره های آتش آیو",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>بی ته هر شو سرم بر بالش آیو</p></div>\r\n<div class=\"m2\"><p>چو نی از استخوانم نالش آیو</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>شب هجران به جای اشک چشمم</p></div>\r\n<div class=\"m2\"><p>ز مژگان پاره‌های آتش آیو</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

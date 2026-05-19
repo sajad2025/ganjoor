@@ -1,0 +1,249 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:21.838840+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21604",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21604,
+    "title": "دوبیتی شمارهٔ ۲۹۶",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۲۹۶",
+    "urlSlug": "sh296",
+    "fullUrl": "/babataher/2beytiha/sh296",
+    "plainText": "چه خوش بی وصلت آهنگ ملک بی\r\nمرا وصل تو آرام دلک بی\r\nز مهرت ای بت شیرین چالاک\r\nدمادم دست حسرت بر سرک بی",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>چه خوش بی وصلت آهنگ ملک بی</p></div>\r\n<div class=\"m2\"><p>مرا وصل تو آرام دلک بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>ز مهرت ای بت شیرین چالاک</p></div>\r\n<div class=\"m2\"><p>دمادم دست حسرت بر سرک بی</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: شاعر در این شعر از زیبایی و جذابیت معشوق سخن می‌گوید و ابراز می‌کند که چقدر خوشحال است که در کنار اوست. او همچنین از احساس حسرت و longing (آرزوی وصال) خود صحبت می‌کند و به مشقتی که از دوری و جدایی می‌کشد اشاره دارد.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21605,
+      "title": "دوبیتی شمارهٔ ۲۹۷",
+      "urlSlug": "sh297",
+      "excerpt": "دلا راهت پر از خار و خسک بی",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21603,
+      "title": "دوبیتی شمارهٔ ۲۹۵",
+      "urlSlug": "sh295",
+      "excerpt": "ز خور این چهره‌ات افروته‌تر بی",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3055093,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چه خوش بی وصلت آهنگ ملک بی",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: ای ماه زیبا، چه خوشحال و شاداب به نظر می‌رسی امشب؛ در حالی که من بدون وصالت، آرامش قلبم را گم کرده‌ام."
+      },
+      {
+        "id": 3055094,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "مرا وصل تو آرام دلک بی",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3055096,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "ز مهرت ای بت شیرین چالاک",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: ای ماه زیبای چالاک، همیشه شاد و خوشحال هستی، اما من در حسرت تو، دست بر سر می‌زنم."
+      },
+      {
+        "id": 3055106,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "دمادم دست حسرت بر سرک بی",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "157267f4-ec83-4211-5f95-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00067.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/67",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۶۷",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 34006,
+        "authorName": "احمد",
+        "authorUrl": "",
+        "commentDate": "2014-08-28T18:37:31",
+        "htmlComment": "<p>معنی مصرع اول:<br />ای ماه چه خوب بود که وصلت امشب می بود.</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": null,
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 131761,
+        "poemId": 21604,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "کبی",
+        "plainText": "چه خوش بی وصلت آهنگ ملک بی\r\nمرا وصل تو آرام دلک بی\r\nز مهرت ای بت شیرین چالاک\r\nدمادم دست حسرت بر سرک بی",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>چه خوش بی وصلت آهنگ ملک بی</p></div>\r\n<div class=\"m2\"><p>مرا وصل تو آرام دلک بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>ز مهرت ای بت شیرین چالاک</p></div>\r\n<div class=\"m2\"><p>دمادم دست حسرت بر سرک بی</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [
+          {
+            "id": 114918,
+            "poemId": 21604,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 28,
+            "relationOrder": 1,
+            "poetName": "باباطاهر",
+            "poetImageUrl": "/api/ganjoor/poet/image/babataher.gif",
+            "fullUrl": "/babataher/2beytiha/sh297",
+            "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۲۹۷",
+            "htmlExcerpt": "<p>دلا راهت پر از خار و خسک بی</p>\r\n<p>گذرگاه تو بر اوج فلک بی</p>\r\n<p>شب تار و بیابان دور منزل</p>\r\n<p>خوشا آنکس که بارش کمترک بی</p>",
+            "targetPoemId": 21605,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 0
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

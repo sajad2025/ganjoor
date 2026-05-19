@@ -1,0 +1,249 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:25.529062+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21622",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21622,
+    "title": "دوبیتی شمارهٔ ۳۱۴",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۳۱۴",
+    "urlSlug": "sh314",
+    "fullUrl": "/babataher/2beytiha/sh314",
+    "plainText": "چه واجم هر چه واجم واته شان بی\r\nسخن از بیش و از کم واته شان بی\r\nبدریا مو شدم گوهر برآرم\r\nهر آن گوهر که دیدم واته شان بی",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>چه واجم هر چه واجم واته‌شان بی</p></div>\r\n<div class=\"m2\"><p>سخن از بیش و از کم واته‌شان بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>بدریا مو شدم گوهر برآرم</p></div>\r\n<div class=\"m2\"><p>هر آن گوهر که دیدم واته‌شان بی</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: شاعر در این ابیات از تلاش خود برای بیان احساسات و افکارش سخن می‌گوید. او می‌گوید هر چه تلاش کند، کلمات و مفاهیم او نتوانسته‌اند به درستی احساساتش را منتقل کنند. او خود را به دریا تشبیه می‌کند که از آن گوهرهای ناب را استخراج می‌کند، اما به نظر می‌رسد هر چه بیشتر تلاش می‌کند، هنوز هم موفق به بیان کامل احساساتش نمی‌شود. به این ترتیب، او می‌خواهد بگوید که بهترین جواهرات درونش را نمی‌تواند به بیان بیاورد.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21623,
+      "title": "دوبیتی شمارهٔ ۳۱۵",
+      "urlSlug": "sh315",
+      "excerpt": "سیه بختم که بختم واژگون بی",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21621,
+      "title": "دوبیتی شمارهٔ ۳۱۳",
+      "urlSlug": "sh313",
+      "excerpt": "خوشا آنانکه الله یارشان بی",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3055021,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چه واجم هر چه واجم واته‌شان بی",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: هر چه می‌گویم، بیهوده است و آنچه در دل دارم، بدون حرفی از زیاد و کم است و تنها در دل خود نگه می‌دارم."
+      },
+      {
+        "id": 3055022,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "سخن از بیش و از کم واته‌شان بی",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3055024,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بدریا مو شدم گوهر برآرم",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: به دریا می‌روم و هر گوهری که ببینم را از آن بیرون می‌آورم، هرچند آنها را به من نشان ندهند."
+      },
+      {
+        "id": 3055034,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "هر آن گوهر که دیدم واته‌شان بی",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "fccbbd98-bd52-4ab0-5f9f-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00074.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/74",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۷۴",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 131970,
+        "authorName": "احمد خرم‌آبادی‌زاد",
+        "authorUrl": null,
+        "commentDate": "2025-07-26T10:32:23.1260369",
+        "htmlComment": "<p>این دوبیتی، همان دوبیتی ۳۱۲ است.</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": "f6addb44-9ec8-4db3-09e7-08d9c60f3f8b",
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 131779,
+        "poemId": 21622,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "مواتهشانبی",
+        "plainText": "چه واجم هر چه واجم واته شان بی\r\nسخن از بیش و از کم واته شان بی\r\nبدریا مو شدم گوهر برآرم\r\nهر آن گوهر که دیدم واته شان بی",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>چه واجم هر چه واجم واته‌شان بی</p></div>\r\n<div class=\"m2\"><p>سخن از بیش و از کم واته‌شان بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>بدریا مو شدم گوهر برآرم</p></div>\r\n<div class=\"m2\"><p>هر آن گوهر که دیدم واته‌شان بی</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [
+          {
+            "id": 90251390,
+            "poemId": 21622,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 28,
+            "relationOrder": 1,
+            "poetName": "باباطاهر",
+            "poetImageUrl": "/api/ganjoor/poet/image/babataher.gif",
+            "fullUrl": "/babataher/2beytiha/sh312",
+            "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۳۱۲",
+            "htmlExcerpt": "<p>چه واجم هرچه واجم وا  ته‌شان بی</p>\r\n<p>حدیث از بیش و از کم وا ته‌شان بی</p>\r\n<p>به دریا مو شدم گوهر برآرم</p>\r\n<p>هر آن گوهر که دیدم واته‌شان بی</p>",
+            "targetPoemId": 21620,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 0
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

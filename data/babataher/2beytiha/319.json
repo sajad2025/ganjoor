@@ -1,0 +1,249 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:26.524999+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21627",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21627,
+    "title": "دوبیتی شمارهٔ ۳۱۹",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۳۱۹",
+    "urlSlug": "sh319",
+    "fullUrl": "/babataher/2beytiha/sh319",
+    "plainText": "زمان لاله زارون هفته ای بی\r\nکه فصل نوبهارون هفته ای بی\r\nغنیمت دون وصال یار جانی\r\nکه وصل روی یارون هفته ای بی",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>زمان لاله‌زارون هفته‌ای بی</p></div>\r\n<div class=\"m2\"><p>که فصل نوبهارون هفته‌ای بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>غنیمت دون وصال یار جانی</p></div>\r\n<div class=\"m2\"><p>که وصل روی یارون هفته‌ای بی</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این اشعار، شاعر به زیبایی فصل بهار و لحظات ارزشمند وصال معشوق اشاره می‌کند. او به اهمیت این لحظات اشاره می‌کند و برای زیبایی و شادابی گل‌ها و لاله‌ها ارزش قائل است. به طور کلی، شاعر از مخاطب می‌خواهد که از این زمان کوتاه و مجلل بهره‌برداری کند.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21628,
+      "title": "دوبیتی شمارهٔ ۳۲۰",
+      "urlSlug": "sh320",
+      "excerpt": "الاله کوهساران هفته ای بی",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21626,
+      "title": "دوبیتی شمارهٔ ۳۱۸",
+      "urlSlug": "sh318",
+      "excerpt": "دو چشمونت پیاله پر ز می بی",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3054994,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "زمان لاله‌زارون هفته‌ای بی",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: گل‌ها در فصل بهار، هر هفته دوره‌ای از عشق و وصل به دوستان را تجربه می‌کنند که انگار زمانی برای این خوشی‌ها وجود ندارد."
+      },
+      {
+        "id": 3054995,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "که فصل نوبهارون هفته‌ای بی",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3054996,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "غنیمت دون وصال یار جانی",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: از حضور و نزدیکی به زیبایانی که مانند گل هستند، بهره‌مند شو، زیرا زیبایی و خوشی در این لحظات کوتاه است و هر لحظه ممکن است از دست برود."
+      },
+      {
+        "id": 3054997,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "که وصل روی یارون هفته‌ای بی",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "d7d6db46-4598-4d64-5fa4-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00075.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/75",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۷۵",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 131955,
+        "authorName": "احمد خرم‌آبادی‌زاد",
+        "authorUrl": null,
+        "commentDate": "2025-07-26T00:08:07.5501498",
+        "htmlComment": "<p>این دوبیتی به شکل زیر:</p>\r\n<p>&laquo;گلان فصل بهاران هفته&zwnj;ای بی/زمان وصل یاران هفته&zwnj;ای بی&raquo;</p>\r\n<p>&laquo;غنیمت دان وصال لاله رویان/که گل در لاله زاران هفته&zwnj;ای بی&raquo;</p>\r\nبه هیچ رو با نسخه مرجع همخوانی ندارد.\r\n<p>&nbsp;</p>\r\n<p>*از هرگونه دستکاری&ndash;از جمله فارسی سازی&ndash;اسناد هویت ملی بپرهیزیم.</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": "f6addb44-9ec8-4db3-09e7-08d9c60f3f8b",
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 131784,
+        "poemId": 21627,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "ارانهفتهایبی",
+        "plainText": "زمان لاله زارون هفته ای بی\r\nکه فصل نوبهارون هفته ای بی\r\nغنیمت دون وصال یار جانی\r\nکه وصل روی یارون هفته ای بی",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>زمان لاله‌زارون هفته‌ای بی</p></div>\r\n<div class=\"m2\"><p>که فصل نوبهارون هفته‌ای بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>غنیمت دون وصال یار جانی</p></div>\r\n<div class=\"m2\"><p>که وصل روی یارون هفته‌ای بی</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [
+          {
+            "id": 130888,
+            "poemId": 21627,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 28,
+            "relationOrder": 1,
+            "poetName": "باباطاهر",
+            "poetImageUrl": "/api/ganjoor/poet/image/babataher.gif",
+            "fullUrl": "/babataher/2beytiha/sh320",
+            "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۳۲۰",
+            "htmlExcerpt": "<p>الاله کوهساران هفته ای بی</p>\r\n<p>بنفشه جو کناران هفته‌ای بی</p>\r\n<p>منادی میکره شهرو به شهرو</p>\r\n<p>وفای گلعذاران هفته‌ای بی</p>",
+            "targetPoemId": 21628,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 0
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

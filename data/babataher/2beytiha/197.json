@@ -1,0 +1,233 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:01.785242+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21505",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21505,
+    "title": "دوبیتی شمارهٔ ۱۹۷",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۱۹۷",
+    "urlSlug": "sh197",
+    "fullUrl": "/babataher/2beytiha/sh197",
+    "plainText": "دلی دیرم دمی بیغم نمی بو\r\nغمی دیرم که هرگز کم نمی بو\r\nخطی دیرم مو از خوبان عالم\r\nکه یار بیوفا همدم نمی بو",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>دلی دیرم دمی بیغم نمی‌بو</p></div>\r\n<div class=\"m2\"><p>غمی دیرم که هرگز کم نمی‌بو</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>خطی دیرم مو از خوبان عالم</p></div>\r\n<div class=\"m2\"><p>که یار بیوفا همدم نمی‌بو</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این شعر، غم و اندوه گوینده به وضوح بیان شده است. او احساس می‌کند که هرگز از غمش کاسته نمی‌شود و نیز از عدم وفای یار خود ناراحت است. گوینده به دنبال خط و نشانی از خوبان عالم است، اما نمی‌تواند آن را بیابد و این موضوع او را بیشتر در اندوه فرو می‌برد.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21506,
+      "title": "دوبیتی شمارهٔ ۱۹۸",
+      "urlSlug": "sh198",
+      "excerpt": "بوره جانا که جانانم تویی تو",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21504,
+      "title": "دوبیتی شمارهٔ ۱۹۶",
+      "urlSlug": "sh196",
+      "excerpt": "سری دارم که سامانش نمیبو",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3055510,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "دلی دیرم دمی بیغم نمی‌بو",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: دل من هرگز لحظه‌ای از غم خالی نمی‌شود و همیشه در این حالتی که هستم، غم در من کم نمی‌شود."
+      },
+      {
+        "id": 3055511,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "غمی دیرم که هرگز کم نمی‌بو",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3055491,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "خطی دیرم مو از خوبان عالم",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: این بیت بیان می‌کند که من مدت‌هاست که از وجود خوبان این دنیا دورم و در کنار من کسی نیست که درستکار و وفادار باشد."
+      },
+      {
+        "id": 3055501,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "که یار بیوفا همدم نمی‌بو",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "cef1352e-d634-48b3-5f66-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00054.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/54",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۵۴",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 131662,
+        "poemId": 21505,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "منمیبو",
+        "plainText": "دلی دیرم دمی بیغم نمی بو\r\nغمی دیرم که هرگز کم نمی بو\r\nخطی دیرم مو از خوبان عالم\r\nکه یار بیوفا همدم نمی بو",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>دلی دیرم دمی بیغم نمی‌بو</p></div>\r\n<div class=\"m2\"><p>غمی دیرم که هرگز کم نمی‌بو</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>خطی دیرم مو از خوبان عالم</p></div>\r\n<div class=\"m2\"><p>که یار بیوفا همدم نمی‌بو</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [
+          {
+            "id": 114259,
+            "poemId": 21505,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 28,
+            "relationOrder": 1,
+            "poetName": "باباطاهر",
+            "poetImageUrl": "/api/ganjoor/poet/image/babataher.gif",
+            "fullUrl": "/babataher/2beytiha/sh193",
+            "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۱۹۳",
+            "htmlExcerpt": "<p>بیته یک شو دلم بی غم نمی‌بو</p>\r\n<p>که آن دلبر دمی همدم نمی‌بو</p>\r\n<p>هزاران رحمت حق باد بر غم</p>\r\n<p>زمانی از دل ما کم نمی بو</p>",
+            "targetPoemId": 21501,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 0
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

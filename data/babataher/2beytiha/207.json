@@ -1,0 +1,253 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:03.810583+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21515",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21515,
+    "title": "دوبیتی شمارهٔ ۲۰۷",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۲۰۷",
+    "urlSlug": "sh207",
+    "fullUrl": "/babataher/2beytiha/sh207",
+    "plainText": "بی ته اشکم ز مژگان تر آیو\r\nبی ته نخل امیدم نی بر آیو\r\nبی ته در کنج تنهایی شب و روز\r\nنشینم تا که عمرم بر سر آیو",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>بی ته اشکم ز مژگان تر آیو</p></div>\r\n<div class=\"m2\"><p>بی ته نخل امیدم نی بر آیو</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>بی ته در کنج تنهائی شب و روز</p></div>\r\n<div class=\"m2\"><p>نشینم تا که عمرم بر سر آیو</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این اشعار، گوینده از احساسات عمیق و تنهایی خود سخن می‌گوید. او می‌گوید چشمانش بی‌پایان اشک می‌ریزند و امیدی در زندگی ندارد. در کنج تنهایی‌اش، روزها و شب‌ها را می‌گذراند و منتظر است تا عمرش به پایان برسد. این ابیات بیانگر اندوه و ناامیدی عمیق او هستند.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21516,
+      "title": "دوبیتی شمارهٔ ۲۰۸",
+      "urlSlug": "sh208",
+      "excerpt": "شبی کان نازنینم در بر آیو",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21514,
+      "title": "دوبیتی شمارهٔ ۲۰۶",
+      "urlSlug": "sh206",
+      "excerpt": "مکن کاری که پا بر سنگت آیو",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3055560,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بی ته اشکم ز مژگان تر آیو",
+        "languageId": null,
+        "coupletSummary": "بی تو، از مژگانِ ترم اشک می‌ریزد و نخل امیدم میوه نمی‌دهد."
+      },
+      {
+        "id": 3055551,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بی ته نخل امیدم نی بر آیو",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3055552,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بی ته در کنج تنهائی شب و روز",
+        "languageId": null,
+        "coupletSummary": "بی تو، شب و روز در کنج تنهایی می‌نشینم تا عمرم به سر آید."
+      },
+      {
+        "id": 3055553,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "نشینم تا که عمرم بر سر آیو",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "91002d25-28a3-40df-5f6c-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00062.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/62",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۶۲",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [
+      {
+        "id": 1397,
+        "poemId": 21515,
+        "trackType": 0,
+        "artistName": "علیرضا افتخاری",
+        "artistUrl": "https://beeptunes.com/artist/3402447",
+        "albumName": "امان از جدایی",
+        "albumUrl": "https://beeptunes.com/album/3415397",
+        "trackName": "تصنیف شاخ شمشاد (بر اساس ملودی کردی)",
+        "trackUrl": "https://beeptunes.com/track/3441131",
+        "description": "",
+        "brokenLink": false,
+        "golhaTrackId": 0,
+        "approved": true,
+        "rejected": false,
+        "rejectionCause": null,
+        "suggestedById": null,
+        "suggestedByNickName": null
+      }
+    ],
+    "comments": [],
+    "sections": [
+      {
+        "id": 131672,
+        "poemId": 21515,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "رایو",
+        "plainText": "بی ته اشکم ز مژگان تر آیو\r\nبی ته نخل امیدم نی بر آیو\r\nبی ته در کنج تنهایی شب و روز\r\nنشینم تا که عمرم بر سر آیو",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>بی ته اشکم ز مژگان تر آیو</p></div>\r\n<div class=\"m2\"><p>بی ته نخل امیدم نی بر آیو</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>بی ته در کنج تنهائی شب و روز</p></div>\r\n<div class=\"m2\"><p>نشینم تا که عمرم بر سر آیو</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [
+          {
+            "id": 114265,
+            "poemId": 21515,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 28,
+            "relationOrder": 1,
+            "poetName": "باباطاهر",
+            "poetImageUrl": "/api/ganjoor/poet/image/babataher.gif",
+            "fullUrl": "/babataher/2beytiha/sh208",
+            "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۲۰۸",
+            "htmlExcerpt": "<p>شبی کان نازنینم در بر آیو</p>\r\n<p>گذشته عمرم از نو بر سر آیو</p>\r\n<p>همه شو دیدهٔ مو تا سحرگاه</p>\r\n<p>بره باشد که یارم از در آیو</p>",
+            "targetPoemId": 21516,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 2
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

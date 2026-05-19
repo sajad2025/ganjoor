@@ -1,0 +1,249 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:23.846896+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21614",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21614,
+    "title": "دوبیتی شمارهٔ ۳۰۶",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۳۰۶",
+    "urlSlug": "sh306",
+    "fullUrl": "/babataher/2beytiha/sh306",
+    "plainText": "اگر نامهربانم مهربان بی\r\nچرا از دیدگانم خون روان بی\r\nاگر دلبر بمو دلدار می شه\r\nچرا در تن مرا نه دل نه جان بی",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>اگر نامهربانم مهربان بی</p></div>\r\n<div class=\"m2\"><p>چرا از دیدگانم خون روان بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>اگر دلبر بمو دلدار می‌شه</p></div>\r\n<div class=\"m2\"><p>چرا در تن مرا نه دل نه جان بی</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این شعر، شاعر از درد و رنج خود به خاطر جدایی از محبوب سخن می‌گوید. او می‌پرسد اگر محبوبش بی‌محبت است، چرا چشمانش پر از اشک است؟ و اگر او را دوست دارد، چرا در وجودش بی‌حالی و بی‌وجودی حس می‌کند؟ این ابیات نشان‌دهنده‌ی احساس عمیق تنهایی و ناراحتی شاعر است.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21615,
+      "title": "دوبیتی شمارهٔ ۳۰۷",
+      "urlSlug": "sh307",
+      "excerpt": "دلم از سوز عشق آتش به جان بی",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21613,
+      "title": "دوبیتی شمارهٔ ۳۰۵",
+      "urlSlug": "sh305",
+      "excerpt": "نپنداری که بستان خوشترم بی",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3055143,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "اگر نامهربانم مهربان بی",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: اگر آن بی‌محبت، روزی مهربان شود، چرا اشک‌های من از چشمانم continuously می‌ریزد؟"
+      },
+      {
+        "id": 3055134,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چرا از دیدگانم خون روان بی",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3055135,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "اگر دلبر بمو دلدار می‌شه",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: اگر محبوب من به من محبت دارد، پس چرا در وجود من نه دلی است و نه جانی باقی مانده است؟"
+      },
+      {
+        "id": 3055136,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چرا در تن مرا نه دل نه جان بی",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "c055214f-f800-4d53-5f9b-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00072.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/72",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۷۲",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 61516,
+        "authorName": "فریان",
+        "authorUrl": "",
+        "commentDate": "2020-08-30T00:58:02",
+        "htmlComment": "<p>اگر نامهربونم مهربون بی،به صورت رباعی ذکر شده</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": null,
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 131771,
+        "poemId": 21614,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "انبی",
+        "plainText": "اگر نامهربانم مهربان بی\r\nچرا از دیدگانم خون روان بی\r\nاگر دلبر بمو دلدار می شه\r\nچرا در تن مرا نه دل نه جان بی",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>اگر نامهربانم مهربان بی</p></div>\r\n<div class=\"m2\"><p>چرا از دیدگانم خون روان بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>اگر دلبر بمو دلدار می‌شه</p></div>\r\n<div class=\"m2\"><p>چرا در تن مرا نه دل نه جان بی</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [
+          {
+            "id": 114924,
+            "poemId": 21614,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 28,
+            "relationOrder": 1,
+            "poetName": "باباطاهر",
+            "poetImageUrl": "/api/ganjoor/poet/image/babataher.gif",
+            "fullUrl": "/babataher/2beytiha/sh307",
+            "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۳۰۷",
+            "htmlExcerpt": "<p>دلم از سوز عشق آتش بجان بی</p>\r\n<p>بکامم زهر از آن شکر دهان بی</p>\r\n<p>همان دستان که با ته بی بگردن</p>\r\n<p>کنونم چون مگس بر سر زنان بی</p>",
+            "targetPoemId": 21615,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 4
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

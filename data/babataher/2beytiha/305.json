@@ -1,0 +1,232 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:23.644244+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21613",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21613,
+    "title": "دوبیتی شمارهٔ ۳۰۵",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۳۰۵",
+    "urlSlug": "sh305",
+    "fullUrl": "/babataher/2beytiha/sh305",
+    "plainText": "نپنداری که بستان خوشترم بی\r\nسرم بو گوی میدان خوشترم بی\r\nچو گلخن تار و تاریکه به چشمم\r\nگلستان بی ته زندان خوشترم بی",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>نپنداری که بستان خوشترم بی</p></div>\r\n<div class=\"m2\"><p>سرم بو گوی میدان خوشترم بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>چو گلخن تار و تاریکه به چشمم</p></div>\r\n<div class=\"m2\"><p>گلستان بی ته زندان خوشترم بی</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این شعر، شاعر می‌گوید که زندان برای او خوشایند نیست و برعکس، زندگی در فضای آزاد و طبیعی، مانند یک گلستان، برایش بهتر و دلپذیرتر است. او احساس تنگنا و تاریکی در زندان را با فضای باز و زیبا مقایسه می‌کند و نشان می‌دهد که آزادی و زیبایی طبیعت برایش ارزش بیشتری دارد.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21614,
+      "title": "دوبیتی شمارهٔ ۳۰۶",
+      "urlSlug": "sh306",
+      "excerpt": "اگر نامهربانم مهربان بی",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21612,
+      "title": "دوبیتی شمارهٔ ۳۰۴",
+      "urlSlug": "sh304",
+      "excerpt": "به لامردم مکان دلبرم بی",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3055177,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "نپنداری که بستان خوشترم بی",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: نپندار که زندگی در زندان برایم بهتر است، زیرا بدون سر خود نیز از بودن در میدانی که دلخواه من است، بیشتر لذت می‌برم."
+      },
+      {
+        "id": 3055157,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "سرم بو گوی میدان خوشترم بی",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3055167,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چو گلخن تار و تاریکه به چشمم",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: چنان‌که دنیای تاریک و بی‌نظم شبیه یک گلخن به نظر می‌رسد، برای من فضای خوش و سرسبز گلستان، حتی در شرایط سخت زندان، مطلوب‌تر است."
+      },
+      {
+        "id": 3055156,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "گلستان بی ته زندان خوشترم بی",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "09533212-444e-4abb-5f9a-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00070.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/70",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۷۰",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 131943,
+        "authorName": "احمد خرم‌آبادی‌زاد",
+        "authorUrl": null,
+        "commentDate": "2025-07-25T13:35:25.554116",
+        "htmlComment": "<p>به استناد نسخه مرجع و نیز نسخه دیگر شادروان وحید دستگردی، در مصرع نخست بیت شماره 1، &laquo;بستان&raquo; (به جای &laquo;زندان&raquo;) درست است.</p>\n<p>&nbsp;</p>\n<p>از دستکاری اسناد هویت ملی بر پایۀ سلیقه شخصی و به بهانه ویرایش، خودداری کنیم.</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": "f6addb44-9ec8-4db3-09e7-08d9c60f3f8b",
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 131770,
+        "poemId": 21613,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "دانخوشترمبی",
+        "plainText": "نپنداری که بستان خوشترم بی\r\nسرم بو گوی میدان خوشترم بی\r\nچو گلخن تار و تاریکه به چشمم\r\nگلستان بی ته زندان خوشترم بی",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>نپنداری که بستان خوشترم بی</p></div>\r\n<div class=\"m2\"><p>سرم بو گوی میدان خوشترم بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>چو گلخن تار و تاریکه به چشمم</p></div>\r\n<div class=\"m2\"><p>گلستان بی ته زندان خوشترم بی</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:06:47.884966+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21436",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21436,
+    "title": "دوبیتی شمارهٔ ۱۲۸",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۱۲۸",
+    "urlSlug": "sh128",
+    "fullUrl": "/babataher/2beytiha/sh128",
+    "plainText": "به غیر ته دگر یاری ندیرم\r\nبه اغیاری سر و کاری ندیرم\r\nبه دکان ته آن کاسد متاعم\r\nکه اصلا روی بازاری ندیرم",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>به‌غیر ته دگر یاری ندیرم</p></div>\r\n<div class=\"m2\"><p>به اغیاری سر و کاری ندیرم</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>به دکان ته آن کاسد متاعم</p></div>\r\n<div class=\"m2\"><p>که اصلا روی بازاری ندیرم</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این شعر، شاعر به روشنایی و صداقت اشاره می‌کند و می‌گوید که به جز خداوند هیچ یاری ندارد و به دیگران وابسته نیست. او همچنین از وضعیت بازار و کاسبی خود سخن می‌گوید و می‌افزاید که هیچ تمایلی به تجارت و کارهای دکان‌داری ندارد. در واقع، او به دنبال زندگی‌ای ساده و بی‌تظاهر است.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21437,
+      "title": "دوبیتی شمارهٔ ۱۲۹",
+      "urlSlug": "sh129",
+      "excerpt": "همه عالم پر از گَرده‌، چه سازم‌؟",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21435,
+      "title": "دوبیتی شمارهٔ ۱۲۷",
+      "urlSlug": "sh127",
+      "excerpt": "به‌ سر غیر ته سودایی ندیرم",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3054231,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "به‌غیر ته دگر یاری ندیرم",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: من جز تو هیچ دوستی ندارم و با دیگران هیچ ارتباطی ندارم."
+      },
+      {
+        "id": 3054232,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "به اغیاری سر و کاری ندیرم",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3054233,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "به دکان ته آن کاسد متاعم",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: من در دکان آن فروشنده‌ای که کساد است و اصلاً رونقی ندارد، هیچ تمایلی به خرید ندارم."
+      },
+      {
+        "id": 3054234,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "که اصلا روی بازاری ندیرم",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "0a37ca33-7c3d-430f-5f43-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00084.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/84",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۸۴",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 10142,
+        "authorName": "کمال",
+        "authorUrl": "",
+        "commentDate": "2015-04-09T22:44:09",
+        "htmlComment": "<p>باسلام،ودوردبردوستدارانbaba,taher درضمن تبریک روزولادت حضرت فاطمه الزهرا(س)، بقول معرف چیزی که ازاین دوبیت دستگر م شد، حاشیه هاازامروز،ویوم قیل اژآن است درسایت گنجور&amp;باتشکر ازدست اندرکاران سایت فوق &amp; ج : 6207</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": null,
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 131593,
+        "poemId": 21436,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "اریندیرم",
+        "plainText": "به غیر ته دگر یاری ندیرم\r\nبه اغیاری سر و کاری ندیرم\r\nبه دکان ته آن کاسد متاعم\r\nکه اصلا روی بازاری ندیرم",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>به‌غیر ته دگر یاری ندیرم</p></div>\r\n<div class=\"m2\"><p>به اغیاری سر و کاری ندیرم</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>به دکان ته آن کاسد متاعم</p></div>\r\n<div class=\"m2\"><p>که اصلا روی بازاری ندیرم</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

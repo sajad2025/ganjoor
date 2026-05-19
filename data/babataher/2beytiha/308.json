@@ -1,0 +1,233 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:24.321556+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21616",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21616,
+    "title": "دوبیتی شمارهٔ ۳۰۸",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۳۰۸",
+    "urlSlug": "sh308",
+    "fullUrl": "/babataher/2beytiha/sh308",
+    "plainText": "دنیا خوان و مردم میهمان بی\r\nامروز لاله بی و فردا خزان بی\r\nسیه چالی کنن نامش نهند گور\r\nبه مو واجن که اینت خانمان بی",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>دنیا خوان و مردم میهمان بی</p></div>\r\n<div class=\"m2\"><p>امروز لاله بی و فردا خزان بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>سیه چالی کنن نامش نهند گور</p></div>\r\n<div class=\"m2\"><p>به مو واجن که اینت خانمان بی</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: این ابیات به بیان این مفهوم می‌پردازند که زندگی انسان‌ها گذرا و موقتی است. جهان مانند یک کتاب است و مردم همچون مهمانانی هستند که به آن وارد می‌شوند. شادی و زیبایی (گل) امروز ممکن است به زودی به زوال و غم (خزان) تبدیل شود. همچنین، اشاره به گور به عنوان پایانی برای همه چیز دارد، و در نهایت بیان می‌کند که این وضعیت، بی‌خانمان بودن (بی‌پناهی) زندگی را نشان می‌دهد.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21617,
+      "title": "دوبیتی شمارهٔ ۳۰۹",
+      "urlSlug": "sh309",
+      "excerpt": "کریمی که مکانش لامکان بی",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21615,
+      "title": "دوبیتی شمارهٔ ۳۰۷",
+      "urlSlug": "sh307",
+      "excerpt": "دلم از سوز عشق آتش به جان بی",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3055141,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "دنیا خوان و مردم میهمان بی",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: در این دنیا، زندگی شبیه یک میهمانی است که در آن انسان‌ها مهمان این مکان هستند. امروز به زیبایی و طراوت می‌گذرد، اما فردا به مانند پاییز، روزهای زندگی با کمبود و ناراحتی همراه خواهد شد."
+      },
+      {
+        "id": 3055142,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "امروز لاله بی و فردا خزان بی",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3055144,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "سیه چالی کنن نامش نهند گور",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: به این معنی که گور و قبر، جایی است که هیچ نشانی از زندگی و خوشی وجود ندارد و بر خلاف توقعات، می‌تواند سرنوشت تلخی برای خانواده و نزدیکان به همراه داشته باشد."
+      },
+      {
+        "id": 3055154,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "به مو واجن که اینت خانمان بی",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "f993b700-d8b0-43b5-5f9c-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00073.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/73",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۷۳",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 131773,
+        "poemId": 21616,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "انبی",
+        "plainText": "دنیا خوان و مردم میهمان بی\r\nامروز لاله بی و فردا خزان بی\r\nسیه چالی کنن نامش نهند گور\r\nبه مو واجن که اینت خانمان بی",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>دنیا خوان و مردم میهمان بی</p></div>\r\n<div class=\"m2\"><p>امروز لاله بی و فردا خزان بی</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>سیه چالی کنن نامش نهند گور</p></div>\r\n<div class=\"m2\"><p>به مو واجن که اینت خانمان بی</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [
+          {
+            "id": 114926,
+            "poemId": 21616,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 28,
+            "relationOrder": 1,
+            "poetName": "باباطاهر",
+            "poetImageUrl": "/api/ganjoor/poet/image/babataher.gif",
+            "fullUrl": "/babataher/2beytiha/sh306",
+            "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۳۰۶",
+            "htmlExcerpt": "<p>گر آن نامهربانم مهربان بی</p>\r\n<p>چرا از دیدگانم خون روان بی</p>\r\n<p>اگر دلبر بمو دلدار می‌بو</p>\r\n<p>چرا در تن مرا نه دل نه جان بی</p>",
+            "targetPoemId": 21614,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 4
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

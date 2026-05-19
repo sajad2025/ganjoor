@@ -1,0 +1,261 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:13.585478+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21563",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21563,
+    "title": "دوبیتی شمارهٔ ۲۵۵",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۲۵۵",
+    "urlSlug": "sh255",
+    "fullUrl": "/babataher/2beytiha/sh255",
+    "plainText": "چو مو یک سوته دل پروانه ای نه\r\nبه عالم همچو مو دیوانه ای نه\r\nهمه مارون و مورون لانه دیرن\r\nمن دیوانه را ویرانه ای نه",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>چو مو یک سوته دل پروانه‌ای نه</p></div>\r\n<div class=\"m2\"><p>به عالم همچو مو دیوانه‌ای نه</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>همه مارون و مورون لانه دیرن</p></div>\r\n<div class=\"m2\"><p>من دیوانه را ویرانه‌ای نه</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این شعر، شاعر به تشبیه خود به پروانه‌ای می‌پردازد که دلی سرشار از عشق و دیوانگی دارد. او خود را همانند پروانه‌ای در دنیایی می‌بیند که تحت تأثیر عشقی عمیق و دیوانه‌وار قرار دارد. شاعر در اینجا به تنهایی و ویرانی‌ای که از این دیوانه‌گی ناشی شده اشاره می‌کند و به نوعی از نبود پناهگاه و آرامش صحبت می‌کند.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21564,
+      "title": "دوبیتی شمارهٔ ۲۵۶",
+      "urlSlug": "sh256",
+      "excerpt": "به دنیا مثل مو دل سوته‌ای نه",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21562,
+      "title": "دوبیتی شمارهٔ ۲۵۴",
+      "urlSlug": "sh254",
+      "excerpt": "دلی همچون دل نالان مو نه",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3055743,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چو مو یک سوته دل پروانه‌ای نه",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: تو مانند مویی هستی که دلش به حال پروانه‌ای سوخته است؛ نه در این دنیا و نه در هیچ جا مثل تو دیوانه‌ای وجود ندارد."
+      },
+      {
+        "id": 3055744,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "به عالم همچو مو دیوانه‌ای نه",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3055745,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "همه مارون و مورون لانه دیرن",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: همه می‌زنند و زندگی می‌کنند، اما دیوانه‌ای که در ویران‌گرایی گرفتار است، سرپناهی ندارد."
+      },
+      {
+        "id": 3055746,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "من دیوانه را ویرانه‌ای نه",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "7af7d200-f2ad-4209-6c23-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00024516/00019.jpg",
+        "targetPageUrl": "https://naskban.ir/24516/19",
+        "altText": "باباطاهر عریان همدانی عارف نیمه اول قرن پنجم به اهتمام دکتر جواد مقصود - جواد مقصود - تصویر ۱۹",
+        "isTextOriginalSource": false
+      },
+      {
+        "id": "8df9596d-fbda-4a8d-5f82-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00056.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/56",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۵۶",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [
+      {
+        "id": 3955,
+        "poemId": 21563,
+        "trackType": 0,
+        "artistName": "محمدرضا شجریان",
+        "artistUrl": "https://beeptunes.com/artist/3403349",
+        "albumName": "اجراهای خصوصی",
+        "albumUrl": "https://khosousi.com",
+        "trackName": "صبح مشتاقان – اجرای خصوصی محمدرضا شجریان و حبیب‌الله بدیعی به تاریخ ۷ شهریور ۶۵",
+        "trackUrl": "https://khosousi.com/sobhe-moshtaghan-shajarian-badiee/",
+        "description": "",
+        "brokenLink": false,
+        "golhaTrackId": 0,
+        "approved": true,
+        "rejected": false,
+        "rejectionCause": null,
+        "suggestedById": null,
+        "suggestedByNickName": null
+      }
+    ],
+    "comments": [
+      {
+        "id": 17445,
+        "authorName": "دخو",
+        "authorUrl": "",
+        "commentDate": "2015-12-26T14:09:58",
+        "htmlComment": "<p>با کمی تصرف از دوبیتی های صوفی مازندرانی‌است.<br />اصل شعر:<br />چو من یک سوته‌دل پروانه‌ای نی<br />جهان را همچو من دیوانه‌ای نی<br />همه موران و ماران لانه دارند<br />من دیوانه را ویرانه‌ای نی<br />(ترانه های باباطاهر - به کوشش: شهرام رجب زاده - ص308)</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": null,
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 131720,
+        "poemId": 21563,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "انهاینه",
+        "plainText": "چو مو یک سوته دل پروانه ای نه\r\nبه عالم همچو مو دیوانه ای نه\r\nهمه مارون و مورون لانه دیرن\r\nمن دیوانه را ویرانه ای نه",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>چو مو یک سوته دل پروانه‌ای نه</p></div>\r\n<div class=\"m2\"><p>به عالم همچو مو دیوانه‌ای نه</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>همه مارون و مورون لانه دیرن</p></div>\r\n<div class=\"m2\"><p>من دیوانه را ویرانه‌ای نه</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

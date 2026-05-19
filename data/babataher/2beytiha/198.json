@@ -1,0 +1,253 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T05:07:01.995996+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/21506",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 21506,
+    "title": "دوبیتی شمارهٔ ۱۹۸",
+    "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۱۹۸",
+    "urlSlug": "sh198",
+    "fullUrl": "/babataher/2beytiha/sh198",
+    "plainText": "بوره جانا که جانانم تویی تو\r\nبوره یارا که سلطانم تویی تو\r\nته دونی خود که مو جز تو ندونم\r\nبوره بوره که ایمانم تویی تو",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>بوره جانا که جانانم تویی تو</p></div>\r\n<div class=\"m2\"><p>بوره یارا که سلطانم تویی تو</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>ته دونی خود که مو جز تو ندونم</p></div>\r\n<div class=\"m2\"><p>بوره بوره که ایمانم تویی تو</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: این شعر درباره عشق و علاقه عمیق به یک محبوب است. شاعر به محبوب خود اشاره کرده و او را جان و سلطان زندگی‌اش می‌نامد. همچنین بیان می‌کند که جز او کسی را نمی‌شناسد و ایمانش به اوست. به طور کلی، این شعر نمادی از وابستگی و عشق پاک است.",
+    "category": {
+      "poet": {
+        "id": 28,
+        "name": "باباطاهر",
+        "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+        "fullUrl": "/babataher",
+        "rootCatId": 315,
+        "nickname": "باباطاهر",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/babataher.gif",
+        "birthYearInLHijri": 429,
+        "validBirthDate": false,
+        "deathYearInLHijri": 499,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "همدان",
+        "birthPlaceLatitude": 34.7989,
+        "birthPlaceLongitude": 48.515,
+        "deathPlace": "همدان",
+        "deathPlaceLatitude": 34.7989,
+        "deathPlaceLongitude": 48.515
+      },
+      "cat": {
+        "id": 316,
+        "title": "دوبیتی‌ها",
+        "urlSlug": "2beytiha",
+        "fullUrl": "/babataher/2beytiha",
+        "tableOfContentsStyle": 5,
+        "catType": 2,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": true,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 315,
+            "title": "باباطاهر",
+            "urlSlug": "babataher",
+            "fullUrl": "/babataher",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره‌نویسان وی را معاصر عین‌القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته‌اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام \"اشارات\"  به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی‌توان در صحت انتساب تمام اشعاری که به او نسبت می‌دهند به یقین حکمی کرد.",
+            "descriptionHtml": "<p>باباطاهر عریان عارف و شاعر قرن پنجم هجری قمری و معاصر با طغرل شاه سلجوقی است. البته در باب حوادث زندگی و احوالات بابا طاهر اطلاعات مبسوطی در دست نیست. برخی تذکره&zwnj;نویسان وی را معاصر عین&zwnj;القضات همدانی (یعنی حدود سال ۵۲۵ هجری قمری) و برخی وی را هم عهد خواجه نصیر (۶۷۲ هجری قمری) دانسته&zwnj;اند. از باباطاهر علاوه بر دوبیتیهای معروف او، مجموعه کلمات قصاری نیز به زبان عربی به نام &laquo;اشارات&raquo; به جای مانده است. از اشعار باباطاهر مجموعهٔ موثقی در دست نیست، به همین جهت نمی&zwnj;توان در صحت انتساب تمام اشعاری که به او نسبت می&zwnj;دهند به یقین حکمی کرد.</p>",
+            "mixedModeOrder": 0,
+            "published": true,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 21507,
+      "title": "دوبیتی شمارهٔ ۱۹۹",
+      "urlSlug": "sh199",
+      "excerpt": "به والله که جانانم تویی تو",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 21505,
+      "title": "دوبیتی شمارهٔ ۱۹۷",
+      "urlSlug": "sh197",
+      "excerpt": "دلی دیرم دمی بیغم نمی‌بو",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 3055490,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بوره جانا که جانانم تویی تو",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: ای خوب من، تو جان منی و ای دوست عزیز، تو فرمانروای دل من هستی."
+      },
+      {
+        "id": 3055477,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بوره یارا که سلطانم تویی تو",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 3055468,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "ته دونی خود که مو جز تو ندونم",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: من به خوبی می‌دانم که هیچ‌کس به اندازه تو برایم مهم نیست و ایمان من به تو است."
+      },
+      {
+        "id": 3055469,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "بوره بوره که ایمانم تویی تو",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "35a6b5cb-2807-4e47-5f67-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00006948/00055.jpg",
+        "targetPageUrl": "https://naskban.ir/6948/55",
+        "altText": "دیوان کامل بی نظیر باباطاهر عریان همدانی ۱۳۱۱ - باباطاهر عریان - تصویر ۵۵",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [
+      {
+        "id": 7151,
+        "poemId": 21506,
+        "trackType": 0,
+        "artistName": "علیرضا افتخاری",
+        "artistUrl": "https://beeptunes.com/artist/3402447",
+        "albumName": "صدایم کن",
+        "albumUrl": "https://beeptunes.com/album/3415409",
+        "trackName": "آواز دو بیتی ۳",
+        "trackUrl": "https://beeptunes.com/track/3441161",
+        "description": null,
+        "brokenLink": false,
+        "golhaTrackId": 0,
+        "approved": true,
+        "rejected": false,
+        "rejectionCause": null,
+        "suggestedById": null,
+        "suggestedByNickName": null
+      }
+    ],
+    "comments": [],
+    "sections": [
+      {
+        "id": 131663,
+        "poemId": 21506,
+        "poem": null,
+        "poetId": 28,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 12,
+        "ganjoorMetre": {
+          "id": 12,
+          "urlSlug": null,
+          "rhythm": "مفاعیلن مفاعیلن فعولن (هزج مسدس محذوف یا وزن دوبیتی)",
+          "name": null,
+          "description": null,
+          "verseCount": 155670
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "انمتوییتو",
+        "plainText": "بوره جانا که جانانم تویی تو\r\nبوره یارا که سلطانم تویی تو\r\nته دونی خود که مو جز تو ندونم\r\nبوره بوره که ایمانم تویی تو",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>بوره جانا که جانانم تویی تو</p></div>\r\n<div class=\"m2\"><p>بوره یارا که سلطانم تویی تو</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>ته دونی خود که مو جز تو ندونم</p></div>\r\n<div class=\"m2\"><p>بوره بوره که ایمانم تویی تو</p></div></div>",
+        "poemFormat": 6,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [
+          {
+            "id": 114260,
+            "poemId": 21506,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 28,
+            "relationOrder": 1,
+            "poetName": "باباطاهر",
+            "poetImageUrl": "/api/ganjoor/poet/image/babataher.gif",
+            "fullUrl": "/babataher/2beytiha/sh199",
+            "fullTitle": "باباطاهر » دوبیتی‌ها » دوبیتی شمارهٔ ۱۹۹",
+            "htmlExcerpt": "<p>به والله که جانانم تویی تو</p>\r\n<p>بسلطان عرب جانم تویی تو</p>\r\n<p>نمیدونم که چونم یا که چندم</p>\r\n<p>همی دونم که درمانم تویی تو</p>",
+            "targetPoemId": 21507,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 0
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}
