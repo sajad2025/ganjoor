@@ -5,15 +5,30 @@ fetch_ganjoor.py
 Walks api.ganjoor.net and produces one NDJSON file per poet at
   <out>/<poet_slug>.ndjson
 
-Each line is one fully-detailed poem object, fetched with verseDetails=true
+with a per-poet progress sidecar at
+  <out>/<poet_slug>.progress.json
+
+Each NDJSON line is one fully-detailed poem object, fetched with verseDetails=true
 and the metadata sub-resources we care about for preservation.
 
 Designed for:
 - GitHub-hosted Actions runners (6h max per job, 7 GB free disk).
-- Resumability: poets already represented with a non-empty .ndjson are skipped.
-- Politeness: configurable rate limit, exponential backoff, custom UA.
+- **Crash-safe persistence:** each poem is appended to the poet's NDJSON
+  and flushed before the next request is issued. A runner kill loses at
+  most the in-flight poem, not the whole poet.
+- **Resumability at two layers:**
+    (1) Whole poets: a completed `.progress.json` marker means skip.
+    (2) Mid-poet: existing `<slug>.ndjson` is scanned at start-of-poet
+        to derive the set of already-written poem ids; the walk skips them
+        and appends only new poems. A truncated trailing line from a
+        prior SIGKILL is detected and trimmed.
+- **Sharding for parallel matrix runs:** `--bucket N --num-buckets M`
+  selects only poets whose stable-sorted index satisfies `index % M == N`.
+- **Targeted re-runs:** `--poet-ids A,B,C` overrides selection to fetch
+  exactly the given poet ids (useful for filling gaps).
+- **Politeness:** configurable rate limit, exponential backoff, custom UA.
 
-The walk strategy:
+Walk strategy (unchanged from v0.1):
   1. GET /api/ganjoor/poets  -> list of poets, each with root cat id.
   2. For each poet, recursively walk categories starting from root cat:
      GET /api/ganjoor/cat/<cat_id>?poems=true
@@ -22,7 +37,7 @@ The walk strategy:
         ?verseDetails=true&catInfo=true&rhymes=true
         &recitations=true&images=true&songs=true&navigation=true
      (Comments deferred to a separate, slower job.)
-  4. Append the JSON to <poet_slug>.ndjson.
+  4. Append the JSON to <poet_slug>.ndjson and flush.
 
 Output schema per line is a faithful pass-through of api.ganjoor.net's poem
 object plus a small "_meta" envelope with fetch timestamp and source URL.
@@ -32,10 +47,9 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import sys
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
@@ -61,6 +75,9 @@ class Config:
     rate: float            # max requests per second
     user_agent: str
     poet_limit: int        # 0 = all
+    bucket: int            # 0-indexed bucket selector (ignored if num_buckets == 0)
+    num_buckets: int       # 0 = no bucketing
+    poet_ids: set[int] = field(default_factory=set)   # explicit override
     request_timeout: int = 30
 
 
@@ -172,25 +189,134 @@ def walk_cat_for_poem_ids(client: GanjoorClient, cat_id: int) -> Iterable[int]:
                 queue.append(cid_child)
 
 
-def fetch_poet(client: GanjoorClient, poet: dict, out_path: Path) -> int:
+# --- persistence -------------------------------------------------------------
+
+
+def load_progress(progress_path: Path) -> dict | None:
+    if not progress_path.exists():
+        return None
+    try:
+        return json.loads(progress_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def save_progress(progress_path: Path, payload: dict) -> None:
+    """Atomic write: temp + rename."""
+    tmp = progress_path.with_suffix(progress_path.suffix + ".tmp")
+    tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp.replace(progress_path)
+
+
+def read_done_poem_ids(ndjson_path: Path) -> tuple[set[int], bool]:
     """
-    Fetch all poems for one poet, writing one JSON per line to <out_path>.
-    Returns the count of poems written.
+    Return (set of poem ids already written, was_trailing_line_truncated).
+    Tolerates a truncated final line from a SIGKILL mid-write.
+    """
+    ids: set[int] = set()
+    truncated = False
+    if not ndjson_path.exists():
+        return ids, truncated
+    with ndjson_path.open("r", encoding="utf-8") as f:
+        lines = f.readlines()
+    for i, raw in enumerate(lines):
+        line = raw.rstrip("\n")
+        if not line.strip():
+            continue
+        try:
+            envelope = json.loads(line)
+        except json.JSONDecodeError:
+            if i == len(lines) - 1:
+                # Likely a kill mid-write. We'll trim it before appending.
+                truncated = True
+                continue
+            # Mid-file corruption — preserve, surface via warning.
+            print(
+                f"  ! warning: malformed mid-file line {i} in {ndjson_path}, kept",
+                file=sys.stderr,
+                flush=True,
+            )
+            continue
+        poem = envelope.get("poem") or {}
+        pid = poem.get("id")
+        if isinstance(pid, int):
+            ids.add(pid)
+    return ids, truncated
+
+
+def trim_truncated_trailing_line(ndjson_path: Path) -> None:
+    """Drop the last line if it doesn't parse as JSON (kill-mid-write recovery)."""
+    if not ndjson_path.exists():
+        return
+    raw = ndjson_path.read_bytes()
+    if not raw:
+        return
+    has_trailing_newline = raw.endswith(b"\n")
+    lines = raw.split(b"\n")
+    if has_trailing_newline and lines and lines[-1] == b"":
+        lines.pop()
+    if not lines:
+        return
+    last = lines[-1]
+    if not last.strip():
+        return
+    try:
+        json.loads(last.decode("utf-8"))
+        return  # last line parses; nothing to trim
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        lines.pop()
+        new_bytes = b"\n".join(lines)
+        if new_bytes:
+            new_bytes += b"\n"
+        ndjson_path.write_bytes(new_bytes)
+        print(
+            f"  recovered: trimmed truncated trailing line from {ndjson_path.name}",
+            flush=True,
+        )
+
+
+# --- fetch -------------------------------------------------------------------
+
+
+def fetch_poet(
+    client: GanjoorClient,
+    poet: dict,
+    out_path: Path,
+    progress_path: Path,
+) -> tuple[int, int]:
+    """
+    Fetch all poems for one poet using crash-safe append-mode writes.
+    Returns (newly_written, total_on_disk).
     """
     root_cat = (
         poet.get("rootCatId")
-        or poet.get("rootCat", {}).get("id")
-        or poet.get("cat", {}).get("id")
+        or (poet.get("rootCat") or {}).get("id")
+        or (poet.get("cat") or {}).get("id")
     )
     if not root_cat:
         print(f"  ! no root cat for poet {poet.get('id')}: skipping", flush=True)
-        return 0
+        return 0, 0
 
-    written = 0
-    seen_poems: set[int] = set()
-    tmp_path = out_path.with_suffix(".ndjson.tmp")
+    # Recover from any prior kill-mid-write before we read the file.
+    trim_truncated_trailing_line(out_path)
 
-    with tmp_path.open("w", encoding="utf-8") as f:
+    already_done, _ = read_done_poem_ids(out_path)
+    if already_done:
+        print(f"  resume: {len(already_done)} poems already on disk", flush=True)
+
+    save_progress(progress_path, {
+        "poet_id": poet.get("id"),
+        "poet_nickname": poet.get("nickname"),
+        "root_cat_id": int(root_cat),
+        "completed": False,
+        "completed_count": len(already_done),
+        "started_at": datetime.now(timezone.utc).isoformat(),
+    })
+
+    newly_written = 0
+    seen_poems: set[int] = set(already_done)
+
+    with out_path.open("a", encoding="utf-8") as f:
         for poem_id in walk_cat_for_poem_ids(client, int(root_cat)):
             if poem_id in seen_poems:
                 continue
@@ -209,16 +335,48 @@ def fetch_poet(client: GanjoorClient, poet: dict, out_path: Path) -> int:
                 "poem": poem,
             }
             f.write(json.dumps(envelope, ensure_ascii=False) + "\n")
-            written += 1
+            f.flush()  # push to OS pagecache so SIGKILL doesn't lose this line
+            newly_written += 1
 
-            if written % 25 == 0:
-                print(f"  - {written} poems written", flush=True)
+            if newly_written % 25 == 0:
+                print(
+                    f"  - {newly_written} new poems written "
+                    f"(total on disk: {len(seen_poems)})",
+                    flush=True,
+                )
 
-    tmp_path.replace(out_path)
-    return written
+    save_progress(progress_path, {
+        "poet_id": poet.get("id"),
+        "poet_nickname": poet.get("nickname"),
+        "root_cat_id": int(root_cat),
+        "completed": True,
+        "completed_count": len(seen_poems),
+        "newly_written_this_run": newly_written,
+        "completed_at": datetime.now(timezone.utc).isoformat(),
+    })
+
+    return newly_written, len(seen_poems)
 
 
 # --- main --------------------------------------------------------------------
+
+
+def parse_poet_ids(spec: str | None) -> set[int]:
+    if not spec:
+        return set()
+    out: set[int] = set()
+    for tok in spec.split(","):
+        tok = tok.strip()
+        if not tok:
+            continue
+        out.add(int(tok))
+    return out
+
+
+def slugify(poet: dict) -> str:
+    raw = poet.get("nickname") or poet.get("name") or f"poet-{poet.get('id')}"
+    safe = "".join(c if c.isalnum() or c in "-_" else "_" for c in raw.lower())
+    return safe or f"poet-{poet.get('id')}"
 
 
 def main() -> int:
@@ -235,6 +393,24 @@ def main() -> int:
         default=0,
         help="stop after N poets (0 = all). Useful for first-run smoke tests.",
     )
+    ap.add_argument(
+        "--bucket",
+        type=int,
+        default=0,
+        help="0-indexed bucket id (used with --num-buckets > 0 for matrix runs)",
+    )
+    ap.add_argument(
+        "--num-buckets",
+        type=int,
+        default=0,
+        help="how many buckets to split poets into. 0 = no bucketing.",
+    )
+    ap.add_argument(
+        "--poet-ids",
+        type=str,
+        default=None,
+        help="comma-separated explicit poet ids to fetch (overrides selection).",
+    )
     args = ap.parse_args()
 
     args.out.mkdir(parents=True, exist_ok=True)
@@ -244,7 +420,18 @@ def main() -> int:
         rate=args.rate,
         user_agent=args.user_agent,
         poet_limit=args.poet_limit,
+        bucket=args.bucket,
+        num_buckets=args.num_buckets,
+        poet_ids=parse_poet_ids(args.poet_ids),
     )
+
+    if cfg.num_buckets and not (0 <= cfg.bucket < cfg.num_buckets):
+        print(
+            f"FATAL: --bucket must be in [0, {cfg.num_buckets}), got {cfg.bucket}",
+            file=sys.stderr,
+        )
+        return 2
+
     client = GanjoorClient(cfg)
 
     print("Fetching poet index...", flush=True)
@@ -255,40 +442,73 @@ def main() -> int:
         return 2
     print(f"Found {len(poets)} poets.", flush=True)
 
-    # Stable ordering: by id, smallest first.
+    # Stable ordering: by id, smallest first. Bucket selection depends on this.
     poets.sort(key=lambda p: p.get("id", 1 << 30))
+
+    if cfg.poet_ids:
+        wanted = cfg.poet_ids
+        poets = [p for p in poets if p.get("id") in wanted]
+        missing = wanted - {p.get("id") for p in poets}
+        if missing:
+            print(f"  ! poet ids not in index: {sorted(missing)}", flush=True)
+        print(f"Selection: {len(poets)} poets by --poet-ids.", flush=True)
+    elif cfg.num_buckets > 0:
+        poets = [p for i, p in enumerate(poets) if i % cfg.num_buckets == cfg.bucket]
+        print(
+            f"Selection: bucket {cfg.bucket}/{cfg.num_buckets} -> {len(poets)} poets.",
+            flush=True,
+        )
 
     if cfg.poet_limit > 0:
         poets = poets[: cfg.poet_limit]
-        print(f"Limiting this run to first {len(poets)} poets.", flush=True)
+        print(f"Limiting this run to first {len(poets)} of the selection.", flush=True)
 
-    total_poems = 0
+    total_new = 0
+    total_known = 0
+    skipped = 0
     for i, poet in enumerate(poets, 1):
-        slug = poet.get("nickname") or poet.get("name") or f"poet-{poet.get('id')}"
-        # Filesystem-safe slug: collapse anything weird to "_".
-        safe = "".join(c if c.isalnum() or c in "-_" else "_" for c in slug.lower())
-        if not safe:
-            safe = f"poet-{poet.get('id')}"
-        out_path = args.out / f"{safe}.ndjson"
+        slug = slugify(poet)
+        out_path = args.out / f"{slug}.ndjson"
+        progress_path = args.out / f"{slug}.progress.json"
 
-        if out_path.exists() and out_path.stat().st_size > 0:
-            print(f"[{i}/{len(poets)}] {safe}: already exists, skipping", flush=True)
+        progress = load_progress(progress_path)
+        if (
+            progress
+            and progress.get("completed")
+            and out_path.exists()
+            and out_path.stat().st_size > 0
+        ):
+            print(
+                f"[{i}/{len(poets)}] {slug}: previously completed "
+                f"({progress.get('completed_count')} poems), skipping",
+                flush=True,
+            )
+            skipped += 1
+            total_known += int(progress.get("completed_count") or 0)
             continue
 
-        print(f"[{i}/{len(poets)}] {safe} (poet id={poet.get('id')}): fetching", flush=True)
+        print(
+            f"[{i}/{len(poets)}] {slug} (poet id={poet.get('id')}): fetching",
+            flush=True,
+        )
         try:
-            n = fetch_poet(client, poet, out_path)
-            print(f"  done: {n} poems -> {out_path}", flush=True)
-            total_poems += n
+            new, on_disk = fetch_poet(client, poet, out_path, progress_path)
+            print(f"  done: {new} new this run, {on_disk} total -> {out_path}", flush=True)
+            total_new += new
+            total_known += on_disk
         except KeyboardInterrupt:
-            print("Interrupted by user.", flush=True)
+            print("Interrupted by user. Partial progress preserved on disk.", flush=True)
             return 130
         except Exception as e:  # noqa: BLE001  – we want the loop to continue
-            print(f"  ! poet {safe} failed: {e}", file=sys.stderr, flush=True)
-            # Leave a .err file so the next run knows to retry this one specifically
-            (args.out / f"{safe}.err").write_text(str(e), encoding="utf-8")
+            print(f"  ! poet {slug} failed: {e}", file=sys.stderr, flush=True)
+            (args.out / f"{slug}.err").write_text(str(e), encoding="utf-8")
 
-    print(f"Done. {total_poems} poems written across {len(poets)} poets.", flush=True)
+    print(
+        f"Done. {total_new} new poems written across this run; "
+        f"{total_known} poems known on disk across {len(poets)} selected poets "
+        f"({skipped} skipped as previously completed).",
+        flush=True,
+    )
     return 0
 
 
