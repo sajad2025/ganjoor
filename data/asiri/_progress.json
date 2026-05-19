@@ -2,7 +2,8 @@
   "poet_id": 97,
   "poet_nickname": "اسیری لاهیجی",
   "root_cat_id": 2358,
-  "completed": false,
-  "completed_count": 0,
-  "started_at": "2026-05-19T06:06:33.202875+00:00"
+  "completed": true,
+  "completed_count": 685,
+  "newly_written_this_run": 685,
+  "completed_at": "2026-05-19T06:08:55.582031+00:00"
 }

@@ -1,0 +1,200 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:11:40.532338+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/95893",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 95893,
+    "title": "شمارهٔ ۱",
+    "fullTitle": "دقیقی » ابیات پراکنده » شمارهٔ ۱",
+    "urlSlug": "sh1",
+    "fullUrl": "/daghighi/parakande/sh1",
+    "plainText": "من جاه دوست دارم کآزاده زاده ام\r\nآزادگان به جان نفروشند جاه را",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>من جاه دوست دارم کآزاده زاده‌ام</p></div>\r\n<div class=\"m2\"><p>آزادگان به جان نفروشند جاه را</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: من به مقام و جایگاه اجتماعی خود افتخار می‌کنم زیرا از نسل آزادگان هستم. آزادگان اجازه نمی‌دهند که مقام و جایگاهشان به راحتی به فروش برسد یا زیر پا گذاشته شود.",
+    "category": {
+      "poet": {
+        "id": 112,
+        "name": "دقیقی طوسی",
+        "description": "ابو منصور محمد بن احمد بلخی (زاده شده پس از ۳۲۰ هجری قمری، درگذشته میان ۳۶۷ تا ۳۶۹ هجری قمری) با تخلص دقیقی از نخستین کسانی بود که پیش از فردوسی تلاش کرد داستان‌های ملی ایران را به شعر درآورد و از پیشگامان حماسه‌سرایی به زبان فارسی است.\r\nدقیقی با دربار شاهان سامانی در پیوند بود و به تشویق نوح دوم سامانی به نظم درآوردن شاهنامه ابومنصوری را آغاز کرد. اما پیش از آنکه آن را به پایان برساند، به دست غلام خود کشته شد.\r\nفردوسی در شاهنامهٔ خود داستان زندگی دقیقی را به کوتاهی نقل کرده و هزار (۱۰۰۰) بیتی که دقیقی سروده را هم در گشتاسپ‌نامه گنجانده و بدین‌گونه از ازدست‌رفتن آن‌ها جلوگیری کرده است.",
+        "fullUrl": "/daghighi",
+        "rootCatId": 2467,
+        "nickname": "دقیقی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/daghighi.gif",
+        "birthYearInLHijri": 320,
+        "validBirthDate": true,
+        "deathYearInLHijri": 369,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "مشهد",
+        "birthPlaceLatitude": 36.2605,
+        "birthPlaceLongitude": 59.6168,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 2468,
+        "title": "ابیات پراکنده",
+        "urlSlug": "parakande",
+        "fullUrl": "/daghighi/parakande",
+        "tableOfContentsStyle": 5,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 2467,
+            "title": "دقیقی",
+            "urlSlug": "daghighi",
+            "fullUrl": "/daghighi",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "ابو منصور محمد بن احمد بلخی (زاده شده پس از ۳۲۰ هجری قمری، درگذشته میان ۳۶۷ تا ۳۶۹ هجری قمری) با تخلص دقیقی از نخستین کسانی بود که پیش از فردوسی تلاش کرد داستان‌های ملی ایران را به شعر درآورد و از پیشگامان حماسه‌سرایی به زبان فارسی است.\r\nدقیقی با دربار شاهان سامانی در پیوند بود و به تشویق نوح دوم سامانی به نظم درآوردن شاهنامه ابومنصوری را آغاز کرد. اما پیش از آنکه آن را به پایان برساند، به دست غلام خود کشته شد.\r\nفردوسی در شاهنامهٔ خود داستان زندگی دقیقی را به کوتاهی نقل کرده و هزار (۱۰۰۰) بیتی که دقیقی سروده را هم در گشتاسپ‌نامه گنجانده و بدین‌گونه از ازدست‌رفتن آن‌ها جلوگیری کرده است.",
+            "descriptionHtml": "<p>ابو منصور محمد بن احمد بلخی (زاده شده پس از ۳۲۰ هجری قمری، درگذشته میان ۳۶۷ تا ۳۶۹ هجری قمری) با تخلص دقیقی از نخستین کسانی بود که پیش از فردوسی تلاش کرد داستان&zwnj;های ملی ایران را به شعر درآورد و از پیشگامان حماسه&zwnj;سرایی به زبان فارسی است.</p>\r\n<p>دقیقی با دربار شاهان سامانی در پیوند بود و به تشویق نوح دوم سامانی به نظم درآوردن شاهنامه ابومنصوری را آغاز کرد. اما پیش از آنکه آن را به پایان برساند، به دست غلام خود کشته شد.</p>\r\n<p>فردوسی در شاهنامهٔ خود داستان زندگی دقیقی را به کوتاهی نقل کرده و هزار (۱۰۰۰) بیتی که دقیقی سروده را هم در <a href=\"../ferdousi/shahname/goshtasp\">گشتاسپ&zwnj;نامه</a> گنجانده و بدین&zwnj;گونه از ازدست&zwnj;رفتن آن&zwnj;ها جلوگیری کرده است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 95894,
+      "title": "شمارهٔ ۲",
+      "urlSlug": "sh2",
+      "excerpt": "ذرّه نماید به جنب قدر تو گردون",
+      "mainSections": null
+    },
+    "previous": null,
+    "verses": [
+      {
+        "id": 4078871,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "من جاه دوست دارم کآزاده زاده‌ام",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: من مقام و اعتبار را دوست دارم زیرا از تبار آزادگان هستم و افراد آزاد هرگز مقام و اعتبار خود را به راحتی نمی‌فروشند."
+      },
+      {
+        "id": 4078872,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "آزادگان به جان نفروشند جاه را",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "a9ad887c-abc7-4d44-5bc5-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00004619/00100.jpg",
+        "targetPageUrl": "https://naskban.ir/4619/100",
+        "altText": "دقیقی و اشعار او (دیوان دقیقی) - گردآورنده دکتر محمد دبیرسیاقی - دقیقی - تصویر ۱۰۰",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [
+      {
+        "id": 95287,
+        "authorName": "احمـــدترکمانی",
+        "authorUrl": null,
+        "commentDate": "2022-04-06T07:48:06.8769813",
+        "htmlComment": "<p>من جاه دوست دارم کآزاده زاده ام</p>\n<p>آزادگان بجان نفروشند جاه را</p>\n<p>جاه=شکوه</p>",
+        "publishStatus": "",
+        "inReplyToId": null,
+        "userId": "e0344342-9489-4885-9c32-08d92a4fa5cc",
+        "replies": [],
+        "myComment": false,
+        "coupletIndex": -1,
+        "coupletSummary": "",
+        "isBookmarked": false
+      }
+    ],
+    "sections": [
+      {
+        "id": 452396,
+        "poemId": 95893,
+        "poem": null,
+        "poetId": 112,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 1,
+        "ganjoorMetre": {
+          "id": 1,
+          "urlSlug": null,
+          "rhythm": "مفعول فاعلات مفاعیل فاعلن (مضارع مثمن اخرب مکفوف محذوف)",
+          "name": null,
+          "description": null,
+          "verseCount": 120576
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "ازادگانبهجاننفروشندجاهرا",
+        "plainText": "من جاه دوست دارم کآزاده زاده ام\r\nآزادگان به جان نفروشند جاه را",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>من جاه دوست دارم کآزاده زاده‌ام</p></div>\r\n<div class=\"m2\"><p>آزادگان به جان نفروشند جاه را</p></div></div>",
+        "poemFormat": 7,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 1,
+        "top6RelatedSections": [],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}

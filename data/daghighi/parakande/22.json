@@ -1,0 +1,233 @@
+{
+  "_meta": {
+    "fetched_at": "2026-05-19T06:11:44.851027+00:00",
+    "source": "https://api.ganjoor.net/api/ganjoor/poem/95914",
+    "source_flags": "verseDetails=true&catInfo=true&rhymes=true&recitations=true&images=true&songs=true&navigation=true"
+  },
+  "poem": {
+    "id": 95914,
+    "title": "شمارهٔ ۲۲",
+    "fullTitle": "دقیقی » ابیات پراکنده » شمارهٔ ۲۲",
+    "urlSlug": "sh22",
+    "fullUrl": "/daghighi/parakande/sh22",
+    "plainText": "چشم تو که فتنه جهان خیزد ازو\r\nلعل تو که آب خضر می ریزد ازو\r\nکردند تن مرا چنان خوار که باد\r\nمی آید و گرد و خاک می بیزد ازو",
+    "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>چشم تو که فتنهٔ جهان خیزد ازو</p></div>\r\n<div class=\"m2\"><p>لعل تو که آب خضر می‌ریزد ازو</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>کردند تن مرا چنان خوار که باد</p></div>\r\n<div class=\"m2\"><p>می‌آید و گرد و خاک می‌بیزد ازو</p></div></div>",
+    "sourceName": "ویکی‌درج",
+    "sourceUrlSlug": "wikidorj",
+    "oldTag": null,
+    "oldTagPageUrl": null,
+    "mixedModeOrder": 0,
+    "published": false,
+    "language": null,
+    "poemSummary": "هوش مصنوعی: در این اشعار، شاعر به زیبایی و تاثیرگذاری چشم و لب محبوبش اشاره می‌کند. او می‌گوید که چشمان محبوبش مانند فتنه‌ای در جهان است و لب‌هایش همچون آب خضر، زندگی‌بخش و شفا‌دهنده‌اند. سپس بیان می‌کند که این زیبایی‌ها باعث شده‌اند که او در برابر آنها احساس حقارت و ذلت کند، تا حدی که وجودش به گرد و خاکی تبدیل شده که باد آن را جابجا می‌کند.",
+    "category": {
+      "poet": {
+        "id": 112,
+        "name": "دقیقی طوسی",
+        "description": "ابو منصور محمد بن احمد بلخی (زاده شده پس از ۳۲۰ هجری قمری، درگذشته میان ۳۶۷ تا ۳۶۹ هجری قمری) با تخلص دقیقی از نخستین کسانی بود که پیش از فردوسی تلاش کرد داستان‌های ملی ایران را به شعر درآورد و از پیشگامان حماسه‌سرایی به زبان فارسی است.\r\nدقیقی با دربار شاهان سامانی در پیوند بود و به تشویق نوح دوم سامانی به نظم درآوردن شاهنامه ابومنصوری را آغاز کرد. اما پیش از آنکه آن را به پایان برساند، به دست غلام خود کشته شد.\r\nفردوسی در شاهنامهٔ خود داستان زندگی دقیقی را به کوتاهی نقل کرده و هزار (۱۰۰۰) بیتی که دقیقی سروده را هم در گشتاسپ‌نامه گنجانده و بدین‌گونه از ازدست‌رفتن آن‌ها جلوگیری کرده است.",
+        "fullUrl": "/daghighi",
+        "rootCatId": 2467,
+        "nickname": "دقیقی",
+        "published": true,
+        "imageUrl": "/api/ganjoor/poet/image/daghighi.gif",
+        "birthYearInLHijri": 320,
+        "validBirthDate": true,
+        "deathYearInLHijri": 369,
+        "validDeathDate": false,
+        "pinOrder": 0,
+        "birthPlace": "مشهد",
+        "birthPlaceLatitude": 36.2605,
+        "birthPlaceLongitude": 59.6168,
+        "deathPlace": "",
+        "deathPlaceLatitude": 0,
+        "deathPlaceLongitude": 0
+      },
+      "cat": {
+        "id": 2468,
+        "title": "ابیات پراکنده",
+        "urlSlug": "parakande",
+        "fullUrl": "/daghighi/parakande",
+        "tableOfContentsStyle": 5,
+        "catType": 0,
+        "description": null,
+        "descriptionHtml": null,
+        "mixedModeOrder": 0,
+        "published": false,
+        "bookName": null,
+        "rImageId": null,
+        "sumUpSubsGeoLocations": false,
+        "mapName": null,
+        "next": null,
+        "previous": null,
+        "ancestors": [
+          {
+            "id": 2467,
+            "title": "دقیقی",
+            "urlSlug": "daghighi",
+            "fullUrl": "/daghighi",
+            "tableOfContentsStyle": 1,
+            "catType": 0,
+            "description": "ابو منصور محمد بن احمد بلخی (زاده شده پس از ۳۲۰ هجری قمری، درگذشته میان ۳۶۷ تا ۳۶۹ هجری قمری) با تخلص دقیقی از نخستین کسانی بود که پیش از فردوسی تلاش کرد داستان‌های ملی ایران را به شعر درآورد و از پیشگامان حماسه‌سرایی به زبان فارسی است.\r\nدقیقی با دربار شاهان سامانی در پیوند بود و به تشویق نوح دوم سامانی به نظم درآوردن شاهنامه ابومنصوری را آغاز کرد. اما پیش از آنکه آن را به پایان برساند، به دست غلام خود کشته شد.\r\nفردوسی در شاهنامهٔ خود داستان زندگی دقیقی را به کوتاهی نقل کرده و هزار (۱۰۰۰) بیتی که دقیقی سروده را هم در گشتاسپ‌نامه گنجانده و بدین‌گونه از ازدست‌رفتن آن‌ها جلوگیری کرده است.",
+            "descriptionHtml": "<p>ابو منصور محمد بن احمد بلخی (زاده شده پس از ۳۲۰ هجری قمری، درگذشته میان ۳۶۷ تا ۳۶۹ هجری قمری) با تخلص دقیقی از نخستین کسانی بود که پیش از فردوسی تلاش کرد داستان&zwnj;های ملی ایران را به شعر درآورد و از پیشگامان حماسه&zwnj;سرایی به زبان فارسی است.</p>\r\n<p>دقیقی با دربار شاهان سامانی در پیوند بود و به تشویق نوح دوم سامانی به نظم درآوردن شاهنامه ابومنصوری را آغاز کرد. اما پیش از آنکه آن را به پایان برساند، به دست غلام خود کشته شد.</p>\r\n<p>فردوسی در شاهنامهٔ خود داستان زندگی دقیقی را به کوتاهی نقل کرده و هزار (۱۰۰۰) بیتی که دقیقی سروده را هم در <a href=\"../ferdousi/shahname/goshtasp\">گشتاسپ&zwnj;نامه</a> گنجانده و بدین&zwnj;گونه از ازدست&zwnj;رفتن آن&zwnj;ها جلوگیری کرده است.</p>",
+            "mixedModeOrder": 0,
+            "published": false,
+            "bookName": null,
+            "rImageId": null,
+            "sumUpSubsGeoLocations": false,
+            "mapName": null,
+            "next": null,
+            "previous": null,
+            "ancestors": null,
+            "children": null,
+            "poems": null,
+            "paperSources": null,
+            "newImage": null
+          }
+        ],
+        "children": [],
+        "poems": null,
+        "paperSources": null,
+        "newImage": null
+      }
+    },
+    "next": {
+      "id": 95915,
+      "title": "شمارهٔ ۲۳",
+      "urlSlug": "sh23",
+      "excerpt": "شود خون جگر از دل چکیده",
+      "mainSections": null
+    },
+    "previous": {
+      "id": 95913,
+      "title": "شمارهٔ ۲۱",
+      "urlSlug": "sh21",
+      "excerpt": "ملک آن یادگار آل دارا",
+      "mainSections": null
+    },
+    "verses": [
+      {
+        "id": 4079083,
+        "vOrder": 1,
+        "coupletIndex": 0,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "چشم تو که فتنهٔ جهان خیزد ازو",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: چشمان تو باعث ایجاد آشوب در دنیا می‌شود و لب‌های تو مانند آب زنده‌کننده و حیات‌بخش هستند."
+      },
+      {
+        "id": 4079084,
+        "vOrder": 2,
+        "coupletIndex": 0,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "لعل تو که آب خضر می‌ریزد ازو",
+        "languageId": null,
+        "coupletSummary": null
+      },
+      {
+        "id": 4079085,
+        "vOrder": 3,
+        "coupletIndex": 1,
+        "versePosition": 0,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "کردند تن مرا چنان خوار که باد",
+        "languageId": null,
+        "coupletSummary": "هوش مصنوعی: بدن مرا تا حدی ذلیل کردند که مانند خاکی است که باد می‌آید و آن را به هر طرف می‌وزد."
+      },
+      {
+        "id": 4079086,
+        "vOrder": 4,
+        "coupletIndex": 1,
+        "versePosition": 1,
+        "sectionIndex1": 0,
+        "sectionIndex2": null,
+        "sectionIndex3": null,
+        "sectionIndex4": null,
+        "text": "می‌آید و گرد و خاک می‌بیزد ازو",
+        "languageId": null,
+        "coupletSummary": null
+      }
+    ],
+    "recitations": [],
+    "images": [
+      {
+        "id": "b54a705e-0448-436c-6aa1-08dc5924416b",
+        "imageOrder": 0,
+        "poemRelatedImageType": 1,
+        "thumbnailImageUrl": "https://i.naskban.ir/pdf/00004619/00110.jpg",
+        "targetPageUrl": "https://naskban.ir/4619/110",
+        "altText": "دقیقی و اشعار او (دیوان دقیقی) - گردآورنده دکتر محمد دبیرسیاقی - دقیقی - تصویر ۱۱۰",
+        "isTextOriginalSource": true
+      }
+    ],
+    "songs": [],
+    "comments": [],
+    "sections": [
+      {
+        "id": 452417,
+        "poemId": 95914,
+        "poem": null,
+        "poetId": 112,
+        "poet": null,
+        "index": 0,
+        "number": 1,
+        "sectionType": 0,
+        "verseType": 1,
+        "ganjoorMetreId": 24,
+        "ganjoorMetre": {
+          "id": 24,
+          "urlSlug": null,
+          "rhythm": "مفعول مفاعیل مفاعیل فعل (وزن رباعی)",
+          "name": null,
+          "description": null,
+          "verseCount": 50409
+        },
+        "ganjoorMetreRefSectionIndex": null,
+        "rhymeLetters": "یزدازو",
+        "plainText": "چشم تو که فتنه جهان خیزد ازو\r\nلعل تو که آب خضر می ریزد ازو\r\nکردند تن مرا چنان خوار که باد\r\nمی آید و گرد و خاک می بیزد ازو",
+        "htmlText": "<div class=\"b\" id=\"bn1\"><div class=\"m1\"><p>چشم تو که فتنهٔ جهان خیزد ازو</p></div>\r\n<div class=\"m2\"><p>لعل تو که آب خضر می‌ریزد ازو</p></div></div>\r\n<div class=\"b\" id=\"bn2\"><div class=\"m1\"><p>کردند تن مرا چنان خوار که باد</p></div>\r\n<div class=\"m2\"><p>می‌آید و گرد و خاک می‌بیزد ازو</p></div></div>",
+        "poemFormat": 5,
+        "cachedFirstCoupletIndex": 0,
+        "language": null,
+        "coupletsCount": 2,
+        "top6RelatedSections": [
+          {
+            "id": 4451568,
+            "poemId": 95914,
+            "poem": null,
+            "sectionIndex": 0,
+            "poetId": 67,
+            "relationOrder": 1,
+            "poetName": "کمال‌الدین اسماعیل",
+            "poetImageUrl": "/api/ganjoor/poet/image/kamal.gif",
+            "fullUrl": "/kamal/robaeek-kamal/sh742",
+            "fullTitle": "کمال‌الدین اسماعیل » رباعیات » شمارهٔ ۷۴۲",
+            "htmlExcerpt": "<p>تیغت که اجل همی بپرهیزد ازو</p>\r\n<p>گر ره یابد زمانه بگریزد ازو</p>\r\n<p>از ابر کفت بر سر دشمن بارد</p>\r\n<p>آن قطره که طوفان بلاخیزد ازو</p>",
+            "targetPoemId": 72479,
+            "targetSectionIndex": 0,
+            "poetMorePoemsLikeThisCount": 0
+          }
+        ],
+        "oldGanjoorMetreId": null,
+        "oldRhymeLetters": null,
+        "modified": false,
+        "excerpt": null
+      }
+    ],
+    "geoDateTags": [],
+    "top6QuotedPoems": [],
+    "sectionIndex": null,
+    "claimedByMultiplePoets": false,
+    "coupletsCount": null
+  }
+}
