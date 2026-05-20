@@ -771,19 +771,30 @@ function Reader({ slug, catPath, file, favorites, onToggleFav, onView }) {
   const localUrl = `${location.origin}${location.pathname}#/read/${slug}/${[...catPath, file].join('/')}`;
   const urn = `urn:ganjoor:${slug}${catPath.length ? ':' + catPath.join(':') : ''}:${file}`;
 
-  // Navigate prev/next via poem.previous / poem.next when available
+  // Flatten the poet's category tree into a single id-ordered list so we
+  // can resolve any sibling poem (by id) back to its on-disk path. The
+  // API's poem.previous / poem.next only carry id + urlSlug — not the full
+  // category path — so this lookup is the only correct way to navigate
+  // across category boundaries (e.g. last ghazal → first qasida).
+  const flatPoems = useMemo(() => {
+    const out = [];
+    function walk(node, path) {
+      for (const p of (node.poems || [])) out.push({ id: p.id, n: p.n, path });
+      for (const sub of (node.categories || [])) walk(sub, [...path, sub.slug]);
+    }
+    if (poetIndex?.tree) walk(poetIndex.tree, []);
+    return out;
+  }, [poetIndex]);
+
   const prev = poem.previous;
   const next = poem.next;
   function goSibling(target) {
-    if (!target || !target.fullUrl) return;
-    // target.fullUrl looks like /hafez/ghazal/sh107
-    const parts = target.fullUrl.replace(/^\//, '').split('/');
-    const tslug = parts[0];
-    const tcats = parts.slice(1, -1);
-    const traw = parts[parts.length - 1];
-    const tfile = /^sh(\d+)$/.test(traw) ? RegExp.$1 : traw;
-    navigate(`#/read/${tslug}/${[...tcats, tfile].join('/')}`);
+    if (!target || !target.id) return;
+    const entry = flatPoems.find(x => x.id === target.id);
+    if (!entry) return;
+    navigate(`#/read/${[slug, ...entry.path, entry.n].join('/')}`);
   }
+  const navReady = flatPoems.length > 0;
 
   const handleShare = async () => {
     const txt = `${poem.title} — ${poet}\n${(poem.plainText || '').split('\n').slice(0, 2).join('\n')}\n\n${localUrl}`;
@@ -851,11 +862,11 @@ function Reader({ slug, catPath, file, favorites, onToggleFav, onView }) {
         <div className="ornament mt-6 mb-4">۞</div>
 
         <div className="flex gap-2 mt-4">
-          <button onClick={() => goSibling(prev)} disabled={!prev}
+          <button onClick={() => goSibling(prev)} disabled={!prev || !navReady}
             className="surface border border-soft rounded-xl px-3 py-2 text-sm flex-1 active:opacity-70 disabled:opacity-40">
             → پیشین
           </button>
-          <button onClick={() => goSibling(next)} disabled={!next}
+          <button onClick={() => goSibling(next)} disabled={!next || !navReady}
             className="surface border border-soft rounded-xl px-3 py-2 text-sm flex-1 active:opacity-70 disabled:opacity-40">
             بعدی ←
           </button>
