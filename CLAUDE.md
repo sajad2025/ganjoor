@@ -122,6 +122,10 @@ ls /tmp/smoke/ayatib/gozide/  # should list 12 JSON files
 
 6. **The Persian text normalizer (`toDisplay`, `toSearch` in `index.html`) is the reference**. If any future enrichment layer needs to normalize Persian text, copy the JS logic (or port to Python) — don't re-invent.
 
+7. **React Rules of Hooks** — every `useState` / `useEffect` / `useMemo` / `useCallback` in a component MUST be called in the same order on every render. Concretely: never place a hook AFTER an `if (...) return <X />` early-exit branch inside a component. The Reader component has two early returns (`if (err)`, `if (!poem)`); any new hook must go above those. We had a blank-screen regression on every poem page when a `useMemo` slipped below the early returns — first render had 4 hooks, second render had 5, React crashed the component.
+
+8. **A 200 response is not a smoke test for the PWA.** When changing `index.html`, *actually* open the live page and navigate into a poem page in the browser — the React component might compile fine and the file might serve fine, but throw at render time. The hooks regression in #7 was deployed before being caught because the local smoke test only verified HTTP status and the presence of identifiers in the file.
+
 ## Things NOT to do (still relevant)
 
 - **Don't modify canonical `data/<poet>/.../<num>.json`** — the schema is intentionally a faithful pass-through of `api.ganjoor.net`. All enrichment (translations, normalized search index, FTS) belongs in parallel layers.
