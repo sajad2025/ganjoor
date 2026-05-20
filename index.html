@@ -743,6 +743,20 @@ function Reader({ slug, catPath, file, favorites, onToggleFav, onView }) {
     loadPoet(slug).then(setPoetIndex).catch(() => {});
   }, [slug, catPath.join('/'), file]);
 
+  // All hooks MUST be called before any early return — React's rules of
+  // hooks require a stable hook order across renders. Putting useMemo
+  // after `if (!poem) return ...` causes "rendered more hooks than during
+  // the previous render" and crashes the component to a blank screen.
+  const flatPoems = useMemo(() => {
+    const out = [];
+    function walk(node, path) {
+      for (const p of (node.poems || [])) out.push({ id: p.id, n: p.n, path });
+      for (const sub of (node.categories || [])) walk(sub, [...path, sub.slug]);
+    }
+    if (poetIndex?.tree) walk(poetIndex.tree, []);
+    return out;
+  }, [poetIndex]);
+
   if (err) return <ErrorBox msg={err} />;
   if (!poem) return <Loading label="در حال بارگیری شعر…" />;
 
@@ -770,21 +784,6 @@ function Reader({ slug, catPath, file, favorites, onToggleFav, onView }) {
   const fullUrl = `https://ganjoor.net${poem.fullUrl || ''}`;
   const localUrl = `${location.origin}${location.pathname}#/read/${slug}/${[...catPath, file].join('/')}`;
   const urn = `urn:ganjoor:${slug}${catPath.length ? ':' + catPath.join(':') : ''}:${file}`;
-
-  // Flatten the poet's category tree into a single id-ordered list so we
-  // can resolve any sibling poem (by id) back to its on-disk path. The
-  // API's poem.previous / poem.next only carry id + urlSlug — not the full
-  // category path — so this lookup is the only correct way to navigate
-  // across category boundaries (e.g. last ghazal → first qasida).
-  const flatPoems = useMemo(() => {
-    const out = [];
-    function walk(node, path) {
-      for (const p of (node.poems || [])) out.push({ id: p.id, n: p.n, path });
-      for (const sub of (node.categories || [])) walk(sub, [...path, sub.slug]);
-    }
-    if (poetIndex?.tree) walk(poetIndex.tree, []);
-    return out;
-  }, [poetIndex]);
 
   const prev = poem.previous;
   const next = poem.next;
