@@ -145,6 +145,17 @@ function detectArabicChars(s) {
 function toPersianDigits(n) {
   return String(n).replace(/[0-9]/g, d => FA_DIGITS[+d]);
 }
+function formatBytesFa(bytes) {
+  if (bytes == null) return '';
+  const KB = 1024, MB = KB * 1024, GB = MB * 1024;
+  if (bytes < MB) {
+    return `${Math.round(bytes / KB).toLocaleString('fa-IR')} کیلوبایت`;
+  }
+  if (bytes < GB) {
+    return `${(bytes / MB).toLocaleString('fa-IR', { maximumFractionDigits: 1 })} مگابایت`;
+  }
+  return `${(bytes / GB).toLocaleString('fa-IR', { maximumFractionDigits: 2 })} گیگابایت`;
+}
 
 /* ─────────────────────────────────────────────────────────────────────────
    DATA LAYER — fetch from data/ with in-memory cache
@@ -1167,6 +1178,26 @@ function OfflineCache() {
   const [progress, setProgress] = useState(0);
   const [failedUrls, setFailedUrls] = useState([]);   // URLs that failed in the last attempt (in-session)
   const [currentPoet, setCurrentPoet] = useState('');
+  const [storageBytes, setStorageBytes] = useState(null); // total bytes used by this origin (caches + everything)
+
+  // Poll storage estimate while a download is in flight so the user
+  // sees the number grow. We rely on navigator.storage.estimate(),
+  // which returns total origin usage (shell + runtime + data caches +
+  // localStorage). That's the right number to show — it's what iOS
+  // counts against the PWA's storage budget.
+  useEffect(() => {
+    if (state !== 'downloading' || !navigator.storage?.estimate) return;
+    let alive = true;
+    const tick = async () => {
+      try {
+        const est = await navigator.storage.estimate();
+        if (alive) setStorageBytes(est.usage ?? null);
+      } catch {}
+    };
+    tick();
+    const id = setInterval(tick, 2000);
+    return () => { alive = false; clearInterval(id); };
+  }, [state]);
 
   // Mount: load poet indexes, enumerate URLs, check sentinels.
   useEffect(() => {
@@ -1207,6 +1238,12 @@ function OfflineCache() {
       if (cancelled) return;
       setPresentPoets(present);
       setState(present === FAMOUS_POETS.length ? 'done' : present === 0 ? 'idle' : 'partial');
+      if (navigator.storage?.estimate) {
+        try {
+          const est = await navigator.storage.estimate();
+          if (!cancelled) setStorageBytes(est.usage ?? null);
+        } catch {}
+      }
     })();
     return () => { cancelled = true; };
   }, []);
@@ -1273,6 +1310,15 @@ function OfflineCache() {
     }
     setPresentPoets(present);
     setState(newFailures.length === 0 ? 'done' : 'partial');
+    // Final storage refresh — the polling interval clears as soon as
+    // state leaves 'downloading', so the last sample might be a couple
+    // of seconds stale. One more read after the queue drains.
+    if (navigator.storage?.estimate) {
+      try {
+        const est = await navigator.storage.estimate();
+        setStorageBytes(est.usage ?? null);
+      } catch {}
+    }
   }
 
   // Render --------------------------------------------------------------
@@ -1299,6 +1345,9 @@ function OfflineCache() {
         {currentPoet && (
           <p className="muted text-xs">شاعر فعلی: {currentPoet}</p>
         )}
+        {storageBytes != null && (
+          <p className="muted text-xs">حافظهٔ مصرف‌شده: {formatBytesFa(storageBytes)}</p>
+        )}
       </div>
     );
   }
@@ -1309,6 +1358,9 @@ function OfflineCache() {
         <p className="text-sm">
           ✓ همهٔ {toPersianDigits(FAMOUS_POETS.length)} شاعر برجسته (~{toPersianDigits(totalPoems.toLocaleString('fa-IR'))} شعر) برای استفادهٔ آفلاین ذخیره شد.
         </p>
+        {storageBytes != null && (
+          <p className="muted text-xs">حافظهٔ مصرف‌شده: {formatBytesFa(storageBytes)}</p>
+        )}
         <button onClick={downloadAll} className="muted text-xs underline active:opacity-60">
           دانلود مجدد
         </button>
@@ -1328,6 +1380,9 @@ function OfflineCache() {
           <p className="text-sm">
             {toPersianDigits(n)} شعر هنوز ذخیره نشده — احتمالاً اتصال یا محدودیت سرور مانع شد.
           </p>
+          {storageBytes != null && (
+            <p className="muted text-xs">حافظهٔ مصرف‌شده: {formatBytesFa(storageBytes)}</p>
+          )}
           <button
             onClick={downloadAll}
             className="accent-bg text-white px-4 py-2 rounded-lg text-sm font-medium"
@@ -1343,6 +1398,9 @@ function OfflineCache() {
         <p className="text-sm">
           {toPersianDigits(presentPoets)} از {toPersianDigits(FAMOUS_POETS.length)} شاعر ذخیره شده است.
         </p>
+        {storageBytes != null && (
+          <p className="muted text-xs">حافظهٔ مصرف‌شده: {formatBytesFa(storageBytes)}</p>
+        )}
         <button
           onClick={downloadAll}
           className="accent-bg text-white px-4 py-2 rounded-lg text-sm font-medium"
@@ -1368,6 +1426,9 @@ function OfflineCache() {
         پس از ذخیره، خواندن این شاعران بدون اینترنت ممکن خواهد بود. توصیه می‌شود
         روی شبکهٔ وای‌فای انجام دهید.
       </p>
+      {storageBytes != null && (
+        <p className="muted text-xs">حافظهٔ مصرف‌شده: {formatBytesFa(storageBytes)}</p>
+      )}
     </div>
   );
 }

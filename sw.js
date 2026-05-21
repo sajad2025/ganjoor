@@ -15,8 +15,8 @@
  *     it holds ~250 MB of user-saved poems from the OfflineCache feature.
  *     Only bump it if the on-disk JSON schema changes (it hasn't).
  */
-const SHELL_CACHE = 'ganjoor-shell-v14';
-const RUNTIME     = 'ganjoor-runtime-v14';
+const SHELL_CACHE = 'ganjoor-shell-v15';
+const RUNTIME     = 'ganjoor-runtime-v15';
 const DATA_CACHE  = 'ganjoor-data-v13';
 
 const SHELL = [
