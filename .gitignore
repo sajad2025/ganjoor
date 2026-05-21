@@ -1,3 +1,7 @@
+# Build output — produced by scripts/build.py, deployed via GH Actions,
+# never committed.
+_site/
+
 # Logs
 logs
 *.log

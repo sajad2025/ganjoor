@@ -81,13 +81,27 @@ To implement: `scripts/translate.py` — iterate `data/`, prepare batched prompt
 - `emergency-snapshot.yml` — single-job fetch, used for smoke tests via `poet_limit`.
 - `emergency-snapshot-matrix.yml` — N-bucket parallel fetch (default 5) for full-corpus runs. Includes 10-min checkpoint commits, rebase-retry on push, salvage-on-cancel.
 - `cut-release.yml` — fetch-free; bundles current `data/` + `legacy/` into a tagged GitHub Release with SHA256SUMS.
+- `deploy-pages.yml` — builds the production PWA (transpiles JSX via esbuild, drops Babel) and deploys to GitHub Pages on every push to `main`. Requires Pages source set to **GitHub Actions** in repo Settings → Pages (one-time setting, not "Deploy from a branch").
 
-**PWA** (`index.html` + `sw.js`):
-- Single file. React + Tailwind via CDN. Babel standalone for JSX.
+**PWA** (`index.html` + `sw.js` + `scripts/build.py`):
+- Source is single-file: `index.html` with inline `<script type="text/babel">` (~1500 lines of JSX) + React/Tailwind/Babel via CDN. Editable as one file; local dev still works zero-setup via `python -m http.server` + browser (Babel runtime transpiles JSX on the fly).
+- Production is **pre-built**: `scripts/build.py` reads `index.html`, runs the inline JSX through esbuild (`--loader=jsx --target=es2018 --minify`), inlines the result, and removes the Babel Standalone `<script>` tag. Output lands in `_site/index.html` alongside hardlinked `data/`, `sw.js`, icons, etc. Removing the 3 MB Babel runtime cut cold-start latency from 2–3 s to milliseconds on iOS.
+- Deploy is via `.github/workflows/deploy-pages.yml` — runs the build on each push to `main` and uploads `_site/` as a Pages artifact. No committed build artifact in git; `_site/` is in `.gitignore`.
 - Hash routing: `#/`, `#/poets`, `#/poet/<slug>`, `#/poet/<slug>/<cat>/<...>`, `#/read/<slug>/<cat>/<...>/<num>`, `#/search`, `#/settings`.
 - Settings persist in localStorage: theme (sepia/light/dark), font (Vazirmatn/Estedad), font size (root font-size scaling), favorites (browsable on home), recents.
-- Service worker: stale-while-revalidate for data files, cache-first for shell.
-- **When changing `index.html` substantively, bump the version constant in `sw.js`** (currently `v7`) — otherwise old cached shell can persist on user devices indefinitely.
+- Service worker: stale-while-revalidate for data files, cache-first for shell + cross-origin runtime. CDN bundles precached on install (see Gotcha #9).
+- **When changing `index.html` substantively, bump the version constants in `sw.js`** (currently `SHELL_CACHE`/`RUNTIME` at `v15`, `DATA_CACHE` pinned at `v13` — do NOT bump `DATA_CACHE` casually, that wipes user-saved poems).
+
+**Building locally:**
+```bash
+# Full production build into _site/ (≈30 s, 130K hardlinks for data/):
+python scripts/build.py
+# Fast iteration — just the HTML, skip the data copy:
+python scripts/build.py --html-only
+# Then serve and test:
+cd _site && python -m http.server 8000   # http://localhost:8000/
+```
+Requires `esbuild` on PATH (`npm install -g esbuild`) or `npx` available for the on-demand fallback.
 
 ## Smoke test (run before triggering anything substantive)
 
@@ -97,6 +111,10 @@ source .venv/bin/activate
 python scripts/fetch_ganjoor.py --out /tmp/smoke --poet-ids 229 --rate 5.0
 # Expected: data/ayatib/gozide/{1..12}.json + _progress.json with completed:true
 ls /tmp/smoke/ayatib/gozide/  # should list 12 JSON files
+
+# PWA build smoke test (after any index.html change):
+python scripts/build.py --html-only   # should print non-zero "built JS"
+grep -c "text/babel\|@babel/standalone" _site/index.html  # must be 0
 ```
 
 ## Gotchas — non-obvious things discovered the hard way

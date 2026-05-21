@@ -1,0 +1,80 @@
+name: Deploy to GitHub Pages
+
+# Builds the production PWA artifact and deploys to GitHub Pages.
+#
+# Replaces the previous "Deploy from a branch" mode. The new build step
+# transpiles the inline JSX in index.html via esbuild and drops the 3 MB
+# Babel Standalone runtime, cutting cold-start latency from 2-3 s to
+# milliseconds on iOS.
+#
+# Requires Pages source set to "GitHub Actions" in repo Settings -> Pages.
+# Otherwise the deploy step fails with "Get Pages site failed". This is a
+# one-time settings change after merging this workflow.
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "PHASE-1-*.md"
+      - "PRESERVATION-*.md"
+      - "RESEARCH-*.md"
+      - ".github/workflows/cut-release.yml"
+      - ".github/workflows/emergency-snapshot*.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; later pushes cancel earlier in-flight runs so we
+# always ship the latest commit rather than a stale build.
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Pin esbuild to a known-good version so the build is reproducible.
+      # Bumping is fine but should be a deliberate commit, not silent drift.
+      - name: Install esbuild
+        run: npm install -g esbuild@0.24.0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build
+        run: python scripts/build.py
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
