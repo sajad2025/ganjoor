@@ -1160,12 +1160,12 @@ function SearchView() {
    what's already cached, which is cheap with stale-while-revalidate).
    ──────────────────────────────────────────────────────────────────── */
 function OfflineCache() {
-  const [state, setState] = useState('checking');   // checking | idle | partial | done | downloading
-  const [urls, setUrls] = useState(null);           // flat list of all URLs to fetch
-  const [poetCounts, setPoetCounts] = useState(null);  // {slug: poemCount}
-  const [presentPoets, setPresentPoets] = useState(0); // # of poets with sentinel cached
+  const [state, setState] = useState('checking');     // checking | idle | partial | done | downloading
+  const [urls, setUrls] = useState(null);             // flat list of all URLs to fetch
+  const [poetCounts, setPoetCounts] = useState(null); // {slug: poemCount}
+  const [presentPoets, setPresentPoets] = useState(0);// # of poets whose _index.json sentinel is cached
   const [progress, setProgress] = useState(0);
-  const [failed, setFailed] = useState(0);
+  const [failedUrls, setFailedUrls] = useState([]);   // URLs that failed in the last attempt (in-session)
   const [currentPoet, setCurrentPoet] = useState('');
 
   // Mount: load poet indexes, enumerate URLs, check sentinels.
@@ -1211,37 +1211,68 @@ function OfflineCache() {
     return () => { cancelled = true; };
   }, []);
 
+  // Per-URL retry with exponential backoff. Cloudflare (in front of GH Pages)
+  // will 429/503 if you fire thousands of requests in rapid succession, so a
+  // failed fetch is almost always transient — wait and retry rather than give
+  // up on the entry.
+  async function fetchWithRetry(url) {
+    const delays = [600, 1800, 4000]; // ms before retry attempt 2, 3, 4
+    for (let attempt = 0; attempt <= delays.length; attempt++) {
+      try {
+        const r = await fetch(url);
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        await r.blob(); // consume body so SW fully stores it
+        return true;
+      } catch {
+        if (attempt === delays.length) return false;
+        await new Promise(res => setTimeout(res, delays[attempt] + Math.random() * 400));
+      }
+    }
+    return false;
+  }
+
   async function downloadAll() {
     if (!urls) return;
     setState('downloading');
     setProgress(0);
-    setFailed(0);
-    let done = 0, bad = 0, idx = 0;
-    const CONCURRENCY = 16;
-    // Track which poet we're "currently on" by URL prefix — approximate but cheap
+    // Resume mode: if we have a known failed list, only retry those. Otherwise
+    // download everything. The SW's stale-while-revalidate means re-fetching
+    // an already-cached URL is cheap.
+    const queue = failedUrls.length > 0 ? [...failedUrls] : [...urls];
+    const newFailures = [];
+    let done = 0, idx = 0;
+    // Concurrency 6: matches the per-host TCP cap iOS Safari already enforces,
+    // and keeps us well below the rate iOS Safari historically tips Cloudflare
+    // into 429s under sustained load.
+    const CONCURRENCY = 6;
     async function worker() {
       while (true) {
         const i = idx++;
-        if (i >= urls.length) break;
-        const url = urls[i];
-        try {
-          const r = await fetch(url);
-          if (!r.ok) throw new Error(`HTTP ${r.status}`);
-          await r.blob(); // consume body so SW fully stores it
-        } catch { bad++; setFailed(bad); }
+        if (i >= queue.length) break;
+        const url = queue[i];
+        const ok = await fetchWithRetry(url);
+        if (!ok) newFailures.push(url);
         done++;
-        // Throttle UI updates — 17K setProgress calls would be expensive
-        if (done % 25 === 0 || done === urls.length) {
+        if (done % 25 === 0 || done === queue.length) {
           setProgress(done);
-          const m = urls[i].match(/data\/([^/]+)\//);
+          const m = url.match(/data\/([^/]+)\//);
           if (m) setCurrentPoet(m[1]);
         }
       }
     }
     await Promise.all(Array.from({ length: CONCURRENCY }, worker));
     setProgress(done);
-    setPresentPoets(FAMOUS_POETS.length);
-    setState(bad === 0 ? 'done' : 'partial');
+    setFailedUrls(newFailures);
+    // Re-check sentinels so the headline reflects reality, not optimism.
+    let present = 0;
+    if (typeof caches !== 'undefined') {
+      const results = await Promise.all(FAMOUS_POETS.map(slug =>
+        caches.match(`${DATA}/${slug}/_index.json`).catch(() => null)
+      ));
+      for (const r of results) if (r) present++;
+    }
+    setPresentPoets(present);
+    setState(newFailures.length === 0 ? 'done' : 'partial');
   }
 
   // Render --------------------------------------------------------------
@@ -1255,20 +1286,18 @@ function OfflineCache() {
     : 0;
 
   if (state === 'downloading') {
-    const pct = Math.round((progress / TOTAL) * 100);
+    const queueSize = failedUrls.length > 0 ? failedUrls.length : TOTAL;
+    const pct = Math.round((progress / Math.max(1, queueSize)) * 100);
     return (
       <div className="space-y-2">
         <p className="text-sm">
-          در حال دانلود… {toPersianDigits(progress.toLocaleString('fa-IR'))} / {toPersianDigits(TOTAL.toLocaleString('fa-IR'))}
+          در حال دانلود… {toPersianDigits(progress.toLocaleString('fa-IR'))} / {toPersianDigits(queueSize.toLocaleString('fa-IR'))}
         </p>
         <div className="h-1.5 surface-2 rounded overflow-hidden">
           <div className="h-full accent-bg" style={{ width: `${pct}%`, transition: 'width 0.2s' }} />
         </div>
         {currentPoet && (
           <p className="muted text-xs">شاعر فعلی: {currentPoet}</p>
-        )}
-        {failed > 0 && (
-          <p className="muted text-xs">{toPersianDigits(failed)} مورد ناموفق — اتصال را بررسی کنید.</p>
         )}
       </div>
     );
@@ -1288,18 +1317,37 @@ function OfflineCache() {
   }
 
   if (state === 'partial') {
+    // Two distinct sub-states the user might land in:
+    //   A) We have a known failed-URL list from this session — retry only those.
+    //   B) No failure list, but the mount-time sentinel scan showed fewer than 8
+    //      poets cached — fresh "save remaining" flow.
+    if (failedUrls.length > 0) {
+      const n = failedUrls.length.toLocaleString('fa-IR');
+      return (
+        <div className="space-y-2">
+          <p className="text-sm">
+            {toPersianDigits(n)} شعر هنوز ذخیره نشده — احتمالاً اتصال یا محدودیت سرور مانع شد.
+          </p>
+          <button
+            onClick={downloadAll}
+            className="accent-bg text-white px-4 py-2 rounded-lg text-sm font-medium"
+          >
+            تلاش مجدد برای {toPersianDigits(n)} مورد
+          </button>
+        </div>
+      );
+    }
     const remainingPoets = FAMOUS_POETS.length - presentPoets;
     return (
       <div className="space-y-2">
         <p className="text-sm">
           {toPersianDigits(presentPoets)} از {toPersianDigits(FAMOUS_POETS.length)} شاعر ذخیره شده است.
-          {failed > 0 ? ` ${toPersianDigits(failed)} مورد در دانلود قبلی ناموفق بود.` : ''}
         </p>
         <button
           onClick={downloadAll}
           className="accent-bg text-white px-4 py-2 rounded-lg text-sm font-medium"
         >
-          {failed > 0 ? 'تلاش مجدد' : `ذخیرهٔ ${toPersianDigits(remainingPoets)} شاعر باقی‌مانده`}
+          ذخیرهٔ {toPersianDigits(remainingPoets)} شاعر باقی‌مانده
         </button>
       </div>
     );
