@@ -101,8 +101,11 @@
 
   /* iOS Safari force-zooms on focus into any input with computed font-size
      below 16px, and never zooms back out. Root font-size is user-configurable
-     down to 13px (xs/sm presets), so we floor input/textarea/select at 16px. */
-  input, textarea, select { font-size: max(16px, 1rem); }
+     down to 13px (xs/sm presets), so we floor input/textarea/select at 16px.
+     !important is required because the search input carries Tailwind's
+     .text-base class (specificity 0,0,1,0) which would otherwise win over a
+     plain element selector and re-introduce the zoom. */
+  input, textarea, select { font-size: max(16px, 1rem) !important; }
 </style>
 </head>
 <body class="theme-sepia">
