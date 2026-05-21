@@ -228,18 +228,25 @@ const cache = new Map();
 async function fetchJson(path) {
   if (cache.has(path)) return cache.get(path);
   const p = (async () => {
+    const key = urlToIdbKey(path);
     // IDB lookup is essentially free when the key is absent (a single
     // getKey roundtrip), so it's safe to do unconditionally — saves a
     // network round-trip on every call when the user is offline-saved.
     try {
-      const stored = await idbGet(urlToIdbKey(path));
+      const stored = await idbGet(key);
       if (stored !== undefined) {
         return typeof stored === 'string' ? JSON.parse(stored) : stored;
       }
     } catch { /* IDB failures fall through to network */ }
     const r = await fetch(path);
     if (!r.ok) throw new Error(`HTTP ${r.status} for ${path}`);
-    return r.json();
+    const text = await r.text();
+    // Opportunistic write-through: anything the user views online silently
+    // becomes available offline next time. Fire-and-forget so a slow IDB
+    // write never blocks the render path; failures are swallowed because
+    // the response is already in hand.
+    idbPut(key, text).catch(() => {});
+    return JSON.parse(text);
   })();
   cache.set(path, p);
   try { return await p; } catch (e) { cache.delete(path); throw e; }
