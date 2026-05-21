@@ -164,6 +164,25 @@ const loadPoem    = (slug, catPath, file) => {
   return fetchJson(`${DATA}/${path}.json`);
 };
 
+/* Offline cache — the 8 شاعران برجسته (canonical featured poets).
+   Hand-curated; matches the home-page "featured" list. Keep aligned. */
+const FAMOUS_POETS = ['hafez', 'saadi', 'moulavi', 'khayyam', 'ferdousi', 'attar', 'sanaee', 'nezami'];
+
+/* Walk a poet's _index.json tree and emit every poem's data/<...>.json URL,
+   mirroring the path math in loadPoem() so the cached responses populate the
+   exact URLs the Reader will request later. */
+function enumeratePoemUrls(slug, tree) {
+  const urls = [];
+  (function walk(node, catPath) {
+    for (const p of node.poems || []) {
+      const tail = catPath.length ? `${catPath.join('/')}/${p.n}` : `${p.n}`;
+      urls.push(`${DATA}/${slug}/${tail}.json`);
+    }
+    for (const c of node.categories || []) walk(c, [...catPath, c.slug]);
+  })(tree, []);
+  return urls;
+}
+
 /* Full-text search corpus — loaded lazily on first search.
    Each poet has a _search.json built by scripts/build_search_index.py:
      [[urlTail, displayTitle, normalizedPlainText], ...]
@@ -1122,6 +1141,187 @@ function SearchView() {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
+   OFFLINE CACHE — one tap pulls every poem from the 8 featured poets
+   through fetch(); the service worker's stale-while-revalidate handler
+   stores each response in DATA_CACHE so the whole featured-poets subset
+   works fully offline thereafter.
+
+   Source of truth for "is this offline?" is the Cache Storage API itself
+   (not a localStorage flag), so a sw.js version bump that wipes the cache
+   is detected on next mount instead of lying "done" forever.
+
+   We don't probe every poem URL on mount (17K cache lookups would be
+   slow); we sample each poet's _index.json as a sentinel — if cached,
+   that poet's subtree is assumed cached too. Real ground truth is
+   re-established by re-tapping the Save button (worst case re-fetches
+   what's already cached, which is cheap with stale-while-revalidate).
+   ──────────────────────────────────────────────────────────────────── */
+function OfflineCache() {
+  const [state, setState] = useState('checking');   // checking | idle | partial | done | downloading
+  const [urls, setUrls] = useState(null);           // flat list of all URLs to fetch
+  const [poetCounts, setPoetCounts] = useState(null);  // {slug: poemCount}
+  const [presentPoets, setPresentPoets] = useState(0); // # of poets with sentinel cached
+  const [progress, setProgress] = useState(0);
+  const [failed, setFailed] = useState(0);
+  const [currentPoet, setCurrentPoet] = useState('');
+
+  // Mount: load poet indexes, enumerate URLs, check sentinels.
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const trees = await Promise.all(FAMOUS_POETS.map(async slug => {
+        try {
+          const r = await fetch(`${DATA}/${slug}/_index.json`);
+          if (!r.ok) return null;
+          return await r.json();
+        } catch { return null; }
+      }));
+      if (cancelled) return;
+
+      const all = [];
+      const counts = {};
+      for (let i = 0; i < FAMOUS_POETS.length; i++) {
+        const slug = FAMOUS_POETS[i];
+        const tree = trees[i];
+        if (!tree) continue;
+        const poems = enumeratePoemUrls(slug, tree.tree);
+        counts[slug] = poems.length;
+        all.push(`${DATA}/${slug}/_index.json`);
+        all.push(`${DATA}/${slug}/_search.json`);
+        for (const u of poems) all.push(u);
+      }
+      setUrls(all);
+      setPoetCounts(counts);
+
+      // Sentinel scan: only the 8 _index.json URLs (fast)
+      let present = 0;
+      if (typeof caches !== 'undefined') {
+        const results = await Promise.all(FAMOUS_POETS.map(slug =>
+          caches.match(`${DATA}/${slug}/_index.json`).catch(() => null)
+        ));
+        for (const r of results) if (r) present++;
+      }
+      if (cancelled) return;
+      setPresentPoets(present);
+      setState(present === FAMOUS_POETS.length ? 'done' : present === 0 ? 'idle' : 'partial');
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  async function downloadAll() {
+    if (!urls) return;
+    setState('downloading');
+    setProgress(0);
+    setFailed(0);
+    let done = 0, bad = 0, idx = 0;
+    const CONCURRENCY = 16;
+    // Track which poet we're "currently on" by URL prefix — approximate but cheap
+    async function worker() {
+      while (true) {
+        const i = idx++;
+        if (i >= urls.length) break;
+        const url = urls[i];
+        try {
+          const r = await fetch(url);
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          await r.blob(); // consume body so SW fully stores it
+        } catch { bad++; setFailed(bad); }
+        done++;
+        // Throttle UI updates — 17K setProgress calls would be expensive
+        if (done % 25 === 0 || done === urls.length) {
+          setProgress(done);
+          const m = urls[i].match(/data\/([^/]+)\//);
+          if (m) setCurrentPoet(m[1]);
+        }
+      }
+    }
+    await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+    setProgress(done);
+    setPresentPoets(FAMOUS_POETS.length);
+    setState(bad === 0 ? 'done' : 'partial');
+  }
+
+  // Render --------------------------------------------------------------
+  if (state === 'checking' || !urls) {
+    return <p className="muted text-sm">در حال بررسی…</p>;
+  }
+
+  const TOTAL = urls.length;
+  const totalPoems = poetCounts
+    ? Object.values(poetCounts).reduce((a, b) => a + b, 0)
+    : 0;
+
+  if (state === 'downloading') {
+    const pct = Math.round((progress / TOTAL) * 100);
+    return (
+      <div className="space-y-2">
+        <p className="text-sm">
+          در حال دانلود… {toPersianDigits(progress.toLocaleString('fa-IR'))} / {toPersianDigits(TOTAL.toLocaleString('fa-IR'))}
+        </p>
+        <div className="h-1.5 surface-2 rounded overflow-hidden">
+          <div className="h-full accent-bg" style={{ width: `${pct}%`, transition: 'width 0.2s' }} />
+        </div>
+        {currentPoet && (
+          <p className="muted text-xs">شاعر فعلی: {currentPoet}</p>
+        )}
+        {failed > 0 && (
+          <p className="muted text-xs">{toPersianDigits(failed)} مورد ناموفق — اتصال را بررسی کنید.</p>
+        )}
+      </div>
+    );
+  }
+
+  if (state === 'done') {
+    return (
+      <div className="space-y-2">
+        <p className="text-sm">
+          ✓ همهٔ {toPersianDigits(FAMOUS_POETS.length)} شاعر برجسته (~{toPersianDigits(totalPoems.toLocaleString('fa-IR'))} شعر) برای استفادهٔ آفلاین ذخیره شد.
+        </p>
+        <button onClick={downloadAll} className="muted text-xs underline active:opacity-60">
+          دانلود مجدد
+        </button>
+      </div>
+    );
+  }
+
+  if (state === 'partial') {
+    const remainingPoets = FAMOUS_POETS.length - presentPoets;
+    return (
+      <div className="space-y-2">
+        <p className="text-sm">
+          {toPersianDigits(presentPoets)} از {toPersianDigits(FAMOUS_POETS.length)} شاعر ذخیره شده است.
+          {failed > 0 ? ` ${toPersianDigits(failed)} مورد در دانلود قبلی ناموفق بود.` : ''}
+        </p>
+        <button
+          onClick={downloadAll}
+          className="accent-bg text-white px-4 py-2 rounded-lg text-sm font-medium"
+        >
+          {failed > 0 ? 'تلاش مجدد' : `ذخیرهٔ ${toPersianDigits(remainingPoets)} شاعر باقی‌مانده`}
+        </button>
+      </div>
+    );
+  }
+
+  // 'idle'
+  return (
+    <div className="space-y-2">
+      <button
+        onClick={downloadAll}
+        className="accent-bg text-white px-4 py-2 rounded-lg text-sm font-medium"
+      >
+        ذخیرهٔ آفلاین ۸ شاعر برجسته
+      </button>
+      <p className="muted text-xs leading-6">
+        دانلود همهٔ شعرهای حافظ، سعدی، مولانا، خیام، فردوسی، عطار، سنایی و نظامی
+        ({toPersianDigits(totalPoems.toLocaleString('fa-IR'))} شعر، تقریباً ۲۵۰ مگابایت).
+        پس از ذخیره، خواندن این شاعران بدون اینترنت ممکن خواهد بود. توصیه می‌شود
+        روی شبکهٔ وای‌فای انجام دهید.
+      </p>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
    SETTINGS
    ──────────────────────────────────────────────────────────────────────── */
 function Settings({ theme, setTheme, font, setFont, fontSize, setFontSize, favCount }) {
@@ -1147,6 +1347,9 @@ function Settings({ theme, setTheme, font, setFont, fontSize, setFontSize, favCo
       </Section>
       <Section title="کتابخانهٔ شخصی">
         <p className="muted text-sm">شعرهای نشان‌شده: {toPersianDigits(favCount)}</p>
+      </Section>
+      <Section title="ذخیرهٔ آفلاین">
+        <OfflineCache />
       </Section>
       <Section title="دربارهٔ پروژه">
         <div className="text-sm leading-7 space-y-2">
