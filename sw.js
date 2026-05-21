@@ -1,12 +1,23 @@
 /* Ganjoor PWA service worker
  * Strategy:
  *   - Precache app shell (index, manifest, icons) on install
+ *   - Precache cross-origin runtime bundles (React, ReactDOM, Tailwind,
+ *     Babel, Google Fonts CSS) on install — these are required to boot
+ *     the React app, so opaque-response opportunistic caching is too
+ *     unreliable. See Gotcha #9 in CLAUDE.md.
  *   - data/*.json: stale-while-revalidate
- *   - everything else (fonts, CDN scripts): cache-first with network fallback
+ *   - everything else (font WOFFs, etc.): cache-first with network fallback
+ *
+ * Cache naming convention:
+ *   - SHELL_CACHE and RUNTIME bump together when index.html or the
+ *     pinned CDN versions change.
+ *   - DATA_CACHE is pinned and must NOT be bumped with shell upgrades —
+ *     it holds ~250 MB of user-saved poems from the OfflineCache feature.
+ *     Only bump it if the on-disk JSON schema changes (it hasn't).
  */
-const SHELL_CACHE = 'ganjoor-shell-v13';
+const SHELL_CACHE = 'ganjoor-shell-v14';
+const RUNTIME     = 'ganjoor-runtime-v14';
 const DATA_CACHE  = 'ganjoor-data-v13';
-const RUNTIME     = 'ganjoor-runtime-v13';
 
 const SHELL = [
   './',
@@ -18,10 +29,32 @@ const SHELL = [
   './icon-512.png',
 ];
 
+// Cross-origin runtime bundles required to render the app shell.
+// Keep in sync with the <script> and <link> tags in index.html.
+const CDN = [
+  'https://cdn.tailwindcss.com/',
+  'https://unpkg.com/react@18.2.0/umd/react.production.min.js',
+  'https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
+  'https://unpkg.com/@babel/standalone@7.24.0/babel.min.js',
+  'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Estedad:wght@400;500;700&display=swap',
+];
+
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
-    const c = await caches.open(SHELL_CACHE);
-    await Promise.allSettled(SHELL.map((u) => c.add(u)));
+    const shell = await caches.open(SHELL_CACHE);
+    await Promise.allSettled(SHELL.map((u) => shell.add(u)));
+    // CDN urls: the <script> tags have no crossorigin attribute, so the
+    // browser fetches them in no-cors mode and the response is opaque
+    // (status 0, ok=false). cache.add() rejects opaque responses, so we
+    // fetch + put manually. The opaque body is still replayable from the
+    // cache, which is all we need to boot the app offline.
+    const runtime = await caches.open(RUNTIME);
+    await Promise.allSettled(CDN.map(async (u) => {
+      try {
+        const resp = await fetch(u, { mode: 'no-cors' });
+        await runtime.put(u, resp);
+      } catch {}
+    }));
     self.skipWaiting();
   })());
 });
@@ -37,9 +70,6 @@ self.addEventListener('activate', (event) => {
 });
 
 function isData(url) { return /\/data\/.+\.json(?:$|\?)/.test(url.pathname); }
-function isShell(url) {
-  return SHELL.some((s) => url.pathname.endsWith(s.replace('./', '/')) || url.pathname.endsWith(s.slice(1)));
-}
 
 async function staleWhileRevalidate(cacheName, request) {
   const cache = await caches.open(cacheName);
@@ -57,7 +87,11 @@ async function cacheFirst(cacheName, request) {
   if (cached) return cached;
   try {
     const resp = await fetch(request);
-    if (resp && resp.ok) cache.put(request, resp.clone());
+    // Cache OK responses AND opaque cross-origin responses (status 0,
+    // ok=false, type='opaque'). Without the type='opaque' branch, every
+    // <script src> / <link href> without a crossorigin attribute silently
+    // fails to cache and the PWA boots to a white screen offline.
+    if (resp && (resp.ok || resp.type === 'opaque')) cache.put(request, resp.clone());
     return resp;
   } catch {
     return cached || new Response('Offline.', { status: 503 });
