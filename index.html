@@ -159,6 +159,39 @@ const loadPoem    = (slug, catPath, file) => {
   return fetchJson(`${DATA}/${path}.json`);
 };
 
+/* Full-text search corpus — loaded lazily on first search.
+   Each poet has a _search.json built by scripts/build_search_index.py:
+     [[urlTail, displayTitle, normalizedPlainText], ...]
+   We merge into a flat array of [poetSlug, urlTail, displayTitle, normalizedText].
+   Held at module scope so the cost is paid once per session; SW caches the
+   underlying HTTP responses for offline use after the first load.        */
+let _searchCorpus = null;
+let _searchCorpusPromise = null;
+async function loadSearchCorpus(poetSlugs, onProgress) {
+  if (_searchCorpus) return _searchCorpus;
+  if (_searchCorpusPromise) return _searchCorpusPromise;
+  _searchCorpusPromise = (async () => {
+    const merged = [];
+    let done = 0;
+    const total = poetSlugs.length;
+    await Promise.all(poetSlugs.map(async (slug) => {
+      try {
+        const r = await fetch(`${DATA}/${slug}/_search.json`);
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const arr = await r.json();
+        for (const e of arr) merged.push([slug, e[0], e[1], e[2]]);
+      } catch (_) { /* skip poets without a shard */ }
+      finally {
+        done++;
+        if (onProgress) onProgress(done, total);
+      }
+    }));
+    _searchCorpus = merged;
+    return merged;
+  })();
+  return _searchCorpusPromise;
+}
+
 /* Look up a category node inside a poet tree given a slug path. */
 function getCatAt(tree, catPath) {
   let node = tree;
@@ -908,24 +941,80 @@ function Row({ k, v, mono }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
-   SEARCH (poet picker + per-poet search prompt)
+   SEARCH (full-text across all poets + poet-name picker)
    ──────────────────────────────────────────────────────────────────────── */
+const MAX_TEXT_RESULTS = 200;
+
+function snippetAround(text, idx, len) {
+  const W = 50;
+  const start = Math.max(0, idx - W);
+  const end = Math.min(text.length, idx + len + W);
+  return {
+    pre: (start > 0 ? '…' : '') + text.slice(start, idx),
+    hit: text.slice(idx, idx + len),
+    post: text.slice(idx + len, end) + (end < text.length ? '…' : ''),
+  };
+}
+
 function SearchView() {
   const [poets, setPoets] = useState(null);
   const [q, setQ] = useState('');
+  const [debouncedQ, setDebouncedQ] = useState('');
+  const [corpus, setCorpus] = useState(_searchCorpus);
+  const [progress, setProgress] = useState(_searchCorpus ? null : null);
+  const [loadError, setLoadError] = useState(null);
+
+  // Load poet metadata
   useEffect(() => { loadPoets().then(d => setPoets(d.poets || [])).catch(() => setPoets([])); }, []);
 
+  // Debounce typing (substring scan of 129K entries is fast but no need to thrash)
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedQ(q), 150);
+    return () => clearTimeout(t);
+  }, [q]);
+
+  // Lazily load the full-text corpus the first time a real query is entered
+  useEffect(() => {
+    if (corpus || !poets || poets.length === 0) return;
+    if (toSearch(debouncedQ).length < 2) return;
+    const slugs = poets.map(p => p.slug);
+    setProgress({ loaded: 0, total: slugs.length });
+    loadSearchCorpus(slugs, (loaded, total) => setProgress({ loaded, total }))
+      .then(c => { setCorpus(c); setProgress(null); })
+      .catch(err => { setLoadError(String(err)); setProgress(null); });
+  }, [poets, debouncedQ, corpus]);
+
+  const poetBySlug = useMemo(() => {
+    const m = new Map();
+    (poets || []).forEach(p => m.set(p.slug, p));
+    return m;
+  }, [poets]);
+
+  const needle = toSearch(debouncedQ);
   const hasArabic = detectArabicChars(q);
-  const filtered = useMemo(() => {
-    if (!poets) return [];
-    const needle = toSearch(q);
-    if (!needle || needle.length < 1) return [];
+
+  const poetMatches = useMemo(() => {
+    if (!poets || needle.length < 1) return [];
     return poets.filter(p =>
       toSearch(p.nickname_fa || '').includes(needle) ||
       toSearch(p.name_fa || '').includes(needle) ||
       (p.slug || '').toLowerCase().includes(needle)
-    ).slice(0, 30);
-  }, [poets, q]);
+    ).slice(0, 5);
+  }, [poets, needle]);
+
+  const textMatches = useMemo(() => {
+    if (!corpus || needle.length < 2) return [];
+    const out = [];
+    for (let i = 0; i < corpus.length; i++) {
+      const e = corpus[i];
+      const idx = e[3].indexOf(needle);
+      if (idx >= 0) {
+        out.push({ slug: e[0], tail: e[1], title: e[2], text: e[3], idx });
+        if (out.length >= MAX_TEXT_RESULTS) break;
+      }
+    }
+    return out;
+  }, [corpus, needle]);
 
   return (
     <div className="fade-in px-4 pt-4">
@@ -934,7 +1023,7 @@ function SearchView() {
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="نام شاعر…"
+          placeholder="جست‌وجوی هر کلمه در ۱۲۹هزار شعر…"
           className="bg-transparent outline-none flex-1 text-base"
           autoFocus
         />
@@ -948,37 +1037,81 @@ function SearchView() {
         </div>
       )}
 
-      {!q && poets && (
+      {!q && (
         <div className="mt-6 surface-2 border border-soft rounded-xl p-4 text-xs leading-7">
-          <p className="font-semibold mb-1">یادداشت</p>
           <p className="muted">
-            در حال حاضر، جست‌وجو در سطح شاعر کار می‌کند. ابتدا شاعر را انتخاب کنید،
-            سپس در صفحهٔ هر بخش می‌توانید در عنوان و سطر آغازین شعرها جست‌وجو کنید.
-            جست‌وجوی متن کامل در همهٔ ۱۲۰هزار شعر در نسخهٔ بعدی اضافه خواهد شد.
+            هر کلمه یا عبارت را در متن شعرها جست‌وجو می‌کند. نخستین جست‌وجو ممکن است
+            چند ثانیه طول بکشد تا نمایه بارگیری شود؛ پس از آن همه چیز برون‌خط کار می‌کند.
           </p>
         </div>
       )}
 
-      <div className="mt-3 space-y-2 pb-6">
-        {filtered.map(p => (
-          <button
-            key={p.slug}
-            onClick={() => navigate(`#/poet/${p.slug}`)}
-            className="row w-full surface border border-soft rounded-xl px-4 py-3 text-right"
-          >
-            <div className="flex items-baseline justify-between gap-3">
-              <div className="flex-1 min-w-0">
-                <p className="font-bold truncate">{toDisplay(p.nickname_fa || p.name_fa || p.slug)}</p>
-                <p className="muted text-xs truncate mt-0.5">{toDisplay(p.name_fa || '')}</p>
-              </div>
-              <p className="muted text-xs shrink-0">{toPersianDigits((p.poems_count || 0).toLocaleString('fa-IR'))}</p>
-            </div>
-          </button>
-        ))}
-        {q && filtered.length === 0 && poets && (
-          <p className="muted text-sm text-center mt-8">شاعری با این نام یافت نشد.</p>
-        )}
-      </div>
+      {q && needle.length < 2 && (
+        <p className="muted text-sm text-center mt-8">حداقل ۲ نویسه وارد کنید.</p>
+      )}
+
+      {q && progress && (
+        <p className="muted text-xs text-center mt-6">
+          بارگذاری نمایهٔ جست‌وجو: {toPersianDigits(progress.loaded)} / {toPersianDigits(progress.total)} شاعر
+        </p>
+      )}
+
+      {q && loadError && (
+        <p className="muted text-sm text-center mt-8">خطا در بارگذاری نمایه: {loadError}</p>
+      )}
+
+      {q && poetMatches.length > 0 && (
+        <div className="mt-4">
+          <p className="text-xs muted mb-2">شاعران</p>
+          <div className="space-y-2">
+            {poetMatches.map(p => (
+              <button
+                key={p.slug}
+                onClick={() => navigate(`#/poet/${p.slug}`)}
+                className="row w-full surface border border-soft rounded-xl px-4 py-3 text-right"
+              >
+                <div className="flex items-baseline justify-between gap-3">
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold truncate">{toDisplay(p.nickname_fa || p.name_fa || p.slug)}</p>
+                    <p className="muted text-xs truncate mt-0.5">{toDisplay(p.name_fa || '')}</p>
+                  </div>
+                  <p className="muted text-xs shrink-0">{toPersianDigits((p.poems_count || 0).toLocaleString('fa-IR'))}</p>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {q && needle.length >= 2 && corpus && (
+        <div className="mt-4 pb-6">
+          <p className="text-xs muted mb-2">
+            در متن شعرها: {textMatches.length >= MAX_TEXT_RESULTS ? `+${toPersianDigits(MAX_TEXT_RESULTS)}` : toPersianDigits(textMatches.length)} نتیجه
+          </p>
+          <div className="space-y-2">
+            {textMatches.map((r, i) => {
+              const p = poetBySlug.get(r.slug);
+              const snip = snippetAround(r.text, r.idx, needle.length);
+              return (
+                <button
+                  key={`${r.slug}/${r.tail}/${i}`}
+                  onClick={() => navigate(`#/read/${r.slug}/${r.tail}`)}
+                  className="row w-full surface border border-soft rounded-xl px-4 py-3 text-right block"
+                >
+                  <p className="text-xs muted truncate">{toDisplay(p?.nickname_fa || p?.name_fa || r.slug)}</p>
+                  <p className="font-semibold truncate mt-0.5">{r.title || toDisplay(r.tail)}</p>
+                  <p className="muted text-xs mt-1 leading-6 break-words">
+                    {snip.pre}<span className="accent font-bold">{snip.hit}</span>{snip.post}
+                  </p>
+                </button>
+              );
+            })}
+            {textMatches.length === 0 && poetMatches.length === 0 && (
+              <p className="muted text-sm text-center mt-8">نتیجه‌ای یافت نشد.</p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
