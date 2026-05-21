@@ -98,6 +98,11 @@
   .row { transition: background 0.12s ease; }
   .row:active { background: rgba(0, 0, 0, 0.06); }
   .theme-dark .row:active { background: rgba(255, 255, 255, 0.06); }
+
+  /* iOS Safari force-zooms on focus into any input with computed font-size
+     below 16px, and never zooms back out. Root font-size is user-configurable
+     down to 13px (xs/sm presets), so we floor input/textarea/select at 16px. */
+  input, textarea, select { font-size: max(16px, 1rem); }
 </style>
 </head>
 <body class="theme-sepia">

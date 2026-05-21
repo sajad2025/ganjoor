@@ -4,9 +4,9 @@
  *   - data/*.json: stale-while-revalidate
  *   - everything else (fonts, CDN scripts): cache-first with network fallback
  */
-const SHELL_CACHE = 'ganjoor-shell-v9';
-const DATA_CACHE  = 'ganjoor-data-v9';
-const RUNTIME     = 'ganjoor-runtime-v9';
+const SHELL_CACHE = 'ganjoor-shell-v10';
+const DATA_CACHE  = 'ganjoor-data-v10';
+const RUNTIME     = 'ganjoor-runtime-v10';
 
 const SHELL = [
   './',
