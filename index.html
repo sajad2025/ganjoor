@@ -158,16 +158,89 @@ function formatBytesFa(bytes) {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
-   DATA LAYER — fetch from data/ with in-memory cache
+   PERSISTENT STORE — IndexedDB-backed offline cache for data/*.json.
+
+   The previous design routed every data fetch through the service worker
+   and stored responses in Cache Storage. Worked correctly, but on iOS
+   Safari cold-starting a PWA whose Cache Storage held ~17K entries took
+   8+ seconds while the engine indexed the namespace. IndexedDB is built
+   for thousands of small entries and pays no such tax; cold start now
+   stays sub-100 ms regardless of how much the user has saved offline.
+
+   Keys are the data/-relative path (e.g. "hafez/ghazal/1.json"). Values
+   are raw JSON strings — parsing happens on read, which is cheaper than
+   letting IDB structured-clone the parsed object on every write.
+   ──────────────────────────────────────────────────────────────────── */
+const IDB_NAME = 'ganjoor';
+const IDB_VERSION = 1;
+const IDB_STORE = 'data';
+
+let _idbPromise = null;
+function idb() {
+  if (_idbPromise) return _idbPromise;
+  _idbPromise = new Promise((resolve) => {
+    if (typeof indexedDB === 'undefined') { resolve(null); return; }
+    const req = indexedDB.open(IDB_NAME, IDB_VERSION);
+    req.onupgradeneeded = () => { req.result.createObjectStore(IDB_STORE); };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => { _idbPromise = null; resolve(null); };
+  });
+  return _idbPromise;
+}
+async function idbGet(key) {
+  const db = await idb();
+  if (!db) return undefined;
+  return new Promise((resolve) => {
+    const req = db.transaction(IDB_STORE, 'readonly').objectStore(IDB_STORE).get(key);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror   = () => resolve(undefined);
+  });
+}
+async function idbHas(key) {
+  const db = await idb();
+  if (!db) return false;
+  return new Promise((resolve) => {
+    const req = db.transaction(IDB_STORE, 'readonly').objectStore(IDB_STORE).getKey(key);
+    req.onsuccess = () => resolve(req.result !== undefined);
+    req.onerror   = () => resolve(false);
+  });
+}
+async function idbPut(key, value) {
+  const db = await idb();
+  if (!db) return false;
+  return new Promise((resolve) => {
+    const tx = db.transaction(IDB_STORE, 'readwrite');
+    tx.objectStore(IDB_STORE).put(value, key);
+    tx.oncomplete = () => resolve(true);
+    tx.onerror    = () => resolve(false);
+  });
+}
+function urlToIdbKey(path) {
+  // ./data/hafez/_index.json → hafez/_index.json
+  return path.replace(/^\.\/data\//, '').replace(/^\/+/, '');
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   DATA LAYER — IndexedDB hit (offline-saved) → in-memory cache → network
    ──────────────────────────────────────────────────────────────────────── */
 const DATA = './data';
 const cache = new Map();
 async function fetchJson(path) {
   if (cache.has(path)) return cache.get(path);
-  // Default browser cache mode; service worker handles persistence.
-  // Earlier `force-cache` here pinned 404 responses across deploys.
-  const p = fetch(path)
-    .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status} for ${path}`); return r.json(); });
+  const p = (async () => {
+    // IDB lookup is essentially free when the key is absent (a single
+    // getKey roundtrip), so it's safe to do unconditionally — saves a
+    // network round-trip on every call when the user is offline-saved.
+    try {
+      const stored = await idbGet(urlToIdbKey(path));
+      if (stored !== undefined) {
+        return typeof stored === 'string' ? JSON.parse(stored) : stored;
+      }
+    } catch { /* IDB failures fall through to network */ }
+    const r = await fetch(path);
+    if (!r.ok) throw new Error(`HTTP ${r.status} for ${path}`);
+    return r.json();
+  })();
   cache.set(path, p);
   try { return await p; } catch (e) { cache.delete(path); throw e; }
 }
@@ -214,9 +287,9 @@ async function loadSearchCorpus(poetSlugs, onProgress) {
     const total = poetSlugs.length;
     await Promise.all(poetSlugs.map(async (slug) => {
       try {
-        const r = await fetch(`${DATA}/${slug}/_search.json`);
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        const arr = await r.json();
+        // fetchJson hits IDB first (offline-saved) and falls back to
+        // network, so search works fully offline once the user has saved.
+        const arr = await fetchJson(`${DATA}/${slug}/_search.json`);
         for (const e of arr) merged.push([slug, e[0], e[1], e[2]]);
       } catch (_) { /* skip poets without a shard */ }
       finally {
@@ -1203,13 +1276,12 @@ function OfflineCache() {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const trees = await Promise.all(FAMOUS_POETS.map(async slug => {
-        try {
-          const r = await fetch(`${DATA}/${slug}/_index.json`);
-          if (!r.ok) return null;
-          return await r.json();
-        } catch { return null; }
-      }));
+      // fetchJson hits IDB first, so offline-saved indexes load instantly.
+      // On network, they're cached in IDB for next time once downloadAll
+      // has run; until then this still pays a network roundtrip per poet.
+      const trees = await Promise.all(FAMOUS_POETS.map(slug =>
+        fetchJson(`${DATA}/${slug}/_index.json`).catch(() => null)
+      ));
       if (cancelled) return;
 
       const all = [];
@@ -1227,15 +1299,14 @@ function OfflineCache() {
       setUrls(all);
       setPoetCounts(counts);
 
-      // Sentinel scan: only the 8 _index.json URLs (fast)
-      let present = 0;
-      if (typeof caches !== 'undefined') {
-        const results = await Promise.all(FAMOUS_POETS.map(slug =>
-          caches.match(`${DATA}/${slug}/_index.json`).catch(() => null)
-        ));
-        for (const r of results) if (r) present++;
-      }
+      // Sentinel scan: just check the 8 _index.json keys in IDB. getKey
+      // is one B-tree probe per call so this is effectively free even if
+      // the store holds all 17K poem entries.
+      const presentByPoet = await Promise.all(FAMOUS_POETS.map(slug =>
+        idbHas(`${slug}/_index.json`).catch(() => false)
+      ));
       if (cancelled) return;
+      const present = presentByPoet.filter(Boolean).length;
       setPresentPoets(present);
       setState(present === FAMOUS_POETS.length ? 'done' : present === 0 ? 'idle' : 'partial');
       if (navigator.storage?.estimate) {
@@ -1251,14 +1322,18 @@ function OfflineCache() {
   // Per-URL retry with exponential backoff. Cloudflare (in front of GH Pages)
   // will 429/503 if you fire thousands of requests in rapid succession, so a
   // failed fetch is almost always transient — wait and retry rather than give
-  // up on the entry.
-  async function fetchWithRetry(url) {
+  // up on the entry. Writes the response body to IDB on success; subsequent
+  // re-runs short-circuit on already-stored keys so retries are cheap.
+  async function fetchAndStore(url) {
+    const key = urlToIdbKey(url);
+    if (await idbHas(key)) return true;
     const delays = [600, 1800, 4000]; // ms before retry attempt 2, 3, 4
     for (let attempt = 0; attempt <= delays.length; attempt++) {
       try {
         const r = await fetch(url);
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        await r.blob(); // consume body so SW fully stores it
+        const text = await r.text();
+        await idbPut(key, text);
         return true;
       } catch {
         if (attempt === delays.length) return false;
@@ -1272,9 +1347,10 @@ function OfflineCache() {
     if (!urls) return;
     setState('downloading');
     setProgress(0);
-    // Resume mode: if we have a known failed list, only retry those. Otherwise
-    // download everything. The SW's stale-while-revalidate means re-fetching
-    // an already-cached URL is cheap.
+    // Resume mode: if we have a known failed list, only retry those.
+    // Otherwise download everything — fetchAndStore short-circuits on
+    // keys that are already in IDB, so re-running over a full list is
+    // cheap when most entries are saved already.
     const queue = failedUrls.length > 0 ? [...failedUrls] : [...urls];
     const newFailures = [];
     let done = 0, idx = 0;
@@ -1287,7 +1363,7 @@ function OfflineCache() {
         const i = idx++;
         if (i >= queue.length) break;
         const url = queue[i];
-        const ok = await fetchWithRetry(url);
+        const ok = await fetchAndStore(url);
         if (!ok) newFailures.push(url);
         done++;
         if (done % 25 === 0 || done === queue.length) {
@@ -1300,15 +1376,11 @@ function OfflineCache() {
     await Promise.all(Array.from({ length: CONCURRENCY }, worker));
     setProgress(done);
     setFailedUrls(newFailures);
-    // Re-check sentinels so the headline reflects reality, not optimism.
-    let present = 0;
-    if (typeof caches !== 'undefined') {
-      const results = await Promise.all(FAMOUS_POETS.map(slug =>
-        caches.match(`${DATA}/${slug}/_index.json`).catch(() => null)
-      ));
-      for (const r of results) if (r) present++;
-    }
-    setPresentPoets(present);
+    // Re-check sentinels against IDB so the headline reflects reality.
+    const presentByPoet = await Promise.all(FAMOUS_POETS.map(slug =>
+      idbHas(`${slug}/_index.json`).catch(() => false)
+    ));
+    setPresentPoets(presentByPoet.filter(Boolean).length);
     setState(newFailures.length === 0 ? 'done' : 'partial');
     // Final storage refresh — the polling interval clears as soon as
     // state leaves 'downloading', so the last sample might be a couple

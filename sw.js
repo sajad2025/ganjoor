@@ -2,22 +2,24 @@
  * Strategy:
  *   - Precache app shell (index, manifest, icons) on install
  *   - Precache cross-origin runtime bundles (React, ReactDOM, Tailwind,
- *     Babel, Google Fonts CSS) on install — these are required to boot
- *     the React app, so opaque-response opportunistic caching is too
- *     unreliable. See Gotcha #9 in CLAUDE.md.
- *   - data/*.json: stale-while-revalidate
- *   - everything else (font WOFFs, etc.): cache-first with network fallback
+ *     Google Fonts CSS) on install — opaque-response opportunistic
+ *     caching is too unreliable. See Gotcha #9 in CLAUDE.md.
+ *   - data/*.json: NOT intercepted. Persistence happens in the app
+ *     layer via IndexedDB (see Gotcha #10). The SW returning data from
+ *     Cache Storage worked correctly but on iOS Safari ~17K entries
+ *     made PWA cold-start take 8+ s while WebKit indexed the namespace.
+ *   - Everything else (font WOFFs, etc.): cache-first with network
+ *     fallback. The runtime cacheFirst handler accepts opaque responses
+ *     so future cross-origin additions are cached opportunistically.
  *
  * Cache naming convention:
  *   - SHELL_CACHE and RUNTIME bump together when index.html or the
  *     pinned CDN versions change.
- *   - DATA_CACHE is pinned and must NOT be bumped with shell upgrades —
- *     it holds ~250 MB of user-saved poems from the OfflineCache feature.
- *     Only bump it if the on-disk JSON schema changes (it hasn't).
+ *   - No DATA_CACHE in this version. Legacy ganjoor-data-v* caches
+ *     from older versions are deleted on activate to reclaim space.
  */
-const SHELL_CACHE = 'ganjoor-shell-v16';
-const RUNTIME     = 'ganjoor-runtime-v16';
-const DATA_CACHE  = 'ganjoor-data-v13';
+const SHELL_CACHE = 'ganjoor-shell-v17';
+const RUNTIME     = 'ganjoor-runtime-v17';
 
 const SHELL = [
   './',
@@ -35,7 +37,6 @@ const CDN = [
   'https://cdn.tailwindcss.com/',
   'https://unpkg.com/react@18.2.0/umd/react.production.min.js',
   'https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js',
-  'https://unpkg.com/@babel/standalone@7.24.0/babel.min.js',
   'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Estedad:wght@400;500;700&display=swap',
 ];
 
@@ -43,11 +44,9 @@ self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
     const shell = await caches.open(SHELL_CACHE);
     await Promise.allSettled(SHELL.map((u) => shell.add(u)));
-    // CDN urls: the <script> tags have no crossorigin attribute, so the
-    // browser fetches them in no-cors mode and the response is opaque
-    // (status 0, ok=false). cache.add() rejects opaque responses, so we
-    // fetch + put manually. The opaque body is still replayable from the
-    // cache, which is all we need to boot the app offline.
+    // CDN urls: <script> tags have no crossorigin attribute, so fetches
+    // are no-cors and the response is opaque (status 0, ok=false).
+    // cache.add() rejects opaque responses, so we do fetch + put manually.
     const runtime = await caches.open(RUNTIME);
     await Promise.allSettled(CDN.map(async (u) => {
       try {
@@ -62,24 +61,15 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
     const names = await caches.keys();
+    // Anything not in the keep-list goes — including the legacy
+    // ganjoor-data-v* caches from before the IDB migration, which
+    // reclaims ~300 MB and unblocks iOS cold-start performance.
     await Promise.all(names.map((n) => {
-      if (![SHELL_CACHE, DATA_CACHE, RUNTIME].includes(n)) return caches.delete(n);
+      if (![SHELL_CACHE, RUNTIME].includes(n)) return caches.delete(n);
     }));
     await self.clients.claim();
   })());
 });
-
-function isData(url) { return /\/data\/.+\.json(?:$|\?)/.test(url.pathname); }
-
-async function staleWhileRevalidate(cacheName, request) {
-  const cache = await caches.open(cacheName);
-  const cached = await cache.match(request);
-  const network = fetch(request).then((resp) => {
-    if (resp && resp.ok) cache.put(request, resp.clone());
-    return resp;
-  }).catch(() => null);
-  return cached || (await network) || new Response('Offline.', { status: 503 });
-}
 
 async function cacheFirst(cacheName, request) {
   const cache = await caches.open(cacheName);
@@ -103,9 +93,11 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
   const url = new URL(request.url);
 
-  // Same-origin data/*.json: stale-while-revalidate
-  if (url.origin === self.location.origin && isData(url)) {
-    event.respondWith(staleWhileRevalidate(DATA_CACHE, request));
+  // Same-origin data/*.json: do NOT intercept. The app layer reads
+  // these from IndexedDB when offline-saved and falls back to network
+  // otherwise. Routing them through Cache Storage made iOS cold-start
+  // scale linearly with cache entry count (8+ s at 17K entries).
+  if (url.origin === self.location.origin && /\/data\/.+\.json(?:$|\?)/.test(url.pathname)) {
     return;
   }
 
