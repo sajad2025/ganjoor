@@ -689,11 +689,15 @@ function PoetPicker() {
   const filtered = useMemo(() => {
     if (!poets) return [];
     const needle = toSearch(q);
-    if (!needle) return poets;
-    return poets.filter(p =>
+    const list = !needle ? poets : poets.filter(p =>
       toSearch(p.nickname_fa || '').includes(needle) ||
       toSearch(p.name_fa || '').includes(needle) ||
       (p.slug || '').toLowerCase().includes(needle)
+    );
+    // Oldest poets first — sort ascending by birth year (Hijri); any
+    // poet missing a birth year sinks to the bottom.
+    return list.slice().sort((a, b) =>
+      (a.birth_year || Infinity) - (b.birth_year || Infinity)
     );
   }, [poets, q]);
 
