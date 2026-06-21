@@ -564,9 +564,16 @@ function Home({ recents, favorites }) {
       </section>
 
       <section className="px-4 mt-5">
-        <div className="flex items-center justify-between px-1 mb-2">
-          <p className="muted text-xs">شاعران برجسته</p>
-          <button onClick={() => navigate('#/poets')} className="accent text-xs">همه ←</button>
+        <div className="flex items-center gap-2 px-1 mb-3">
+          <span className="px-4 py-2 rounded-lg text-base font-semibold border accent-bg text-white border-transparent">
+            شاعران برجسته
+          </span>
+          <button
+            onClick={() => navigate('#/poets')}
+            className="px-4 py-2 rounded-lg text-base font-semibold border border-soft surface-2 active:opacity-70"
+          >
+            همه شاعران ←
+          </button>
         </div>
         <div className="grid grid-cols-2 gap-3">
           {featuredPoets.map(p => (
