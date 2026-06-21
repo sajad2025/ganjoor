@@ -258,9 +258,9 @@ const loadPoem    = (slug, catPath, file) => {
   return fetchJson(`${DATA}/${path}.json`);
 };
 
-/* Offline cache — the 8 شاعران برجسته (canonical featured poets).
+/* Offline cache — the 10 شاعران برجسته (canonical featured poets).
    Hand-curated; matches the home-page "featured" list. Keep aligned. */
-const FAMOUS_POETS = ['hafez', 'saadi', 'moulavi', 'khayyam', 'ferdousi', 'attar', 'sanaee', 'nezami'];
+const FAMOUS_POETS = ['hafez', 'saadi', 'moulavi', 'khayyam', 'ferdousi', 'attar', 'sanaee', 'nezami', 'babataher', 'bidel'];
 
 /* Walk a poet's _index.json tree and emit every poem's data/<...>.json URL,
    mirroring the path math in loadPoem() so the cached responses populate the
@@ -518,7 +518,7 @@ function Home({ recents, favorites }) {
 
   const featuredPoets = useMemo(() => {
     if (!poets) return [];
-    const want = ['hafez', 'saadi', 'moulavi', 'khayyam', 'ferdousi', 'attar', 'nezami', 'sanaee'];
+    const want = ['hafez', 'saadi', 'moulavi', 'khayyam', 'ferdousi', 'attar', 'nezami', 'sanaee', 'babataher', 'bidel'];
     return want.map(s => poets.find(p => p.slug === s)).filter(Boolean);
   }, [poets]);
 

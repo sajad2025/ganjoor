@@ -18,8 +18,8 @@
  *   - No DATA_CACHE in this version. Legacy ganjoor-data-v* caches
  *     from older versions are deleted on activate to reclaim space.
  */
-const SHELL_CACHE = 'ganjoor-shell-v22';
-const RUNTIME     = 'ganjoor-runtime-v22';
+const SHELL_CACHE = 'ganjoor-shell-v23';
+const RUNTIME     = 'ganjoor-runtime-v23';
 
 const SHELL = [
   './',
