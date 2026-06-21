@@ -694,12 +694,22 @@ function PoetPicker() {
       toSearch(p.name_fa || '').includes(needle) ||
       (p.slug || '').toLowerCase().includes(needle)
     );
-    // Oldest poets first — sort ascending by birth year (Hijri); any
-    // poet missing a birth year sinks to the bottom.
+    // Two groups: poets with 100+ poems first, then the rest below a
+    // separator. Within each group, oldest first (ascending birth year,
+    // Hijri); any poet missing a birth year sinks to the bottom.
+    const minor = p => ((p.poems_count || 0) < 100 ? 1 : 0);
+    const birth = p => p.birth_year || Infinity;
     return list.slice().sort((a, b) =>
-      (a.birth_year || Infinity) - (b.birth_year || Infinity)
+      (minor(a) - minor(b)) || (birth(a) - birth(b))
     );
   }, [poets, q]);
+
+  // Index of the first poet with fewer than 100 poems — where the
+  // "کمتر از ۱۰۰ شعر" separator goes (−1 when there are none).
+  const minorStart = useMemo(
+    () => filtered.findIndex(p => (p.poems_count || 0) < 100),
+    [filtered]
+  );
 
   if (poets === null) return <Loading label="در حال بارگیری فهرست شاعران…" />;
 
@@ -722,9 +732,16 @@ function PoetPicker() {
       </div>
 
       <div className="px-3 py-2 grid grid-cols-1 gap-2">
-        {filtered.map(p => (
+        {filtered.map((p, i) => (
+          <React.Fragment key={p.slug}>
+          {i === minorStart && (
+            <div className="flex items-center gap-3 px-1 pt-3 pb-1">
+              <span className="flex-1 border-t border-soft" />
+              <span className="muted text-xs whitespace-nowrap">کمتر از ۱۰۰ شعر</span>
+              <span className="flex-1 border-t border-soft" />
+            </div>
+          )}
           <button
-            key={p.slug}
             onClick={() => navigate(`#/poet/${p.slug}`)}
             className="row surface border border-soft rounded-xl px-4 py-3 text-right"
           >
@@ -746,6 +763,7 @@ function PoetPicker() {
               </p>
             )}
           </button>
+          </React.Fragment>
         ))}
       </div>
     </div>
