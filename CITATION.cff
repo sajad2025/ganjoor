@@ -30,8 +30,9 @@ references:
   - type: software
     title: "Ganjoor (source corpus)"
     authors:
-      - family-names: Hadianfard
-        given-names: Habib
+      - family-names: Mohammadi
+        given-names: Hamid Reza
+        alias: hrmoh
     url: "https://ganjoor.net"
     repository-code: "https://github.com/ganjoor/GanjoorService"
     notes: >-
